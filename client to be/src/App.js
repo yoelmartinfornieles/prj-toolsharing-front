@@ -11,11 +11,17 @@ import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
 import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 
+//googleauth2
+import Login from './components/Login'
+import Logout from './components/Logout'
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+
+      <Login />
+      <Logout />
 
       <Switch>      
         <Route exact path="/" component={HomePage} />
