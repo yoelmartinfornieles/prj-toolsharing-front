@@ -29,7 +29,7 @@ function LoginPage(props) {
         
         const token = response.data.authToken;
         logInUser(token);
-        props.history.push("/profile");
+/*         props.history.push("/profile"); */
       })
       .catch((error) => {
       	const errorDescription = error.response.data.message;
