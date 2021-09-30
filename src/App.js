@@ -1,13 +1,15 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import {useState} from 'react'
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import HomePage from "./pages/HomePage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewProductPage from "./pages/NewProductPage";
 import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
+import Footer from "./components/footer";
+
 import ProfilePage from "./pages/ProfilePage"
 import * as PATHS from "./utils/paths";
 
@@ -25,8 +27,8 @@ function App() {
 
   return (
     <div className="App">
+    {isShowForm && <Popup clickToShow={toggleShowForm}/>}
       <Navbar clickToShow={toggleShowForm}/>
-      {isShowForm && <Popup/>}
       <Switch>  
         <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
         <AnonRoute exact path={PATHS.PRODUCTSLIST} component={ProductListPage} />
@@ -44,6 +46,7 @@ function App() {
       
         <AnonRoute exact path="/login" component={LoginPage} /> */}
       </Switch>
+      <Footer/>
     </div>
   );
 }
