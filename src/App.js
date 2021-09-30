@@ -1,18 +1,17 @@
-import "./App.css"
-import React from "react";
+import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import {useState} from 'react'
-import Home from "./pages/home";
-import NewProduct from "./pages/new-product";
-import ProductsList from "./pages/products-list";
-import ProductDetails from "./pages/product-details";
-import Signup from "./components/signup"
-import Login from './components/login'
-import Popup from './components/popup-signup-login'
-
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import ProductListPage from "./pages/ProductListPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import NewProductPage from "./pages/NewProductPage";
+import Popup from './components/Popup'
 
 import * as PATHS from "./utils/paths";
+
+import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
+import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 
 function App() {
 
@@ -25,17 +24,23 @@ function App() {
 
   return (
     <div className="App">
-    <Navbar clickToShow={toggleShowForm}/>
-    {isShowForm && <Popup/>}
-      <Switch>
-        <Route exact path={PATHS.HOMEPAGE} component={Home} />
-        <Route exact path={PATHS.PRODUCTSLIST} component={ProductsList} />
-        <Route exact path={PATHS.PRODUCTDETAILS} component={ProductDetails} />
-        <Route exact path={PATHS.NEWPRODUCT} component={NewProduct} />
+      <Navbar clickToShow={toggleShowForm}/>
+      {isShowForm && <Popup/>}
+      <Switch>  
+        <Route exact path={PATHS.HOMEPAGE} component={HomePage} />
+        <Route exact path={PATHS.PRODUCTSLIST} component={ProductListPage} />
+        <Route exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
+        <Route exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
+        
+        {/* 👇 UPDATE THE EXISTING ROUTES 👇 
+        <PrivateRoute exact path="/projects" component={ProjectListPage} />
+        <PrivateRoute exact path="/projects/:id" component={ProjectDetailsPage} />
+        <PrivateRoute exact path="/projects/edit/:id" component={EditProjectPage} />
+      
+        <AnonRoute exact path="/login" component={LoginPage} /> */}
       </Switch>
     </div>
   );
 }
 
 export default App;
-

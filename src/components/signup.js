@@ -1,46 +1,60 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Popup from 'reactjs-popup';
- 
-const API_URL = "http://localhost:5005";
- 
- 
-function SignupPage(props) {
 
-  const[username, setUsername] = useState('')
-  const[password, setPassword] = useState('')
-  const[email, setEmail] = useState('')
+const API_URL = process.env.REACT_APP_API_URL;
 
 
+function Signup(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const handleUsername = (e) => setUsername(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
+  
   const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handleName = (e) => setName(e.target.value);
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      let objectToSubmit = {username: username, password: password, email: email}
+  
+  const handleSignupSubmit = (e) => {
+    e.preventDefault();
+    // Create an object representing the request body
+    const requestBody = { email, password, name };
 
-      axios
-      .post(`${API_URL}/signup`, objectToSubmit)
-      .then((response)=>{
-          console.log (response)
-          /* history.push('/products') */
+    // Make an axios request to the API
+    // If POST request is successful redirect to login page
+    // If the request resolves with an error, set the error message in the state
+    axios.post(`${API_URL}/signup`, requestBody)
+      .then((response) => props.history.push("/profile"))
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
       })
-  }
+  };
 
-  return(
-      <div>
-          <form onSubmit={handleSubmit} method="POST">
-              <input placeholder = "username" type="text" name="username" value={username} onChange={handleUsername}></input>
-              <input placeholder = "psswd" type="password" name="password" value={password} onChange={handlePassword}></input>
-              <input placeholder = "tucorreo" type="email" name="email" value={email} onChange={handleEmail}></input>
-              <button type="submit">Signup</button>           
-          </form>
-      </div>
+  
+  return (
+    <div className="Signup">
+      <h1>Sign Up</h1>
 
+      <form onSubmit={handleSignupSubmit}>
+        <label>Email:</label>
+        <input type="text" name="email" value={email} onChange={handleEmail} />
+
+        <label>Password:</label>
+        <input type="password" name="password" value={password} onChange={handlePassword} />
+
+        <label>Name:</label>
+        <input type="text" name="name" value={name} onChange={handleName} />
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      { errorMessage && <p className="error-message">{errorMessage}</p> }
+
+    </div>
   )
 }
- 
-export default SignupPage;
+
+export default Signup;

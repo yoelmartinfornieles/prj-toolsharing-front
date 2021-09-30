@@ -40,8 +40,8 @@ function LoginGoogle() {
 		<GoogleLogin
 		  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 		  buttonText="Login"
-		  onSuccess={handleLogin}//{onSuccess}
-		  onFailure={handleLogin}//{onFailure}
+		  onSuccess={onSuccess}//{handleLogin}
+		  onFailure={onFailure}//{handleLogin}
 		  cookiePolicy={'single_host_origin'}
 		  style={{ marginTop: '100px' }}
 		  isSignedIn={true}
