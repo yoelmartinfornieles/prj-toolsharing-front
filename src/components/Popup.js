@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Signup from "./Signup";
-import Login from "./Login";
+import Signup from "./signup";
+import Login from "./login";
 
 function Popup() {
   const [isShowLogin, setIsShowLogin] = useState(true);
