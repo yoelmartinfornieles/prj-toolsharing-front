@@ -9,13 +9,11 @@ function Navbar(props) {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-      <button onClick={props.clickToShow}>Signup or Login</button>
-      <Link to={NEWPRODUCT}>New Product</Link>
--
+    <nav className="navbar">
+      <Link className="navbar-button" to="/"><h3>Home</h3></Link>
+      <Link className="navbar-button" to={NEWPRODUCT}><h3>+</h3></Link>
+      <Link  className="navbar-button" onClick={props.clickToShow}><h3>Log In</h3></Link>
+
       {/* {isLoggedIn
         ? (<>
             <Link to="/projects">

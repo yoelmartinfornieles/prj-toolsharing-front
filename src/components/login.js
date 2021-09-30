@@ -45,11 +45,12 @@ function LoginPage() {
       <LogoutGoogle/> */}
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Username:</label>
-        <input type="text" name="username" value={username} onChange={handleUsername} />
+        
+        {/* <label>Username:</label> */}
+        <input type="text" name="username" placeholder="Username" value={username} onChange={handleUsername} />
 
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+        {/* <label>Password:</label> */}
+        <input type="password" name="password" placeholder="Password" value={password} onChange={handlePassword} />
 
         <button type="submit">Login</button>
       </form>

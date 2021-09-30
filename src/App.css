@@ -1,0 +1,183 @@
+/* ------------NAVBAR-----------------------*/
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color:white;
+    height: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid rgb(224, 224, 224);
+}
+
+.navbar-button{
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+    background-color:white;
+    border: none;
+    text-align: center;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.103);
+    text-decoration: none;
+}
+
+.navbar-button h3{
+    color: rgb(36, 36, 36);
+    font-size: 0.8rem;
+    padding-top: 3px;
+  
+}
+
+
+/* ------------POPUP-----------------------*/
+.popup-div{
+position: fixed;
+ width: 100vw;
+ height: 100vh;
+ z-index: 3;
+ background-color:rgba(0, 0, 0, 0.37)
+}
+
+.popup{
+    position: fixed;
+    z-index: 3;
+    width: 90%;
+    height: 70%;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    margin-top: -65%;
+    margin-left: -45%;    
+    background-color:white;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.103);
+    text-align: center;
+}
+
+.close-button{
+    text-decoration: none;
+    color:rgb(36, 36, 36);
+    position: absolute;
+    right: 25px;
+    
+}
+
+.LoginPage{
+    background-color:none;
+    height:85%;
+    margin: 0 20px;
+    text-align: center;
+
+
+}
+
+.LoginPage form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoginPage form input{
+
+    height:50px;
+    border-radius:25px;
+    outline:none;
+    border: none;
+    width: 250px;
+    /* padding-left: 20px; */
+    border:1px solid rgb(202, 202, 202);
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.3rem;
+
+}
+
+.LoginPage form button{
+    background-color:none !important;
+    background: none !important;;
+    border: 1px solid rgb(36, 36, 36);
+    padding: 15px 40px;
+    border-radius: 35px;
+    color:rgb(36, 36, 36);
+    font-size: 1.5rem;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.103);
+    margin: 20px 0;
+}
+
+.LoginPage form button:active {
+    background-color: rgb(36, 36, 36)!important;
+    color: white
+}
+
+
+.Signup{
+    background-color:none;
+    height:85%;
+    margin: 0 20px;
+    text-align: center;
+
+
+}
+
+.scroll-signup{
+    height: 80%;
+    overflow-y: scroll;  
+
+}
+
+.Signup form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Signup form input{
+
+    height:50px;
+    border-radius:25px;
+    outline:none;
+    border: none;
+    width: 250px;
+    /* padding-left: 20px; */
+    border:1px solid rgb(202, 202, 202);
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1.3rem;
+
+}
+
+.Signup form button{
+    background-color:none !important;
+    background: none !important;;
+    border: 1px solid rgb(36, 36, 36);
+    padding: 15px 40px;
+    border-radius: 35px;
+    color:rgb(36, 36, 36);
+    font-size: 1.5rem;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.103);
+    margin: 20px 0;
+}
+
+.Signup form button:active {
+    background-color: rgb(36, 36, 36)!important;
+    color: white
+}
+
+.popup-button{
+    background-color:none !important;
+    background:none !important;
+    border: none !important;
+    color:red;
+    font-weight: 900;
+}
+
+
+
+
+/* ------------HOME-PAGE-----------------------*/
+
+.carrusel{
+    z-index: 1;
+}

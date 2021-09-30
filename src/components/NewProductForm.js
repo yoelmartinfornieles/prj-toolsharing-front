@@ -74,10 +74,9 @@ function NewProductForm(props) {
         value={category}
         onChange={handleCategory}
       >
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
+        <option value="handTools">Hand tools</option>
+        <option value="portableElectricTools">Portable electric tools</option>
+        <option value="workBench">Work Bench</option>
       </select>
       <label>Year of acquisition:</label>
       <input
