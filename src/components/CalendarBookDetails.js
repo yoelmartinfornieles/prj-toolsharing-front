@@ -1,8 +1,11 @@
 import { useState } from "react";
+import {useEffect} from 'react'
 import axios from "axios";
 import Calendar from "./Calendar.js";
 import moment from "moment";
 const API_URL = "http://localhost:5005";
+
+//Test para pruebas
 
 const dataArray = [
   "10/04/2021",
@@ -11,13 +14,14 @@ const dataArray = [
   "10/07/2021",
   "10/20/2021",
   "10/21/2021",
-"10/24/2021",
+  "10/24/2021",
   "10/25/2021",
 ];
 
 function BookForm() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
+  const [price, setPrice] = useState(null);
   const [error, setError] = useState(false);
 
   const dateArrayToPrint = (arr) =>{
@@ -48,6 +52,14 @@ function BookForm() {
     return totalDateArray;
   };
 
+  useEffect(()=>{
+      let firstDay = moment.utc(startDate);
+      let lastDay = moment.utc(endDate);
+      let daysToCalc = totalDays(firstDay,lastDay)
+      let priceXDay = 5.6
+      setPrice(Math.round((priceXDay*daysToCalc.length)*100)/100)
+  },[endDate])
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -62,13 +74,6 @@ function BookForm() {
     finalDateArray.map((result)=>{if (dataArray.includes(result)){newFinalArr.push(result)}})
     
     console.log('El que volem!!!:',newFinalArr)
-
-    /* finalDateArray.map((result) => {
-      if (dataArray.includes(result)) {
-        newFinalArr.push(result);
-      }
-    }); */
-
 
     if (newFinalArr.length > 0) {
       setError(!error);
@@ -97,7 +102,9 @@ function BookForm() {
         excludeDays={dateArrayToPrint(dataArray)}
       />
       <button type="submit">Book</button>
+      <h1>Total: {price}€</h1>
       {error && <h1>Please select available dates</h1>}
+      
     </form>
   );
 }
