@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import {useHistory} from "react-router-dom"
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
@@ -7,8 +8,9 @@ import LogoutGoogle from './LogoutGoogle'
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-
-function LoginPage(props) {
+function LoginPage() {
+  let history = useHistory();
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -26,10 +28,9 @@ function LoginPage(props) {
     axios.post(`${API_URL}/login`, requestBody)
       .then((response) => {
         console.log("JWT token", response.data.authToken);
-        
         const token = response.data.authToken;
         logInUser(token);
-/*         props.history.push("/profile"); */
+        history.push("/profile");
       })
       .catch((error) => {
       	const errorDescription = error.response.data.message;
@@ -40,8 +41,8 @@ function LoginPage(props) {
   return (
     <div className="LoginPage">
       <h1>Login</h1>
-      <LoginGoogle/>
-      <LogoutGoogle/>
+{/*       <LoginGoogle/>
+      <LogoutGoogle/> */}
 
       <form onSubmit={handleLoginSubmit}>
         <label>Username:</label>

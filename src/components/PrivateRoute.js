@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 function PrivateRoute(props) {
   // Destructure the props
-  const { to, exact, component: Component, ...restProps } = props;
+  const { path, exact,  component, ...restProps } = props;
   
   const { isLoggedIn, isLoading } = useContext(AuthContext);
 
@@ -15,7 +15,7 @@ function PrivateRoute(props) {
   if (!isLoggedIn) return <Redirect to="/login" />;
 
   // If the user is logged in ✅
-	return <Route to={to} exact={exact} component={Component} {...restProps} />
+	return <Route path={path} exact={exact} component={component} {...restProps} />
 }
 
 export default PrivateRoute;
