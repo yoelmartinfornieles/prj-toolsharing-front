@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddTask from "../components/AddTask";
+import AddTask from "../components/Plantillas/AddTask";
 
-import TaskCard from "../components/TaskCard";
+import TaskCard from "../components/Plantillas/TaskCard";
 
 const API_URL = process.env.REACT_APP_API_URL;
 

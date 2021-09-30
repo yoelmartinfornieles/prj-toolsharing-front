@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 
-function SignupPage(props) {
+function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -25,8 +25,8 @@ function SignupPage(props) {
     // Make an axios request to the API
     // If POST request is successful redirect to login page
     // If the request resolves with an error, set the error message in the state
-    axios.post(`${API_URL}/auth/signup`, requestBody)
-      .then((response) => props.history.push("/login"))
+    axios.post(`${API_URL}/signup`, requestBody)
+      .then((response) => props.history.push("/profile"))
       .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
@@ -35,7 +35,7 @@ function SignupPage(props) {
 
   
   return (
-    <div className="SignupPage">
+    <div className="Signup">
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
@@ -53,10 +53,8 @@ function SignupPage(props) {
 
       { errorMessage && <p className="error-message">{errorMessage}</p> }
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
     </div>
   )
 }
 
-export default SignupPage;
+export default Signup;
