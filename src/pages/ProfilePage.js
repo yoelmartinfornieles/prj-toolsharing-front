@@ -12,6 +12,9 @@ function ProfilePage(){
 	const [userInfo, setUserInfo] = useState ("")
 	let API_URL = process.env.REACT_APP_API_URL
 	let userId = user._id
+
+
+
 	useEffect(() => {
 		console.log("useEffect")
 		axios
@@ -23,12 +26,24 @@ function ProfilePage(){
 		)
 	}, 
 	[])
+	
+	console.log(userInfo)
+	
+	if (userInfo) {
 
 	return (
 		<nav>
 			<UserInfo  userInfo={userInfo}/>
 		</nav>
 	  );
+	}
+	else {
+		return (
+			<>
+			No user information
+			</>
+		)
+	}
 }
 
 

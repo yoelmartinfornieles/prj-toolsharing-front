@@ -32,10 +32,12 @@ function App() {
       <Switch>  
         <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
         <AnonRoute exact path={PATHS.PRODUCTSLIST} component={ProductListPage} />
-        <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
-        <AnonRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
+{/*         <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
+ */}    <AnonRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
         <AnonRoute exact path={PATHS.BOOKING} component={BookingPage} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} />
+        <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
+        <Route exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
         
         {/* 👇 UPDATE THE EXISTING ROUTES 👇 
         <PrivateRoute exact path="/projects" component={ProjectListPage} />
