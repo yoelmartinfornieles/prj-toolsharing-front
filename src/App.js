@@ -1,11 +1,12 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import {useState} from 'react'
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import HomePage from "./pages/HomePage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewProductPage from "./pages/NewProductPage";
+import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
 
 import * as PATHS from "./utils/paths";
@@ -31,6 +32,7 @@ function App() {
         <Route exact path={PATHS.PRODUCTSLIST} component={ProductListPage} />
         <Route exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
         <Route exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
+        <Route exact path={PATHS.BOOKING} component={BookingPage} />
         
         {/* 👇 UPDATE THE EXISTING ROUTES 👇 
         <PrivateRoute exact path="/projects" component={ProjectListPage} />
