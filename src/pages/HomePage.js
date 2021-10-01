@@ -1,10 +1,12 @@
 import Carrusel from "../components/carrusel"
+import HomeCategories from "../components/HomeCategories";
 
 function HomePage() {
   return (
     <>
-    <div>This is the home page</div>
-    <Carrusel/>
+    <div></div>
+    <HomeCategories/>
+    {/* <Carrusel/> */}
     </>
   );
 }
