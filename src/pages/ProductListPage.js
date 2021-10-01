@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ProductCard from '../components/ProductCard'
 
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -23,17 +24,11 @@ function ProductListPage() {
 if (Products) {
 
   return(
-    <div>
+    <div className="cards-container">
         { 
            Products.map (product => (
+          <ProductCard link={`/product/${product._id}`} img={product.photo} name={product.name} amount={product.amount}/>))
 
-          <div key={product._id} className="product-card">
-            <img src={product.photo} alt="product photo"/>
-            <p>{product.name}</p>  
-            <p>{product.amount}</p>
-            <Link to={`/product/${product._id}`} >SEE MORE IN THE STREET</Link>
-          </div>
-        ))
       }
     </div>
   )

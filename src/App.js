@@ -47,7 +47,7 @@ function App() {
         <AnonRoute exact path={PATHS.BOOKING} component={BookingPage} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
-        <Route exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
+        <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
 
         {/* ------------WIP: CHAT ROUTES-----------------------*/ }
 

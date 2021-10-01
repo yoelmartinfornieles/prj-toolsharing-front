@@ -1,13 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import FavButton from '../components/FavButton'
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function ProductDetailsPage (props) {
   const [product, setProduct] = useState(null)
+  const [isFav, setIsFav] = useState(false)
   const {id} = useParams()
   console.log ("id: ", id)
+  console.log('is fav??',isFav)
+  
+//-----IF-IS---LOG------
+  const { isLoggedIn, user } = useContext(AuthContext);
+	const [userInfo, setUserInfo] = useState ("")
+	let API_URL = process.env.REACT_APP_API_URL
+	let userId = user._id
+
+  console.log('this is the current user:', userId)
+
+
+
+	useEffect(() => {
+		console.log("useEffect")
+		axios
+		 .get (API_URL+"/user/"+userId)
+		 .then ((response)=> {
+			console.log ("response111: ", response.data.favorites)
+			setUserInfo(response)
+      if(response.data.favorites.includes(id)){
+        setIsFav(true)
+        console.log('lo tengo!')
+      }
+		 }
+		)
+	}, 
+	[])
+//--------------------------
+
 
   useEffect(() => {
 
@@ -15,20 +47,51 @@ function ProductDetailsPage (props) {
       .get (API_URL+"/product/"+id)
       .then (response => {
         setProduct (response.data)
-        console.log ("product: ", product)
+        console.log ("product: ", response.data)
       }
     ) 
   }, 
   [])
 
+  const handleSubmitFav = (e) => {
+    e.preventDefault()
+     
+    axios
+      .post (API_URL+"/fav/"+id, {userId})
+      .then (response => {
+        setIsFav(true)
+
+        console.log("product Fav: ", response.data)
+      }
+    ) 
+
+  }
+
+  const handleSubmitDeleteFav = (e) => {
+    e.preventDefault()
+     
+    axios
+      .put (API_URL+"/fav/"+id, {userId})
+      .then (response => {
+        setIsFav(false)
+
+        console.log("product delete Fav: ", response.data)
+      }
+    ) 
+
+  }
+  
   if (product) {
   
   return (
     <>
+        <FavButton handleSubmitFav={handleSubmitFav} handleSubmitDeleteFav={handleSubmitDeleteFav} isFav={isFav}/>
+    
+
       <p>{product.name}</p>
       <p>{product.reviews[0]}</p>
     </>
-  )
+  );
   }
 
   else {

@@ -309,3 +309,49 @@ top: 0;
     width: 300px;
   }
 
+
+  /* ------------PRODUCT-LIST-----------------------*/
+
+
+
+.cards-container{
+    margin-top:70px;
+    text-align: center;
+
+
+}
+
+.product-card{
+    margin: 20px auto;
+    border:1px solid rgb(202, 202, 202);
+    padding: 10px;
+    width:300px;
+    text-align: center;
+    border-radius: 7%;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.103);
+    
+}
+
+.product-card a{
+    text-decoration: none;
+}
+
+.img-cropper{
+    max-width: 300px;
+    height: 300px;
+    border-radius: 5%;
+    overflow: hidden;
+}
+
+
+.img-cropper img{
+    width: 100%;
+    height:auto;
+}
+
+.product-card p{
+    
+    color:rgb(36, 36, 36);
+    font-size: 1rem;
+    font-weight: bold;
+}
