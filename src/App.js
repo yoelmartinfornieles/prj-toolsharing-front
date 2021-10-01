@@ -2,6 +2,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import {useState} from 'react'
 import Navbar from "./components/navbar";
+import NavbarTopMobile from "./components/navbar-top-mobile";
 import HomePage from "./pages/HomePage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
@@ -28,10 +29,11 @@ function App() {
   return (
     <div className="App">
     {isShowForm && <Popup clickToShow={toggleShowForm}/>}
+      <NavbarTopMobile/>
       <Navbar clickToShow={toggleShowForm}/>
+      <div className="body-switch">
       <Switch>  
         <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
-        <AnonRoute exact path={PATHS.PRODUCTSLIST} component={ProductListPage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
  */}    <AnonRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
         <AnonRoute exact path={PATHS.BOOKING} component={BookingPage} />
@@ -45,7 +47,8 @@ function App() {
       
         <AnonRoute exact path="/login" component={LoginPage} /> */}
       </Switch>
-      <Footer/>
+      </div>
+      {/* <Footer/> */}
     </div>
   );
 }

@@ -22,12 +22,12 @@ function SearchProduct(props) {
   }; 
 
   return (
-    <div>
+
       <form>
-            <label>Search:</label>
-             <input value={searchLetters} type="text" onChange={handleSelect} />
-        </form>
-    </div>
+             <input value={searchLetters} type="text" onChange={handleSelect} placeholder="Search tool" />
+             <button><img src="./search-icon.png"/></button>
+      </form>
+   
   );
 }
 

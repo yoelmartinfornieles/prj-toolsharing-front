@@ -1,8 +1,10 @@
 import { useState } from "react";
+import {useHistory} from "react-router-dom"
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function NewProductForm(props) {
+  let history = useHistory()
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
@@ -33,12 +35,12 @@ function NewProductForm(props) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/new-product`, objectToSubmit, {
+      .post(`${API_URL}/product`, objectToSubmit, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((result) => {
-        console.log(result);
-        props.history(`/product/${result.data._id}`)
+        console.log('Producto creado:',result);
+        history.push(`/product/${result.data._id}`)
       });
   };
 

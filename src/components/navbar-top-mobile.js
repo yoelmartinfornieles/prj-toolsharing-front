@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar"
 function NavbarTopMobile(){
     return (
 
-        <nav>
+        <nav className="top-navbar">
             <SearchBar/>
         </nav>
 
