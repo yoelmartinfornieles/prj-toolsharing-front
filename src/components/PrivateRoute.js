@@ -13,9 +13,10 @@ function PrivateRoute(props) {
   if (isLoading) return <p>Loading ...</p>;
 
   // If the user is not logged in ❌
-  if (!isLoggedIn) 
-  {clickToShow()
-  return <Redirect to="/"/>}
+  if (!isLoggedIn) {
+    clickToShow()
+    return <Redirect to="/"/>
+  }
   
   // If the user is logged in ✅
 	return <Route path={path} exact={exact} component={component} {...restProps} />
