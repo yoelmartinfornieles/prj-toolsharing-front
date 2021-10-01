@@ -24,7 +24,10 @@ function ProductDetailsPage (props) {
   if (product) {
   
   return (
-    <p>{product.name}</p>
+    <>
+      <p>{product.name}</p>
+      <p>{product.reviews[0]}</p>
+    </>
   )
   }
 

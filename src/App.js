@@ -11,6 +11,12 @@ import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
 import Footer from "./components/footer";
 
+/* ------------WIP: CHAT IMPORTS-----------------------*/
+
+import Login from './chatComponents/Login';
+import MyNetwork from './chatComponents/MyNetwork';
+import Messaging from './chatComponents/Messaging';
+
 import ProfilePage from "./pages/ProfilePage"
 import * as PATHS from "./utils/paths";
 
@@ -33,6 +39,8 @@ function App() {
       <Navbar clickToShow={toggleShowForm}/>
       <div className="body-switch">
       <Switch>  
+
+        {/* ------------REMEMBER THAT PRIVATEROUTES PROVIDES US WITH USER INFO----------------------*/ }
         <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
  */}    <AnonRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
@@ -40,11 +48,17 @@ function App() {
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
         <Route exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
+
+        {/* ------------WIP: CHAT ROUTES-----------------------*/ }
+
+        <PrivateRoute path="/chat" exact component={Login}/> 
+        <Route path="/mynetwork" component={MyNetwork}/>
+        <Route path="/messaging" component={Messaging}/> 
+        
         {/* 👇 UPDATE THE EXISTING ROUTES 👇 
         <PrivateRoute exact path="/projects" component={ProjectListPage} />
         <PrivateRoute exact path="/projects/:id" component={ProjectDetailsPage} />
         <PrivateRoute exact path="/projects/edit/:id" component={EditProjectPage} />
-      
         <AnonRoute exact path="/login" component={LoginPage} /> */}
       </Switch>
       </div>
