@@ -36,6 +36,8 @@ function App() {
     {isShowForm && <Popup clickToShow={toggleShowForm}/>}
       <Navbar clickToShow={toggleShowForm}/>
       <Switch>  
+
+        {/* ------------REMEMBER THAT PRIVATEROUTES PROVIDES US WITH USER INFO----------------------*/ }
         <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
         <AnonRoute exact path={PATHS.PRODUCTSLIST} component={ProductListPage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
@@ -47,7 +49,7 @@ function App() {
 
         {/* ------------WIP: CHAT ROUTES-----------------------*/ }
 
-        <Route path="/chat" exact component={Login}/> 
+        <PrivateRoute path="/chat" exact component={Login}/> 
         <Route path="/mynetwork" component={MyNetwork}/>
         <Route path="/messaging" component={Messaging}/> 
         
