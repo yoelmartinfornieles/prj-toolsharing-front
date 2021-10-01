@@ -99,3 +99,6 @@ class MyNetwork extends Component {
     }
 }
 export default MyNetwork;
+
+/* axios
+	.get(API_URL+"/user") */
