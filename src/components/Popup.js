@@ -4,6 +4,9 @@ import Signup from "./signup";
 import Login from "./login";
 
 function Popup(props) {
+
+  var {clickToShow} = props
+  
   const [isShowLogin, setIsShowLogin] = useState(true);
 
   function toggleShowLogin() {
@@ -13,13 +16,13 @@ function Popup(props) {
   return (
     <div className="popup-div">
     <div className="popup">
-      <Link className="close-button" onClick={props.clickToShow}><h1>✖</h1></Link>
+      <Link className="close-button" onClick={clickToShow}><h1>✖</h1></Link>
       {isShowLogin && <Login />}
       {!isShowLogin && <Signup />}
 
       <button className="popup-button" onClick={toggleShowLogin}>
         {isShowLogin
-          ? "Aún no tienes cuenta? registrate"
+          ? "Aún no tienes cuenta? registrate" 
           : "Ya tienes cuenta? Inicia sessión"}
       </button>
     </div>

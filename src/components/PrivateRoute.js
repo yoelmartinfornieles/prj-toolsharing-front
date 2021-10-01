@@ -3,6 +3,7 @@ import { AuthContext } from './../context/auth.context';
 import { Redirect, Route } from 'react-router-dom';
 
 function PrivateRoute(props) {
+  var {clickToShow}=props
   // Destructure the props
   const { path, exact,  component, ...restProps } = props;
   
@@ -12,8 +13,11 @@ function PrivateRoute(props) {
   if (isLoading) return <p>Loading ...</p>;
 
   // If the user is not logged in ❌
-  if (!isLoggedIn) return <Redirect to="/login" />;
-
+  if (!isLoggedIn) {
+    clickToShow()
+    return <Redirect to="/"/>
+  }
+  
   // If the user is logged in ✅
 	return <Route path={path} exact={exact} component={component} {...restProps} />
 }

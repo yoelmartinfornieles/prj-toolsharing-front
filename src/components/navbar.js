@@ -12,7 +12,8 @@ function Navbar(props) {
     <nav className="navbar">
       <Link className="navbar-button" to="/"><h3>Home</h3></Link>
       <Link className="navbar-button" to={NEWPRODUCT}><h3>+</h3></Link>
-      <Link  className="navbar-button" onClick={props.clickToShow}><h3>Log In</h3></Link>
+      <Link dclassName="navbar-button" onClick={props.clickToShow}><h3>Log In</h3></Link>
+      <Link className="navbar-button" onClick={logOutUser} to="/projects"> Cerrar sessiion picha </Link>
 
       {/* {isLoggedIn
         ? (<>
