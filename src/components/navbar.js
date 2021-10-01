@@ -15,6 +15,10 @@ function Navbar(props) {
       <Link dclassName="navbar-button" onClick={props.clickToShow}><h3>Log In</h3></Link>
       <Link className="navbar-button" onClick={logOutUser} to="/projects"> Cerrar sessiion picha </Link>
 
+      {/* ------------WIP: CHAT LINKS-----------------------*/ }
+
+      <Link to="/mynetwork" className="navbar-link">My Network</Link>
+      <Link to="/messaging" className="navbar-link">Messaging</Link>
       {/* {isLoggedIn
         ? (<>
             <Link to="/projects">
