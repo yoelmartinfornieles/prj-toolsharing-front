@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import {Image} from "cloudinary-react"
 
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -28,7 +29,12 @@ if (Products) {
            Products.map (product => (
 
           <div key={product._id} className="product-card">
-            <img src={product.photo} alt="product photo"/>
+
+
+            <Image
+            cloudName ="toolsharing"
+            publicId={product.photo}
+            />
             <p>{product.name}</p>  
             <p>{product.amount}</p>
             <Link to={`/product/${product._id}`} >SEE MORE IN THE STREET</Link>
