@@ -44,13 +44,14 @@ position: fixed;
 .popup{
     position: fixed;
     z-index: 3;
-    width: 90%;
-    height: 70%;
+    width: 300px;
+    height: 500px;
     margin: auto;
-    top: 20%;
+    top: 50%;
     left: 50%;
     border-radius: 10px;
-    margin-left: -45%;    
+    margin-top: -250px;
+    margin-left: -150px;    
     background-color:white;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.103);
     text-align: center;
@@ -85,12 +86,13 @@ position: fixed;
     border-radius:25px;
     outline:none;
     border: none;
-    width: 250px;
+    width: 150px;
     /* padding-left: 20px; */
-    border:1px solid rgb(202, 202, 202);
+    border-bottom:1px solid rgb(202, 202, 202);
     margin: 20px 0;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1rem;
+    font-weight: 200;
 
 }
 
@@ -169,8 +171,8 @@ position: fixed;
     background-color:none !important;
     background:none !important;
     border: none !important;
-    color:red;
-    font-weight: 900;
+    color:rgb(173, 173, 173);
+    font-weight: 200;
 }
 
 
