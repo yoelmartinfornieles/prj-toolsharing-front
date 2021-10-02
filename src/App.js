@@ -9,7 +9,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewProductPage from "./pages/NewProductPage";
 import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
-import Footer from "./components/footer";
+//import Footer from "./components/footer";
 
 /* ------------WIP: CHAT IMPORTS-----------------------*/
 
@@ -43,7 +43,7 @@ function App() {
         {/* ------------REMEMBER THAT PRIVATEROUTES PROVIDES US WITH USER INFO----------------------*/ }
         <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
- */}    <AnonRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
+ */}    <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.BOOKING} component={BookingPage} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />

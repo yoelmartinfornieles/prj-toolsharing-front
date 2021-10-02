@@ -4,7 +4,7 @@ function HomeCategories() {
       <div className="gradient-left"></div>
       <div className="home-categories">
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-montaje.png" />
+          <img src="./tool-icons/h-montaje.png" alt = "Herramientas de montaje"/>
           <h3>
             Herramientas
             <br />
@@ -12,7 +12,7 @@ function HomeCategories() {
           </h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-corte.png" />
+          <img src="./tool-icons/h-corte.png" alt = "Herramientas de corte" />
           <h3>
             Herramientas
             <br />
@@ -20,7 +20,7 @@ function HomeCategories() {
           </h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-golpe.png" />
+          <img src="./tool-icons/h-golpe.png" alt = "Herramientas de golpe"/>
           <h3>
             Herramientas
             <br />
@@ -28,7 +28,7 @@ function HomeCategories() {
           </h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-pintura.png" />
+          <img src="./tool-icons/h-pintura.png" alt = "Herramientas de pintura" />
           <h3>
             Herramientas
             <br />
@@ -36,15 +36,15 @@ function HomeCategories() {
           </h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-sugecion.png" />
+          <img src="./tool-icons/h-sugecion.png" alt = "Herramientas de sujección"/>
           <h3>
             Herramientas
             <br />
-            de sugeción
+            de sujección
           </h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-jardin.png" />
+          <img src="./tool-icons/h-jardin.png" alt="Herramientas de jardín"/>
           <h3>
             Herramientas
             <br />
@@ -52,7 +52,7 @@ function HomeCategories() {
           </h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-medicion.png" />
+          <img src="./tool-icons/h-medicion.png" alt = "Herramientas de medicion"/>
           <h3>
             Herramientas
             <br />
@@ -60,15 +60,15 @@ function HomeCategories() {
           </h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-aspiradora.png" />
+          <img src="./tool-icons/h-aspiradora.png" alt = "Herramientas de aspiradora"/>
           <h3>Apiradoras</h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-escaleras.png" />
+          <img src="./tool-icons/h-escaleras.png" alt = "Herramientas de escaleras"/>
           <h3>Escaleras</h3>
         </a>
         <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-industrial.png" />
+          <img src="./tool-icons/h-industrial.png" alt = "Herramientas de industrial"/>
           <h3>
             Herramientas
             <br />

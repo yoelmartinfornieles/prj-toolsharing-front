@@ -6,7 +6,7 @@ const clientId = '103678780845-vsp1r3hrboarvi7ccaqilouat5kaf9mr.apps.googleuserc
 
 function LoginGoogle() {
 
-	const handleLogin = async googleData => {  const res = await fetch("/api/v1/auth/google", 
+/* 	const handleLogin = async googleData => {  const res = await fetch("/api/v1/auth/google", 
 	  {
 		method: "POST",
 		body: JSON.stringify({
@@ -19,7 +19,7 @@ function LoginGoogle() {
 	
 	const data = await res.json()
 	// store returned user somehow
-  }
+  } */
 
 /*   const handleLogin2 = (res) => {
     const requestBody = { username, password };

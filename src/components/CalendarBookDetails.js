@@ -1,9 +1,7 @@
 import { useState } from "react";
 import {useEffect} from 'react'
-import axios from "axios";
 import Calendar from "./Calendar.js";
 import moment from "moment";
-const API_URL = "http://localhost:5005";
 
 //Test para pruebas
 
@@ -71,7 +69,7 @@ function BookForm() {
 
     const newFinalArr = [];
 
-    finalDateArray.map((result)=>{if (dataArray.includes(result)){newFinalArr.push(result)}})
+    finalDateArray.map((result)=>{if (dataArray.includes(result)) {newFinalArr.push(result)}})
     
     console.log('El que volem!!!:',newFinalArr)
 

@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Talk from "talkjs";
 import { dummyUsers } from "../chatComponents/Users";
-import axios from "axios";
-import { AuthContext } from "../context/auth.context";
-import {useEffect, useState, useContext} from "react"
+//import { useState } from "react"
 
 function MyNetwork () {
 
 /* 	const { isLoggedIn, user } = useContext(AuthContext);
- */	const [userInfo, setUserInfo] = useState ("")
+ */	//const [userInfo, setUserInfo] = useState ("")
 
-    let API_URL = process.env.REACT_APP_API_URL
+    //let API_URL = process.env.REACT_APP_API_URL
 
 	let currentTalkjsUser = localStorage.getItem('currentTalkjsUser')
 	console.log("currentTalkjsUser: ", typeof(currentTalkjsUser)) 

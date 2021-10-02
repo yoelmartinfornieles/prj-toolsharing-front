@@ -1,10 +1,10 @@
 import { useState } from "react";
-import {useHistory} from "react-router-dom"
+//import {useHistory} from "react-router-dom"
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function NewProductForm(props) {
-  let history = useHistory()
+  //let history = useHistory()
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
@@ -12,7 +12,9 @@ function NewProductForm(props) {
   const [yearOfAcquisition, setYearOfAcquisition] = useState(0);
   const [imageId, setImageId] = useState("")
 
-  const[fileInput,setFileInput]= useState("")
+  //const[fileInput,setFileInput]= useState("")
+  const fileInput = ""
+
   const[previewSource,setPreviewSource]= useState("")
 
   const handleName = (e) => setName(e.target.value);

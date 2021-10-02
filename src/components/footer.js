@@ -3,8 +3,8 @@ function Footer(){
     return(
         <footer>
             <div>
-                <a>About us </a>
-                <a>Terms and Conditions </a>
+                <a href="/">About us </a>
+                <a href="/">Terms and Conditions </a>
             </div>
         </footer>
     )
