@@ -1,19 +1,18 @@
 import React from "react";
 import axios from "axios";
-import {useEffect, useState, useContext} from "react"
+import {useEffect, useContext} from "react"
 import { AuthContext } from "../context/auth.context";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Login () {
 
     const { isLoggedIn, user } = useContext(AuthContext);
-    const [userInfo, setUserInfo] = useState ("")
     let API_URL = process.env.REACT_APP_API_URL
     let userId = user._id
     let history=useHistory();
  
     useEffect(() => {
-        console.log("user: ", user)
+        console.log("user: ", user) 
         console.log("useEffect")
         axios
         .get (API_URL+"/user/"+userId)
