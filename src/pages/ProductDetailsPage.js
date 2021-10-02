@@ -90,13 +90,14 @@ function ProductDetailsPage (props) {
 
       <p>{product.name}</p>
       <p>{product.reviews[0]}</p>
+      <Link to={`/product/${product._id}/book`} >BOOK THIS</Link>
     </>
   );
   }
 
   else {
     return (
-      <p>tunsfisch</p>
+      <p>Loading ...</p>
     )
   }
 }

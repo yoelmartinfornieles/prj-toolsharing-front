@@ -38,7 +38,7 @@ if (Products) {
             />
             <p>{product.name}</p>  
             <p>{product.amount}</p>
-            <Link to={`/product/${product._id}`} >SEE MORE IN THE STREET</Link>
+            <Link to={`/product/${product._id}`} >PRODUCT DETAILS</Link>
           </div>
         ))
       }

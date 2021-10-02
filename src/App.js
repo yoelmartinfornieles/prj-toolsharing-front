@@ -44,7 +44,7 @@ function App() {
         <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
  */}    <AnonRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
-        <AnonRoute exact path={PATHS.BOOKING} component={BookingPage} />
+        <Route exact path={PATHS.BOOKING} component={BookingPage} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
         <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
