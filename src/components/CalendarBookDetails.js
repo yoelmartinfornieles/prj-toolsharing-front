@@ -56,6 +56,7 @@ function BookForm() {
       let daysToCalc = totalDays(firstDay,lastDay)
       let priceXDay = 5.6
       setPrice(Math.round((priceXDay*daysToCalc.length)*100)/100)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   },[endDate])
 
   const handleSubmit = (e) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import ProductCard from '../components/ProductCard'
+//import ProductCard from '../components/ProductCard'
 import {Image} from "cloudinary-react"
 
 
@@ -46,7 +46,7 @@ if (Products) {
   )
 } else {
   return (
-    <p>Aupa equipo</p>
+    <p>Loading ...</p>
   )
 }
 

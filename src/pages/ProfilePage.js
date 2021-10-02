@@ -1,14 +1,14 @@
 
 import {useEffect, useState, useContext} from "react"
 import { AuthContext } from "../context/auth.context";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import  UserInfo  from "../components/UserInfo"
 import axios from "axios"
 
 
 
 function ProfilePage(){
-	const { isLoggedIn, user } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 	const [userInfo, setUserInfo] = useState ("")
 	let API_URL = process.env.REACT_APP_API_URL
 	let userId = user._id
@@ -25,6 +25,7 @@ function ProfilePage(){
 		 }
 		)
 	}, 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	[])
 	
 	console.log(userInfo)

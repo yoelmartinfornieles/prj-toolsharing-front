@@ -21,7 +21,7 @@ import ProfilePage from "./pages/ProfilePage"
 import * as PATHS from "./utils/paths";
 
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
-import AnonRoute from "./components/AnonRoute";        // <== IMPORT
+//import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 
 function App() {
 
@@ -52,8 +52,8 @@ function App() {
         {/* ------------WIP: CHAT ROUTES-----------------------*/ }
 
         <PrivateRoute path="/chat" exact component={Login}/> 
-        <Route path="/mynetwork" component={MyNetwork}/>
-        <Route path="/messaging" component={Messaging}/> 
+        <PrivateRoute path="/mynetwork" component={MyNetwork}/>
+        <PrivateRoute path="/messaging" component={Messaging}/> 
         
         {/* 👇 UPDATE THE EXISTING ROUTES 👇 
         <PrivateRoute exact path="/projects" component={ProjectListPage} />
