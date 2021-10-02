@@ -83,7 +83,7 @@ function Signup(props) {
           <input
             type="text"
             name="email"
-            placeholder="eMail"
+            placeholder="email"
             value={email}
             onChange={handleEmail}
           />

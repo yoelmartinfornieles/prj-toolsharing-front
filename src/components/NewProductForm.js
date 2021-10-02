@@ -1,6 +1,7 @@
-import { useState } from "react";
-//import {useHistory} from "react-router-dom"
+import { useState, useEffect, useContext } from "react";
+import {useHistory} from "react-router-dom"
 import axios from "axios";
+import { AuthContext } from "../context/auth.context";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function NewProductForm(props) {
@@ -17,6 +18,15 @@ function NewProductForm(props) {
 
   const[previewSource,setPreviewSource]= useState("")
 
+  /* ------Logged User ----- */
+
+  const { isLoggedIn, user } = useContext(AuthContext);
+	const [userInfo, setUserInfo] = useState ("")
+	let API_URL = process.env.REACT_APP_API_URL
+	let userId = user._id
+
+  console.log('this is the current user:', userId)
+
   const handleName = (e) => setName(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleAmount = (e) => setAmount(e.target.value);
@@ -24,7 +34,7 @@ function NewProductForm(props) {
   const handleCategory = (e) => setCategory(e.target.value);
   const handleYearOfAcquisition = (e) => setYearOfAcquisition(e.target.value);
 
-
+  /* ----- Image ------ */
   const handleFileChange =(e)=>{
     const file = e.target.files[0]
     previewFile(file)
@@ -65,12 +75,22 @@ try {
 
 }
 
+  /* ------Logged User ----- */
+
+  useEffect(() => {
+		console.log("useEffect")
+		axios
+		 .get (API_URL+"/user/"+userId)
+		 .then ((response)=> {
+			setUserInfo(response.data)
+    
+		 }
+		)
+	}, 
+	[])
 
 
-
-
-
-
+  /* Add product ID to user & user ID to product */
 
 
   const handleSubmit = (e) => {
@@ -83,16 +103,30 @@ try {
       photo:imageId,
       category: category,
       yearOfAcquisition: yearOfAcquisition,
+      ownerId: userId
     };
 
-    axios.post(API_URL + "/product", objectToSubmit)
-    .then(response => console.log(response))
+    let productId
+    let updatedUser
 
+    let p1 = axios.post(API_URL + "/product", objectToSubmit)
+    .then((response) => {
 
+      productId = response.data._id
+      updatedUser = JSON.parse(JSON.stringify(userInfo))
+      updatedUser.products.push(productId)
+    })
 
-
+    Promise.all([p1])
+    .then(response => {
+      axios.put((API_URL + `/user/${userInfo._id}`), updatedUser)
+        .then((response) => {
+          console.log("RESPONSE: " , response.data)
+          setUserInfo(response.data)})
+        .catch((error) => {console.log("error", error)})
+    })
+    
   }
-
   
 
 
