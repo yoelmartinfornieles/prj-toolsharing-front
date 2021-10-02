@@ -22,11 +22,42 @@ function MyNetwork () {
 	function handleClick(userId) {
 		let TALK_JS_DEV_ID= "teiWhWmj"//process.env.TALK_JS_DEV_ID
 		console.log (" ------------TALK_JS_DEV_ID----------------------- ", TALK_JS_DEV_ID)
+		console.log("currentUserID: ", (currentUser.id)) 
 		//retrieve the two users that will participate in the conversation 
 		//const { currentUser } = this.state;
 		//const user = dummyUsers.find(user => user.id === userId)
+		const otherUser = dummyUsers.find(user => user.id === userId)
+		console.log ("otherUser: ", otherUser)
+		Talk.ready
+			.then(() => {
+				//Create the two users that will participate in the conversation 
+				const me = new Talk.User(currentUser);
+				const other = new Talk.User(otherUser)
 
-		return "ok"
+				//Create a talk session if this does not exist. Remember to replace tthe APP ID with the one on your dashboard 
+				if (!window.talkSession) {
+					window.talkSession = new Talk.Session({
+						appId: TALK_JS_DEV_ID,
+						me: me
+					});
+				} 
+				
+				//Get a conversation ID or create one 
+				const conversationId = Talk.oneOnOneId(me, other);
+				const conversation = window.talkSession.getOrCreateConversation(conversationId);
+				
+				console.log("conversationId: ", conversationId);
+				console.log("conversation: ", conversation);
+
+				//Set participants of the conversations 
+				conversation.setParticipant(me);
+				conversation.setParticipant(other);
+
+				//Create and mount chatbox in container 
+/* 				this.chatbox = window.talkSession.createChatbox(conversation);
+				this.chatbox.mount(this.container); */
+			})            
+			.catch(e => console.error(e));
 	}
 
 	return (
@@ -59,7 +90,7 @@ function MyNetwork () {
                                       <p>{user.id}</p>
                                   </div>
                                   <div className="user-action">
-        							 <button onClick={(userId) => this.handleClick(user.id)}>Message</button>
+        							 <button onClick={() => handleClick (user.id)}>Message</button>
       							</div>
                               </div>
                           </li>
@@ -67,7 +98,7 @@ function MyNetwork () {
                         </ul>
 {/* 					<div className="chatbox-container" ref={c => this.container = c}>
 						<div id="talkjs-container" style={{height: "300px"}}><i></i></div>
-					</div> */}
+					</div>  */}
 				</div>
         
 		 
@@ -95,7 +126,7 @@ class MyNetwork extends Component {
    handleClick(userId) {
 
 	let TALK_JS_DEV_ID= "teiWhWmj"//process.env.TALK_JS_DEV_ID
-	console.log ("/* ------------TALK_JS_DEV_ID-----------------------*, TALK_JS_DEV_ID)
+	console.log ("/* ------------TALK_JS_DEV_ID-----------------------*", TALK_JS_DEV_ID)
 
 	etrieve the two users that will participate in the conversation 
 	const { currentUser } = this.state;
