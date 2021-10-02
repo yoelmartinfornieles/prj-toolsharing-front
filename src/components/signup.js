@@ -33,10 +33,10 @@ function Signup(props) {
     // Create an object representing the request body
     const requestBody = {
       fullName: fullName,
-      userName: username,
+      username: username,
       email: email,
       password: password,
-      adress: {
+      address: {
         street: street,
         number: numberStreet,
         city: city,
@@ -54,8 +54,8 @@ function Signup(props) {
       .post(`${API_URL}/signup`, requestBody)
       .then((response) => props.history.push("/profile"))
       .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
+         const errorDescription = error.response.data.message;
+         setErrorMessage(errorDescription); 
       });
   };
 
