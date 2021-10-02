@@ -67,12 +67,19 @@ function BookForm() {
 
     const finalDateArray = totalDays(firstDay, lastDay);
    
-
     const newFinalArr = [];
 
-    finalDateArray.map((result)=>{if (dataArray.includes(result)) {newFinalArr.push(result)}})
-    
+    finalDateArray.map((result) => {
+      if (dataArray.includes(result)) {
+        newFinalArr.push(result)
+      } return ("ok")
+    })
+
+/*     let x = finalDateArray.filter ((element) => dataArray.includes ( element ))
+ */    
     console.log('El que volem!!!:',newFinalArr)
+/*     console.log('x: ',x) */
+
 
     if (newFinalArr.length > 0) {
       setError(!error);
