@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
 
-const API_URL = process.env.REACT_APP_API_URL;
+//const API_URL = process.env.REACT_APP_API_URL;
 
 function ProductDetailsPage (props) {
   const [product, setProduct] = useState(null)
@@ -14,8 +14,8 @@ function ProductDetailsPage (props) {
   console.log('is fav??',isFav)
   
 //-----IF-IS---LOG------
-  const { isLoggedIn, user } = useContext(AuthContext);
-	const [userInfo, setUserInfo] = useState ("")
+  const { user } = useContext(AuthContext);
+	//const [userInfo, setUserInfo] = useState ("")
 	let API_URL = process.env.REACT_APP_API_URL
 	let userId = user._id
 
@@ -29,7 +29,7 @@ function ProductDetailsPage (props) {
 		 .get (API_URL+"/user/"+userId)
 		 .then ((response)=> {
 			console.log ("response111: ", response.data.favorites)
-			setUserInfo(response)
+			//setUserInfo(response)
       if(response.data.favorites.includes(id)){
         setIsFav(true)
         console.log('lo tengo!')
@@ -37,9 +37,8 @@ function ProductDetailsPage (props) {
 		 }
 		)
 	}, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 	[])
-//--------------------------
-
 
   useEffect(() => {
 
@@ -51,6 +50,7 @@ function ProductDetailsPage (props) {
       }
     ) 
   }, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   [])
 
   const handleSubmitFav = (e) => {
@@ -90,13 +90,14 @@ function ProductDetailsPage (props) {
 
       <p>{product.name}</p>
       <p>{product.reviews[0]}</p>
+      <Link to={`/product/${product._id}/book`} >BOOK THIS</Link>
     </>
   );
   }
 
   else {
     return (
-      <p>tunsfisch</p>
+      <p>Loading ...</p>
     )
   }
 }

@@ -5,13 +5,13 @@ import { AuthContext } from "../context/auth.context";
 import { useHistory } from "react-router-dom";
 
 function Login () {
-
-    const { isLoggedIn, user } = useContext(AuthContext);
-    let API_URL = process.env.REACT_APP_API_URL
-    let userId = user._id
     let history=useHistory();
- 
+    const { user } = useContext(AuthContext);
+    
     useEffect(() => {
+        let API_URL = process.env.REACT_APP_API_URL
+        let userId = user._id
+        
         console.log("user: ", user) 
         console.log("useEffect")
         axios
@@ -33,9 +33,11 @@ function Login () {
             localStorage.setItem("currentTalkjsUser", JSON.stringify(userData))
             /* Redirect to the my network page */
             history.push("/mynetwork");
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }
-        )
+        ) 
         }, 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [])
     
     return (

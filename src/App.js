@@ -9,7 +9,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewProductPage from "./pages/NewProductPage";
 import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
-import Footer from "./components/footer";
+//import Footer from "./components/footer";
 
 /* ------------WIP: CHAT IMPORTS-----------------------*/
 
@@ -21,7 +21,7 @@ import ProfilePage from "./pages/ProfilePage"
 import * as PATHS from "./utils/paths";
 
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
-import AnonRoute from "./components/AnonRoute";        // <== IMPORT
+//import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 
 function App() {
 
@@ -41,10 +41,10 @@ function App() {
       <Switch>  
 
         {/* ------------REMEMBER THAT PRIVATEROUTES PROVIDES US WITH USER INFO----------------------*/ }
-        <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+        <Route exact path={PATHS.HOMEPAGE} component={HomePage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
- */}    <AnonRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} />
-        <AnonRoute exact path={PATHS.BOOKING} component={BookingPage} />
+ */}    <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
+        <Route exact path={PATHS.BOOKING} component={BookingPage} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
         <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
@@ -52,8 +52,8 @@ function App() {
         {/* ------------WIP: CHAT ROUTES-----------------------*/ }
 
         <PrivateRoute path="/chat" exact component={Login}/> 
-        <Route path="/mynetwork" component={MyNetwork}/>
-        <Route path="/messaging" component={Messaging}/> 
+        <PrivateRoute path="/mynetwork" component={MyNetwork}/>
+        <PrivateRoute path="/messaging" component={Messaging}/> 
         
         {/* 👇 UPDATE THE EXISTING ROUTES 👇 
         <PrivateRoute exact path="/projects" component={ProjectListPage} />

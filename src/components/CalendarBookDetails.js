@@ -1,9 +1,7 @@
 import { useState } from "react";
 import {useEffect} from 'react'
-import axios from "axios";
 import Calendar from "./Calendar.js";
 import moment from "moment";
-const API_URL = "http://localhost:5005";
 
 //Test para pruebas
 
@@ -58,6 +56,7 @@ function BookForm() {
       let daysToCalc = totalDays(firstDay,lastDay)
       let priceXDay = 5.6
       setPrice(Math.round((priceXDay*daysToCalc.length)*100)/100)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   },[endDate])
 
   const handleSubmit = (e) => {
@@ -71,7 +70,7 @@ function BookForm() {
 
     const newFinalArr = [];
 
-    finalDateArray.map((result)=>{if (dataArray.includes(result)){newFinalArr.push(result)}})
+    finalDateArray.map((result)=>{if (dataArray.includes(result)) {newFinalArr.push(result)}})
     
     console.log('El que volem!!!:',newFinalArr)
 

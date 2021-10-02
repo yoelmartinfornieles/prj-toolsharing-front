@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth.context";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function NewProductForm(props) {
-  let history = useHistory()
+  //let history = useHistory()
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
@@ -13,9 +13,9 @@ function NewProductForm(props) {
   const [yearOfAcquisition, setYearOfAcquisition] = useState(0);
   const [imageId, setImageId] = useState("")
 
-  /* ----- Image ------ */
+  //const[fileInput,setFileInput]= useState("")
+  const fileInput = ""
 
-  const[fileInput,setFileInput]= useState("")
   const[previewSource,setPreviewSource]= useState("")
 
   /* ------Logged User ----- */
@@ -90,7 +90,7 @@ try {
 	[])
 
 
-  /* Añadir producto a colección "PRODUCTS" + Id del producto al USER loggeado */
+  /* Add product ID to user & user ID to product */
 
 
   const handleSubmit = (e) => {

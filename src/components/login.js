@@ -1,22 +1,21 @@
 import { useState, useContext } from "react";
 import {useHistory} from "react-router-dom"
 import axios from "axios";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
-import LoginGoogle from './LoginGoogle'
-import LogoutGoogle from './LogoutGoogle'
+/* import LoginGoogle from './LoginGoogle'
+import LogoutGoogle from './LogoutGoogle' */
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function LoginPage() {
   let history = useHistory();
-  
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const { logInUser } = useContext(AuthContext);
-
 
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);

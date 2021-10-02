@@ -6,7 +6,8 @@ const clientId = '103678780845-vsp1r3hrboarvi7ccaqilouat5kaf9mr.apps.googleuserc
 
 function LoginGoogle() {
 
-	const handleLogin = async googleData => {  const res = await fetch("/api/v1/auth/google", {
+/* 	const handleLogin = async googleData => {  const res = await fetch("/api/v1/auth/google", 
+	  {
 		method: "POST",
 		body: JSON.stringify({
 		token: googleData.tokenId
@@ -18,7 +19,23 @@ function LoginGoogle() {
 	
 	const data = await res.json()
 	// store returned user somehow
-  }
+  } */
+
+/*   const handleLogin2 = (res) => {
+    const requestBody = { username, password };
+	axios.post(`${API_URL}/login`, requestBody)
+      .then((response) => {
+        console.log("JWT token", response.data.authToken);
+        const token = response.data.authToken;
+        logInUser(token);
+        history.push("/profile");
+      })
+      .catch((error) => {
+      	const errorDescription = error.response.data.message;
+      	setErrorMessage(errorDescription);
+    })
+
+  } */
 
 	const onSuccess = (res) => {
 	  console.log('Login Success: currentUser:', res.profileObj);
@@ -38,7 +55,7 @@ function LoginGoogle() {
 	return (
 	  <div>
 		<GoogleLogin
-		  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+		  clientId={clientId}
 		  buttonText="Login"
 		  onSuccess={onSuccess}//{handleLogin}
 		  onFailure={onFailure}//{handleLogin}
