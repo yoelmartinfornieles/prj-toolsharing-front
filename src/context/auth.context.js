@@ -57,6 +57,7 @@ function AuthProviderWrapper(props) {
   const logOutUser = () => {
     // Upon logout, remove the token from the localStorage
     localStorage.removeItem("authToken");
+    localStorage.removeItem("currentTalkjsUser");
     
     // Update the state variables
     setIsLoggedIn(false);
