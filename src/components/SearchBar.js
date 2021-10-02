@@ -25,7 +25,7 @@ function SearchProduct(props) {
 
       <form>
              <input value={searchLetters} type="text" onChange={handleSelect} placeholder="Search tool" />
-             <button><img src="./search-icon.png"/></button>
+             <button><img src="./search-icon.png" alt="Search"/></button>
       </form>
    
   );

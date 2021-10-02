@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Signup from "./signup";
-import Login from "./login";
+import React from "react";
+//import Signup from "./signup";
+//import Login from "./login";
 
 function UserInfo(props) {
   console.log ("tpm: ", props)

@@ -41,7 +41,7 @@ function App() {
       <Switch>  
 
         {/* ------------REMEMBER THAT PRIVATEROUTES PROVIDES US WITH USER INFO----------------------*/ }
-        <AnonRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+        <Route exact path={PATHS.HOMEPAGE} component={HomePage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
  */}    <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.BOOKING} component={BookingPage} />

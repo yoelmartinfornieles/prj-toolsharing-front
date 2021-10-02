@@ -5,8 +5,8 @@ function HomePage() {
   return (
     <>
     <div></div>
-    <HomeCategories/>
-    {/* <Carrusel/> */}
+      <HomeCategories/>
+        <Carrusel/> 
     </>
   );
 }
