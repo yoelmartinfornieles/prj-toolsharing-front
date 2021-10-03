@@ -105,7 +105,7 @@ function ProductDetailsPage (props) {
 
   else {
     return (
-      <p>Loading ...</p>
+      <p>Loading ...productdetails</p>
     )
   }
 }

@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import { useHistory } from "react-router-dom";
 
 function Login () {
-    let history=useHistory();
+    let history = useHistory();
     const { user } = useContext(AuthContext);
     
     useEffect(() => {
@@ -42,7 +42,7 @@ function Login () {
     
     return (
         <nav>
-            Loading...
+            Loading...chat
         </nav>
     )
     
