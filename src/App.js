@@ -41,13 +41,15 @@ function App() {
       <Switch>  
 
         {/* ------------REMEMBER THAT PRIVATEROUTES PROVIDES US WITH USER INFO----------------------*/ }
+
         <Route exact path={PATHS.HOMEPAGE} component={HomePage} />
 {/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
- */}    <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
+ */}    
         <Route exact path={PATHS.BOOKING} component={BookingPage} />
-        <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
-        <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
+        <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} clickToShow={toggleShowForm} />
+        <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
+        <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
 
         {/* ------------WIP: CHAT ROUTES-----------------------*/ }
 

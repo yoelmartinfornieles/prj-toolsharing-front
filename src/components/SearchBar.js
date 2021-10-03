@@ -6,16 +6,6 @@ function SearchProduct(props) {
 
   const [searchLetters, setSearchLetters] = useState("");
 
- /* ---- APP.JS -----
-
-  const searchProdFunc = (searchLetters) => {
-   
-    let newProductsList = productsList
-    let filteredProducts = newProductsList.filter(food => products.name.toLowerCase().includes(searchLetters.toLowerCase()) )
-
-    setProductsListPrint(filteredProducts);
-  } */
-
   const handleSelect = (e) => {
     
     setSearchLetters(e.target.value);
@@ -43,7 +33,7 @@ function SearchProduct(props) {
 
       } )
       .catch((error) => console.log(error));
-  }
+  }                                  
 
   return (
 

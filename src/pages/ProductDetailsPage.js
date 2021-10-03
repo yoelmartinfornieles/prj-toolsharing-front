@@ -3,6 +3,7 @@ import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
+import ReviewCard from '../components/ReviewCard'
 
 //const API_URL = process.env.REACT_APP_API_URL;
 
@@ -13,15 +14,12 @@ function ProductDetailsPage (props) {
   console.log ("id: ", id)
   console.log('is fav??',isFav)
   
-//-----IF-IS---LOG------
   const { user } = useContext(AuthContext);
 	//const [userInfo, setUserInfo] = useState ("")
 	let API_URL = process.env.REACT_APP_API_URL
 	let userId = user._id
 
   console.log('this is the current user:', userId)
-
-
 
 	useEffect(() => {
 		console.log("useEffect")
@@ -39,6 +37,8 @@ function ProductDetailsPage (props) {
 	}, 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 	[])
+
+  /* ------------GET THE CURRENT PRODUCT DATA----------------------*/ 
 
   useEffect(() => {
 
@@ -85,12 +85,20 @@ function ProductDetailsPage (props) {
   
   return (
     <>
+        <h1>PRODUCT DETAILS</h1>
         <FavButton handleSubmitFav={handleSubmitFav} handleSubmitDeleteFav={handleSubmitDeleteFav} isFav={isFav}/>
-    
-
+   
       <p>{product.name}</p>
-      <p>{product.reviews[0]}</p>
-      <Link to={`/product/${product._id}/book`} >BOOK THIS</Link>
+
+      { /* ------------TODO: UserCard----------------------*/ }
+      {/* <UserCard owner={product.ownerId}/> */}
+
+      {product.reviews.map ( (review) => { 
+            return (
+              <ReviewCard key={review._id} review={review} />
+            )
+      })}
+      <Link to={`/product/${product._id}/book`}>BOOK THIS</Link>
     </>
   );
   }
@@ -104,55 +112,3 @@ function ProductDetailsPage (props) {
 
 export default ProductDetailsPage;
 
-/* const [project, setProject] = useState(null);
-const projectId = props.match.params.id;
-
-
-const getProject = () => {
-  // Get the token from the localStorage
-  const storedToken = localStorage.getItem('authToken');
-
-  // Send the token through the request "Authorization" Headers
-  axios
-    .get(
-      `${API_URL}/projects/${projectId}`,
-      { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
-    .then((response) => {
-      const oneProject = response.data;
-      setProject(oneProject);
-    })
-    .catch((error) => console.log(error));
-};
-
-
-useEffect(()=> {
-  getProject();
-}, [] );
-
-
-return (
-  <div className="ProjectDetails">
-    {project && (
-      <>
-        <h1>{project.title}</h1>
-        <p>{project.description}</p>
-      </>
-    )}
-
-    
-    <AddTask refreshProject={getProject} projectId={projectId} />          
-
-    { project && project.tasks.map((task) => <TaskCard key={task._id} {...task} /> )} 
-
-    <Link to="/projects">
-      <button>Back to projects</button>
-    </Link>
-        
-    <Link to={`/projects/edit/${projectId}`}>
-      <button>Edit Project</button>
-    </Link>
-    
-  </div>
-);
-} */

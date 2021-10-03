@@ -14,7 +14,7 @@ function Navbar(props) {
     <nav className="navbar">
       <Link className="navbar-button" to="/"><h3>Home</h3></Link>
       <Link className="navbar-button" to={NEWPRODUCT}><h3>+</h3></Link>
-      {/* esto de abajo deberia de ser un boton */}
+      {/* esto de abajo deberia de ser un boton? */}
       <Link className="navbar-button" onClick={props.clickToShow}><h3>Log In</h3></Link>
       <Link className="navbar-button" to="/" onClick={logOutUser} ><h3>Log Out</h3></Link>
 

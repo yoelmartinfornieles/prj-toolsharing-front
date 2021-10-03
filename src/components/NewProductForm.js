@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import {useHistory} from "react-router-dom"
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-const API_URL = process.env.REACT_APP_API_URL;
 
 function NewProductForm(props) {
   //let history = useHistory()
@@ -20,7 +18,7 @@ function NewProductForm(props) {
 
   /* ------Logged User ----- */
 
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 	const [userInfo, setUserInfo] = useState ("")
 	let API_URL = process.env.REACT_APP_API_URL
 	let userId = user._id
@@ -87,6 +85,7 @@ try {
 		 }
 		)
 	}, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 	[])
 
 
@@ -111,7 +110,6 @@ try {
 
     let p1 = axios.post(API_URL + "/product", objectToSubmit)
     .then((response) => {
-
       productId = response.data._id
       updatedUser = JSON.parse(JSON.stringify(userInfo))
       updatedUser.products.push(productId)
@@ -128,10 +126,6 @@ try {
     
   }
   
-
-
-
-
   return (
 
     <div>
