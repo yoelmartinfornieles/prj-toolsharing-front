@@ -30,7 +30,7 @@ function ReviewCard(props) {
 	);
   } else {
 	  return (
-		  <p>Loading ...</p>
+		  <p>Loading ... REVIEWcard</p>
 	  )
   }
 

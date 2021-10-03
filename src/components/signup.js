@@ -51,7 +51,9 @@ function Signup(props) {
     // If the request resolves with an error, set the error message in the state
     axios
       .post(`${API_URL}/signup`, requestBody)
-      .then((response) => props.history.push("/profile"))
+      .then((response) => {
+        props.history.push("/profile")
+      })
       .catch((error) => {
          const errorDescription = error.response.data.message;
          setErrorMessage(errorDescription); 

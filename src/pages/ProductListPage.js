@@ -46,7 +46,7 @@ if (Products) {
   )
 } else {
   return (
-    <p>Loading ...</p>
+    <p>Loading ...productlist</p>
   )
 }
 
