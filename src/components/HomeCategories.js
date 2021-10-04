@@ -22,7 +22,7 @@ function HomeCategories(props) {
 
   return (
     <div className="home-scroll">
-      <div className="gradient-left"></div>
+      <div className="gradient-left"><img src="./arrow-left.png"/></div>
       <div className="home-categories">
 
         <button onClick = {handleClick} id="assembly" className="categorie-container">
@@ -111,7 +111,7 @@ function HomeCategories(props) {
           </h3>
         </button>
       </div>
-      <div className="gradient-right"></div>
+      <div className="gradient-right"><img src="./arrow-right.png"/></div>
     </div>
   );
 }

@@ -1,15 +1,24 @@
+import {Image} from "cloudinary-react"
+
 function ProductCard(props) {
-  
+
+  const {product} = props
   return (
     <div className="product-card">
-      <a href={props.link}>
-        <div className="img-cropper">
-          <img src={props.img} alt="set the alt here"/>
-        </div>
-        <p>{props.name}</p>
-        <p>{props.amount} €/day</p>
-      </a>
-    </div>
+        <a href={`/product/${product._id}`}>
+          <div className="img-cropper">
+            <Image
+              className="img-cropper-img"
+              cloudName="toolsharing"
+              publicId={product.photo}
+            />
+          </div>
+          <div className="card-text-container">
+          <h3>{product.name}</h3>
+          <p>{product.amount} €/day</p>
+          </div>
+        </a>
+      </div>
   );
 }
 
