@@ -39,7 +39,7 @@ function SearchProduct(props) {
 
       <form onSubmit={handleSubmit}>
              <input value={searchLetters} type="text" onChange={handleSelect} placeholder="Search tool" />
-             <button type="submit" ><img src="./search-icon.png" alt="Search"/></button>
+             <button type="submit" ><img src="./search-logo.png" alt="Search"/></button>
       </form>
    
   );

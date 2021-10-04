@@ -1,7 +1,7 @@
 function HomeCategories() {
   return (
     <div className="home-scroll">
-      <div className="gradient-left"></div>
+      <div className="gradient-left"><img src="./arrow-left.png"/></div>
       <div className="home-categories">
         <a href="/" className="categorie-container">
           <img src="./tool-icons/h-montaje.png" alt = "Herramientas de montaje"/>
@@ -76,7 +76,7 @@ function HomeCategories() {
           </h3>
         </a>
       </div>
-      <div className="gradient-right"></div>
+      <div className="gradient-right"><img src="./arrow-right.png"/></div>
     </div>
   );
 }

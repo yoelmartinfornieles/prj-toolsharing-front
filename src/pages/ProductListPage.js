@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-//import ProductCard from '../components/ProductCard'
-import {Image} from "cloudinary-react"
+import ProductCard from '../components/ProductCard'
+/* import {Image} from "cloudinary-react" */
 
 
 
@@ -28,19 +28,8 @@ if (Products) {
   return (
     <div className="cards-container">
       {Products.map((product) => (
-        <div className="product-card">
-        <a href={`/product/${product._id}`}>
-          <div className="img-cropper">
-            <Image
-              className="img-cropper-img"
-              cloudName="toolsharing"
-              publicId={product.photo}
-            />
-          </div>
-          <p>{product.name}</p>
-          <p>{product.amount} €/day</p>
-        </a>
-      </div>
+        <ProductCard product={product}/>
+        
         
       ))}
 
