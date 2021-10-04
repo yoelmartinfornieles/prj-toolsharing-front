@@ -25,7 +25,7 @@ function HomeCategories(props) {
       <div className="gradient-left"><img src="./arrow-left.png" alt="Arrow to the left"/></div>
       <div className="home-categories">
 
-        <button onClick = {handleClick} id="assembly" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="assembly" className="categorie-container">
           <img id="assembly" src="./tool-icons/h-montaje.png" alt = "Assembly tools logo"/>
           <h3 id="assembly">
             Assembly
@@ -34,7 +34,7 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="cutting" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="cutting" className="categorie-container">
           <img id="cutting" src="./tool-icons/h-corte.png" alt = "Cutting tools logo" />
           <h3 id="cutting">
             Cutting
@@ -43,7 +43,7 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="hammering" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="hammering" className="categorie-container">
           <img id="hammering"  src="./tool-icons/h-golpe.png" alt = "Hammering tools logo"/>
           <h3 id="hammering">
             Hammering 
@@ -52,7 +52,7 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="painting" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="painting" className="categorie-container">
           <img id="painting" src="./tool-icons/h-pintura.png" alt = "Painting tools logo"  />
           <h3 id="painting">
             Painting
@@ -61,7 +61,7 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="clamping" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="clamping" className="categorie-container">
           <img id="clamping" src="./tool-icons/h-sugecion.png" alt = "Clamping tools logo"/>
           <h3 id="clamping">
             Clamping
@@ -70,7 +70,7 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="gardening" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="gardening" className="categorie-container">
           <img id="gardening" src="./tool-icons/h-jardin.png" alt = "Gardening tools logo"/>
           <h3 id="gardening">
             Garden
@@ -79,7 +79,7 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="measuring" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="measuring" className="categorie-container">
           <img id="measuring" src="./tool-icons/h-medicion.png" alt = "Measuring tools logo"/>
           <h3 id="measuring">
             Measuring 
@@ -88,7 +88,7 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="vacuum cleaners" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="vacuum cleaners" className="categorie-container">
           <img id="vacuum cleaners" src="./tool-icons/h-aspiradora.png"  alt = "Assembly tools logo"/>
           <h3 id="vacuum cleaners" >
             Vacuum 
@@ -97,12 +97,12 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="stairs" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="stairs" className="categorie-container">
           <img id="stairs" src="./tool-icons/h-escaleras.png" alt = "Stairs"/>
           <h3 id="stairs">Stairs</h3>
         </button>
 
-        <button type="button" onClick = {handleClick} id="industrial" className="categorie-container">
+        <button type="button" ontouchstart={handleClick} onClick = {handleClick} id="industrial" className="categorie-container">
           <img id="industrial" src="./tool-icons/h-industrial.png" alt = "Industrial tools logo"/>
           <h3 id="industrial">
             Industrial
