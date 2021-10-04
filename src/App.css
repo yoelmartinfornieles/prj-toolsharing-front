@@ -380,6 +380,9 @@ top: 0;
 .categorie-container {
 
     display: inline-block;
+    background-color:none;
+    background: none;
+    border: none;
     height: 150px;
     width: 150px;
     display: flex;

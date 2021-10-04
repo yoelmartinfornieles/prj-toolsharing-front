@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard'
 //import ProductCard from '../components/ProductCard'
 import {Image} from "cloudinary-react"
 import FilteredProduct from "../components/Filter"
+import SearchBar from "../components/SearchBar"
 
 
 
@@ -29,6 +30,7 @@ function ProductListPage() {
   const handleSearch = (filteredProduct) => {
       setProducts(filteredProduct)
       console.log("products filtrado barra busqueda", Products)
+      
 
   }
 
@@ -36,23 +38,23 @@ function ProductListPage() {
   
   
 if (Products) {
+  
 
   return (
-  <>
-    <div>
-      <FilteredProduct handleSearch={handleSearch}/>
-    </div>
+    <>
+      <nav className="top-navbar">
+        <img src="./tooly-logo.png" />
+      </nav>
+      <div>
+        <FilteredProduct handleSearch={handleSearch} />
+      </div>
 
-    <div className="cards-container">
-      {Products.map((product) => (
-        <ProductCard product={product}/>
-        
-        
-      ))}
-
-      
-    </div>
-  </>
+      <div className="cards-container">
+        {Products.map((product) => (
+          <ProductCard product={product} />
+        ))}
+      </div>
+    </>
   );
 } else {
   return (

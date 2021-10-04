@@ -6,7 +6,7 @@ import moment from "moment";
 import PaypalPop from "./paypalPop"
 //Test para pruebas
 
-const dataArray = [
+/* const dataArray = [
   "10/04/2021",
   "10/05/2021",
   "10/06/2021",
@@ -16,13 +16,14 @@ const dataArray = [
   "10/24/2021",
   "10/25/2021",
 ];
-
-function BookForm() {
+ */
+function BookForm(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const [price, setPrice] = useState(null);
   const [error, setError] = useState(false);
 
+  const {product} = props
 
 
   const[showPay, setShowPay] = useState(false) // <--- STORES SHOWING/HIDING PAYING INFO STATE ----> 
@@ -68,7 +69,7 @@ function BookForm() {
       let firstDay = moment.utc(startDate);
       let lastDay = moment.utc(endDate);
       let daysToCalc = totalDays(firstDay,lastDay)
-      let priceXDay = 5.6
+      let priceXDay = product.amount
       setPrice(Math.round((priceXDay*daysToCalc.length)*100)/100)
       // eslint-disable-next-line react-hooks/exhaustive-deps
   },[endDate])
@@ -81,7 +82,7 @@ function BookForm() {
 
     const finalDateArray = totalDays(firstDay, lastDay);
    
-    let newFinalArr = finalDateArray.filter ((element) => dataArray.includes ( element ))
+    let newFinalArr = finalDateArray.filter ((element) => product.bookDates.includes ( element ))
 
 /*     
 
@@ -119,7 +120,7 @@ function BookForm() {
         onChange={onChange}
         startDate={startDate}
         endDate={endDate}
-        excludeDays={dateArrayToPrint(dataArray)}
+        excludeDays={dateArrayToPrint(product.bookDates)}
       />
       <button type="submit" onClick={payInfoHandler}>Book</button>
       <h1>Total: {price}€</h1>

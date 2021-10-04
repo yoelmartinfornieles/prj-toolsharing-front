@@ -3,7 +3,7 @@ import {Image} from "cloudinary-react"
 function ProductCard(props) {
 
   const {product} = props
-  return (
+    return (
     <div className="product-card">
         <a href={`/product/${product._id}`}>
           <div className="img-cropper">

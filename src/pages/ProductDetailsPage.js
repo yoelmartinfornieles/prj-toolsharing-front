@@ -4,12 +4,16 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
+import CalendarBook from '../components/CalendarBookDetails'
+
 
 //const API_URL = process.env.REACT_APP_API_URL;
 
 function ProductDetailsPage (props) {
   const [product, setProduct] = useState(null)
+  const [isLoaded, setIsLoaded] = useState(false)
   const [isFav, setIsFav] = useState(false)
+
   const {id} = useParams()
   console.log ("id: ", id)
   console.log('is fav??',isFav)
@@ -22,7 +26,7 @@ function ProductDetailsPage (props) {
   console.log('this is the current user:', userId)
 
 	useEffect(() => {
-		console.log("useEffect")
+		console.log("useEffectdfsdfdsfdfsdfs")
 		axios
 		 .get (API_URL+"/user/"+userId)
 		 .then ((response)=> {
@@ -46,6 +50,8 @@ function ProductDetailsPage (props) {
       .get (API_URL+"/product/"+id)
       .then (response => {
         setProduct (response.data)
+        setIsLoaded(true)
+    
         console.log ("product: ", response.data)
       }
     ) 
@@ -82,15 +88,17 @@ function ProductDetailsPage (props) {
     ) 
 
   }
+
   
-  if (product) {
-  
-  return (
-    <>
+  return ( <div>
+    {isLoaded && <div>
         <h1>PRODUCT DETAILS</h1>
         <FavButton handleSubmitFav={handleSubmitFav} handleSubmitDeleteFav={handleSubmitDeleteFav} isFav={isFav}/>
    
-      <p>{product.name}</p>
+      
+    <div>
+      <img src={product.photo}/>
+     <p>{product.name}</p>
       
 
       { /* ------------TODO: UserCard----------------------*/ }
@@ -102,15 +110,12 @@ function ProductDetailsPage (props) {
             )
       })}
       <Link to={`/product/${product._id}/book`}>BOOK THIS</Link>
-    </>
+      <CalendarBook product={product} />
+      </div>
+    </div>}
+    </div>
   );
-  }
-
-  else {
-    return (
-      <p>Loading ...productdetails</p>
-    )
-  }
+ 
 }
 
 export default ProductDetailsPage;

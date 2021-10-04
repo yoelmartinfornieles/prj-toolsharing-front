@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";                     // <== IMPORT 
 import { AuthContext } from "./../context/auth.context";  // <== IMPORT
 import {NEWPRODUCT, PROFILE} from "../utils/paths";
+import home from '../images/home-white.png'
+import plus from '../images/plus-white.png'
+import userIcon from '../images/user-white.png'
 
 function Navbar(props) {
   // Subscribe to the AuthContext to gain access to
@@ -14,12 +17,12 @@ function Navbar(props) {
 
   return (
     <nav className="navbar">
-      <Link className="navbar-button" to="/"><img src="./home-white.png" alt="Home" /></Link>
-      <Link className="navbar-button" to={NEWPRODUCT}><img src="./plus-white.png" alt="Plus" /></Link>
+      <Link className="navbar-button" to="/"><img src={home} alt="Home"/></Link>
+      <Link className="navbar-button" to={NEWPRODUCT}><img src={plus} alt="Plus" /></Link>
       {/* esto de abajo deberia de ser un boton? */}
       {/* Condicional con authcontext para hacer switch del boton*/}
       {/* {user? <button className="navbar-button" to="/" onClick={logOutUser} ><p>log out</p></button> : <button className="navbar-button" onClick={props.clickToShow}><p>log in</p></button>} */}
-      {user? <a className="navbar-button" href={PROFILE}><img src="./user-white.png"/></a> : <button className="navbar-button" onClick={props.clickToShow}><p>LogIn</p></button>}
+      {user? <a className="navbar-button" href={PROFILE}><img src={userIcon}/></a> : <button className="navbar-button" onClick={props.clickToShow}><p>LogIn</p></button>}
 
       {/* ------------WIP: CHAT LINKS-----------------------*/ }
 
