@@ -13,14 +13,13 @@ function UserProduct(props) {
 
     }
 
-
-
-
     return (
         <div>
-
+        <div>
+            <h3>PRODUCTS</h3>
+        </div>
         {products.map(product => (
-            <div>
+            <div key={product._id}>
                 <p>Producto: {product.name}</p>
                 <p>Descripción: {product.description}</p>
                 <p>Precio: {product.amount}</p>
