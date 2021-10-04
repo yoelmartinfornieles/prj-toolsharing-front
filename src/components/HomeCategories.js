@@ -14,7 +14,7 @@ function HomeCategories(props) {
         .get (API_URL+"/product/category/"+categoryToSearch)
         .then (response => {
           console.log ("productsByCategory :", response.data)
-          setProductsByCategory (response);
+          setProductsByCategory (response.data);
           setThereAreProducts(true);
         })
   }
