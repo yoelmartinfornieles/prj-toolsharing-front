@@ -1,71 +1,61 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { set } from "mongoose";
 
 
 function FilteredProducts(props) {
 
+  console.log ("FILTER PROPS: ", props)
 
+  const{setProductsByFilter, products} = props;
 
  /*  const allProducts = props.products */
-  const [allProducts, setAllProducts] = useState([])
-  const [filteredProducts, setFilteredProducts] = useState("")
+  
+  console.log ("allProducts", products.data)
+  const [filteredProducts, setFilteredProducts] = useState([])
 
   const [searchByCategory, setSearchByCategory] = useState("assembly");
-  const [searchByPrice, setSearchByPrice] = useState("0");
-  const [searchByRating, setSearchByRating] = useState("0")
+  const [searchByPrice, setSearchByPrice] = useState("10000000");
+  const [searchByRating, setSearchByRating] = useState("100000000")
 
+  console.log ("OUTERfiltered", filteredProducts)
+  setProductsByFilter(filteredProducts)
 
-  /* const handleSubmit = (e) => {
-    e.preventDefault();
-    
-  } */
-useEffect(() => {
-
-
-    axios
-    .get ("http://localhost:5005" + "/product")
-    .then (response => {
-      /* console.log ("data: ", response.data) */
-      let productList = response.data;
-      setAllProducts(productList)})
-
-},[])
  
 useEffect(() => {
 
     const handleSelect = () => {
 
-        const newList = allProducts
+        const newList = products.data
         const price = parseInt(searchByPrice)
         const rating = parseInt(searchByRating)
-        
-    
-    
+
+        console.log ("entro en el if")
+
         let filteredCategory = newList.filter( product => product.categories.includes(searchByCategory))
 
         let filteredPrice = filteredCategory.filter((product => product.amount <= price))
 
         let finalFilter = filteredPrice.filter(product => product.avarageRating <= rating)
+        
 
                                                 /* (product => product.amount <= price
 
                                                  && product.reviews.rating <= parseInt(searchByRating)) ) */
-        
-    
-    
+                                                 
+        console.log("FINALFILTER", finalFilter) 
         setFilteredProducts(finalFilter)
-        console.log("array filtrado", filteredProducts)
+        console.log("FILTERED PRODUCTS: ", filteredProducts)
         console.log("filteredcategory", filteredCategory)
         console.log("filteredprice", filteredPrice)
-        console.log("filterfinal", finalFilter)
         /* console.log("hooola", filteredPrice[0].reviews[0]) */
-        /* console.log("categoria seleccionada", searchByCategory) */
+         console.log("categoria seleccionada", searchByCategory) 
     
     
       }; 
 handleSelect()
 
-}, [searchByPrice, searchByCategory, searchByRating])
+}, [/* searchByPrice, searchByCategory, searchByRating */])
 
  
 

@@ -9,18 +9,21 @@ function ListProducts(props) {
 if (products) {
 
   return (
-    <div className="cards-container">
-      {productsToShow.map((product) => (
-        <>
-        <ProductCard key={product._id} product={product}/>
-        </>
-      ))}      
-    </div>
+    <>
+{/*       <Filter setProductsByFilter={setProducts} products={products} />
+ */}      <div className="cards-container">
+        {productsToShow.map((product) => (
+          <>
+          <ProductCard key={product._id} product={product}/>
+          </>
+        ))}      
+      </div>
+    </>
   );
 } else {
 
   return (
-    <p>Loading ...productlist</p>
+    <p>Loading ...aqui</p>
   )
 
   }

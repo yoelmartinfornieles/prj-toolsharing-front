@@ -3,12 +3,16 @@ import HomeCategories from "../components/HomeCategories";
 import ListProducts from "../components/ListProducts"
 import {useState} from "react"
 import SearchBar from "../components/SearchBar"
+import Filter from "../components/Filter"
+
 
 function HomePage(props) {  
 
   //const {products, setProducts} = props;
   const [products, setProducts] = useState([])
   const [thereAreProducts, setThereAreProducts] = useState (false)
+  const [filter, setFilter] = useState ([])
+  
 
 /*   useEffect(() => {
     setProducts (productsByCategory)
@@ -23,7 +27,8 @@ function HomePage(props) {
       <nav className="top-navbar">
         <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
       </nav>
-      <ListProducts products={products}/>
+      <Filter setProductsByFilter={setFilter} products={products} setFilter={setFilter} />
+      <ListProducts products={products} setProducts={setProducts}/>
     </>
   )
    }

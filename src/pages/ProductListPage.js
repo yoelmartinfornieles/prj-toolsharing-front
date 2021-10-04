@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 //import ProductCard from '../components/ProductCard'
 import {Image} from "cloudinary-react"
-import FilteredProduct from "../components/FilteredProduct"
+import FilteredProduct from "../components/Filter"
 
 
 
