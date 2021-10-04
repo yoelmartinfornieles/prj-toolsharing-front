@@ -55,11 +55,12 @@ function ProductDetailsPage (props) {
 
   const handleSubmitFav = (e) => {
     e.preventDefault()
+    setIsFav(!isFav)
      
     axios
       .post (API_URL+"/fav/"+id, {userId})
       .then (response => {
-        setIsFav(true)
+    
 
         console.log("product Fav: ", response.data)
       }
@@ -69,11 +70,12 @@ function ProductDetailsPage (props) {
 
   const handleSubmitDeleteFav = (e) => {
     e.preventDefault()
+    setIsFav(!isFav)
      
     axios
       .put (API_URL+"/fav/"+id, {userId})
       .then (response => {
-        setIsFav(false)
+       
 
         console.log("product delete Fav: ", response.data)
       }
@@ -89,6 +91,7 @@ function ProductDetailsPage (props) {
         <FavButton handleSubmitFav={handleSubmitFav} handleSubmitDeleteFav={handleSubmitDeleteFav} isFav={isFav}/>
    
       <p>{product.name}</p>
+      
 
       { /* ------------TODO: UserCard----------------------*/ }
       {/* <UserCard owner={product.ownerId}/> */}
