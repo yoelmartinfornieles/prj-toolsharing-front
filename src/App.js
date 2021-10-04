@@ -2,7 +2,6 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import {useState} from 'react'
 import Navbar from "./components/navbar";
-import NavbarTopMobile from "./components/navbar-top-mobile";
 import HomePage from "./pages/HomePage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
@@ -35,7 +34,6 @@ function App() {
   return (
     <div className="App">
     {isShowForm && <Popup clickToShow={toggleShowForm}/>}
-      <NavbarTopMobile/>
       <Navbar clickToShow={toggleShowForm}/>
       <div className="body-switch">
       <Switch>  

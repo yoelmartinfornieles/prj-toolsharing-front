@@ -1,16 +1,39 @@
-function HomeCategories() {
+import axios from "axios"
+
+function HomeCategories(props) {
+  console.log("props: ", props)
+
+  const {setProductsByCategory, setThereAreProducts} = props
+
+  const handleClick = (e) => {
+      let API_URL = process.env.REACT_APP_API_URL
+      //e.preventDefault()
+      let categoryToSearch = e.target.id
+      console.log ("category :", categoryToSearch)
+      axios
+        .get (API_URL+"/product/category/"+categoryToSearch)
+        .then (response => {
+          console.log ("productsByCategory :", response.data)
+          setProductsByCategory (response);
+          setThereAreProducts(true);
+        })
+  }
+
+
   return (
     <div className="home-scroll">
       <div className="gradient-left"></div>
       <div className="home-categories">
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-montaje.png" alt = "Herramientas de montaje"/>
-          <h3>
-            Herramientas
+
+        <button onClick = {handleClick} id="assembly" className="categorie-container">
+          <img id="assembly" src="./tool-icons/h-montaje.png" alt = "Herramientas de montaje"/>
+          <h3 id="assembly">
+            Assembly
             <br />
-            de montaje
+            tools
           </h3>
-        </a>
+        </button>
+
         <a href="/" className="categorie-container">
           <img src="./tool-icons/h-corte.png" alt = "Herramientas de corte" />
           <h3>
