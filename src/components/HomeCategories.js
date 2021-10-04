@@ -7,7 +7,7 @@ function HomeCategories(props) {
 
   const handleClick = (e) => {
       let API_URL = process.env.REACT_APP_API_URL
-      //e.preventDefault()
+      e.preventDefault()
       let categoryToSearch = e.target.id
       console.log ("category :", categoryToSearch)
       axios
@@ -34,70 +34,82 @@ function HomeCategories(props) {
           </h3>
         </button>
 
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-corte.png" alt = "Herramientas de corte" />
-          <h3>
-            Herramientas
+        <button onClick = {handleClick} id="cutting" className="categorie-container">
+          <img id="cutting" src="./tool-icons/h-corte.png" alt = "Herramientas de corte" />
+          <h3 id="cutting">
+            Cutting
             <br />
-            de corte
+            tools
           </h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-golpe.png" alt = "Herramientas de golpe"/>
-          <h3>
-            Herramientas
+        </button>
+
+        <button onClick = {handleClick} id="hammering" className="categorie-container">
+          <img id="hammering"  src="./tool-icons/h-golpe.png" alt = "Herramientas de golpe"/>
+          <h3 id="hammering">
+            Hammering 
             <br />
-            de golpe
+            tools
           </h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-pintura.png" alt = "Herramientas de pintura" />
-          <h3>
-            Herramientas
+        </button>
+
+        <button onClick = {handleClick} id="painting" className="categorie-container">
+          <img id="painting" src="./tool-icons/h-pintura.png" alt = "Herramientas de pintura" />
+          <h3 id="painting">
+            Painting
             <br />
-            de pintura
+            tools
           </h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-sugecion.png" alt = "Herramientas de sujección"/>
-          <h3>
-            Herramientas
+        </button>
+
+        <button onClick = {handleClick} id="clamping" className="categorie-container">
+          <img id="clamping" src="./tool-icons/h-sugecion.png" alt = "Herramientas de sujección"/>
+          <h3 id="clamping">
+            Clamping
             <br />
-            de sujección
+            tools
           </h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-jardin.png" alt="Herramientas de jardín"/>
-          <h3>
-            Herramientas
+        </button>
+
+        <button onClick = {handleClick} id="gardening" className="categorie-container">
+          <img id="gardening" src="./tool-icons/h-jardin.png" alt="Herramientas de jardín"/>
+          <h3 id="gardening">
+            Garden
             <br />
-            de jardín
+            tools
           </h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-medicion.png" alt = "Herramientas de medicion"/>
-          <h3>
-            Herramientas
+        </button>
+
+        <button onClick = {handleClick} id="measuring" className="categorie-container">
+          <img id="measuring" src="./tool-icons/h-medicion.png" alt = "Herramientas de medicion"/>
+          <h3 id="measuring">
+            Measuring 
             <br />
-            de medición
+            tools
           </h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-aspiradora.png" alt = "Herramientas de aspiradora"/>
-          <h3>Apiradoras</h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-escaleras.png" alt = "Herramientas de escaleras"/>
-          <h3>Escaleras</h3>
-        </a>
-        <a href="/" className="categorie-container">
-          <img src="./tool-icons/h-industrial.png" alt = "Herramientas de industrial"/>
-          <h3>
-            Herramientas
+        </button>
+
+        <button onClick = {handleClick} id="vacuum cleaners" className="categorie-container">
+          <img id="vacuum cleaners" src="./tool-icons/h-aspiradora.png" alt = "Herramientas de aspiradora"/>
+          <h3 id="vacuum cleaners" >
+            Vacuum 
             <br />
-            industriales
+            cleaners
           </h3>
-        </a>
+        </button>
+
+        <button onClick = {handleClick} id="stairs" className="categorie-container">
+          <img id="stairs" src="./tool-icons/h-escaleras.png" alt = "Herramientas de escaleras"/>
+          <h3 id="stairs">Stairs</h3>
+        </button>
+
+        <button onClick = {handleClick} id="industrial" className="categorie-container">
+          <img id="industrial" src="./tool-icons/h-industrial.png" alt = "Herramientas de industrial"/>
+          <h3 id="industrial">
+            Industrial
+            <br />
+            tools
+          </h3>
+        </button>
       </div>
       <div className="gradient-right"></div>
     </div>

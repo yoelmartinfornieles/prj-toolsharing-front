@@ -21,7 +21,6 @@ function FilteredProducts(props) {
   console.log ("OUTERfiltered", filteredProducts)
   setProductsByFilter(filteredProducts)
 
- 
 useEffect(() => {
 
     const handleSelect = () => {
@@ -102,11 +101,11 @@ handleSelect()
             <label>Category:</label>
             <select onChange={handleCategory}>
                 <option value="assembly">Assembly Tools</option>
-                <option value="cuting">Cuting Tools</option>
+                <option value="cutting">Cuting Tools</option>
                 <option value="hammering">Hammering Tools</option>
                 <option value="painting">Painting Tools</option>
                 <option value="clamping">Clamping Tools</option>
-                <option value="gardering">Gardering Tools</option>
+                <option value="gardening">Gardering Tools</option>
                 <option value="measuring">Measuring Tools</option>
                 <option value="vacuum cleaners">Vacuum cleaners</option>
                 <option value="stairs">Stairs</option>
