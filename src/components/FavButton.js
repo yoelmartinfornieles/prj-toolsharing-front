@@ -1,3 +1,6 @@
+import noFav from '../images/no-fav.png'
+import fav from '../images/fav.png'
+
 function FavButton(props){
     
     const {isFav} = props
@@ -7,7 +10,7 @@ function FavButton(props){
     
     return (
         <div>
-        {isFav? <button onClick={handleSubmitDeleteFav}>Remove from Fav</button> : <button onClick={handleSubmitFav}>Fav</button>}
+        {isFav? <button onClick={handleSubmitDeleteFav}><img src={fav}/></button> : <button onClick={handleSubmitFav}><img src={noFav} /></button>}
         </div>
     )
 }

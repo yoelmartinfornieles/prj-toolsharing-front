@@ -21,12 +21,12 @@ function ReviewCard(props) {
 	if (reviewInfo) {
 
 	return (
-		<>
+		<div>
 		<p>{review.content}</p>
 		<p>{reviewInfo.rating}</p>
 		<p>{reviewInfo.user.username}</p> 
 		<img src= {reviewInfo.user.profileImg} alt="Review person"></img>
-		</>
+		</div>
 	);
   } else {
 	  return (

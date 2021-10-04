@@ -25,6 +25,7 @@ function HomePage(props) {
    return (
     <>
       <nav className="top-navbar">
+      <img src="./tooly-logo.png"/>
         <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
       </nav>
       <Filter setProductsByFilter={setFilter} products={products} setFilter={setFilter} />
@@ -40,6 +41,7 @@ function HomePage(props) {
       <h1>What are you looking for?</h1>
     </div>
     <nav className="top-navbar">
+    <img src="./tooly-logo.png"/>
         <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
       </nav>
       <HomeCategories setProductsByCategory={setProducts} setThereAreProducts={setThereAreProducts}/>

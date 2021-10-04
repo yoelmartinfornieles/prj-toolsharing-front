@@ -1,8 +1,7 @@
 import SearchBar from "./SearchBar"
 
 function NavbarTopMobile(){
-    return (
-
+      return(  
         <nav className="top-navbar">
             <img src="./tooly-logo.png"/>
             <SearchBar/>
