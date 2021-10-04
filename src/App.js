@@ -9,6 +9,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewProductPage from "./pages/NewProductPage";
 import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
+import SearchBar from './components/SearchBar'
 //import Footer from "./components/footer";
 
 /* ------------WIP: CHAT IMPORTS-----------------------*/
@@ -35,7 +36,9 @@ function App() {
   return (
     <div className="App">
     {isShowForm && <Popup clickToShow={toggleShowForm}/>}
-      <NavbarTopMobile/>
+    <nav className ="top-navbar">
+      <SearchBar/>
+    </nav>
       <Navbar clickToShow={toggleShowForm}/>
       <div className="body-switch">
       <Switch>  
