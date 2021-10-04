@@ -4,11 +4,11 @@ import { useState, useEffect , useLayoutEffect} from "react";
 
 function Filter (props) {
   console.log ("PROPS", props)
-  const {setProductsByFilter, products} = props
+  const {setProductsByFilter, products, setProductsCopy} = props
 
   const [searchByCategory, setSearchByCategory] = useState("assembly");
-  const [searchByPrice, setSearchByPrice] = useState("0");
-  const [searchByRating, setSearchByRating] = useState("0")
+  const [searchByPrice, setSearchByPrice] = useState(300);
+  const [searchByRating, setSearchByRating] = useState(0)
 
   useLayoutEffect(() => {
 
@@ -20,6 +20,10 @@ function Filter (props) {
       let filteredProducts = []
       let filteredByCategory = []
 
+      console.log("SEARCH CATEGORY", searchByCategory)
+      console.log("SEARCH PRICE", searchByPrice)
+      console.log("SEARCH RATING", searchByRating)
+
 
     //IF filteredByCategory
 
@@ -30,6 +34,8 @@ function Filter (props) {
     return product.categories.includes(searchByCategory)
     })
     console.log ("filtered by category: ", filteredByCategory) */
+    let firstFilterArr = []
+    let finalFilteredArr = []
 
       let filteredByPrice = productsToFilter.filter (product => product.amount <= searchByPrice)
       let filteredByRating = productsToFilter.filter(product => product.avarageRating >= searchByRating)
@@ -38,9 +44,46 @@ function Filter (props) {
         .then ((response) => {
           console.log ("response: ", response)
           filteredByCategory = response.data;
-          //filteredProducts = [...filteredByCategory]
+
+          for (let i = 0; i< filteredByPrice.length; i++){
+              for (let j = 0; j < filteredByRating.length; j++){
+                  if (filteredByPrice[i]._id === filteredByRating[j]._id){
+                    firstFilterArr.push(filteredByPrice[i])
+                  }
+              }
+          }
+
+          for (let i = 0; i< firstFilterArr.length; i++){
+            for (let j = 0; j < filteredByCategory.length; j++){
+                if (firstFilterArr[i]._id === filteredByCategory[j]._id){
+                  finalFilteredArr.push(firstFilterArr[i])
+                }
+            }
+        }
+
+        setProductsCopy(finalFilteredArr)
+
+          
+
+        /*   for (let i = 0; i< filteredByPrice.length; i++){
+            for (let j = 0; j < filteredByRating.length; j++){
+                for(let x = 0; x < filteredByCategory.length; x++){
+                    if (filteredByPrice[i]._id === filteredByRating[j]._id === filteredByCategory[x]._id) {
+                  firstFilterArr.push(filteredByPrice[i])
+                }
+                }
+            }} */
+
+         
+          console.log("FIRST FILTERED ARR" , firstFilterArr)
+          console.log("FINAL ARR" , finalFilteredArr)
+    
+
+          
 
             console.log ("Filtered Products: ", filteredProducts)
+            console.log ("Filtered Price: ", filteredByPrice)
+            console.log ("Filtered Rating: ", filteredByRating)
 
 /*             if (filteredByRating.length!==0){
               setProductsByFilter (filteredProducts) 
@@ -91,13 +134,20 @@ function Filter (props) {
               <label>{searchByPrice}</label>
               <datalist id="tickmarks">
                   <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
                   <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
                   <option value="50">50</option>
+                  <option value="70">70</option>
+                  <option value="80">80</option>
+                  <option value="90">90</option>
                   <option value="100">100</option>
+                  <option value="120">120</option>
                   <option value="150">150</option>
-                  <option value="200">200</option>
-                  <option value="250">250</option>
-                  <option value="300">300</option>
               </datalist>
           <label>Rating:</label>
           <input type="range" min="0" max="5" step="1" value={searchByRating} onChange={handleRating}
