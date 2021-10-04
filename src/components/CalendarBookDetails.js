@@ -3,6 +3,7 @@ import {useEffect} from 'react'
 import Calendar from "./Calendar.js";
 import moment from "moment";
 
+import PaypalPop from "./paypalPop"
 //Test para pruebas
 
 const dataArray = [
@@ -21,6 +22,19 @@ function BookForm() {
   const [endDate, setEndDate] = useState(null);
   const [price, setPrice] = useState(null);
   const [error, setError] = useState(false);
+
+
+
+  const[showPay, setShowPay] = useState(false) // <--- STORES SHOWING/HIDING PAYING INFO STATE ----> 
+ 
+
+
+  const payInfoHandler= ()=>{   // <--- SWITCHES SHOWING/HIDING PAYING INFO----> 
+    setShowPay(!showPay)
+    console.log(showPay)
+  }
+
+
 
   const dateArrayToPrint = (arr) =>{
     let newArr = []
@@ -98,6 +112,8 @@ function BookForm() {
   };
 
   return (
+    <div>
+
     <form onSubmit={handleSubmit}>
       <Calendar
         onChange={onChange}
@@ -105,11 +121,17 @@ function BookForm() {
         endDate={endDate}
         excludeDays={dateArrayToPrint(dataArray)}
       />
-      <button type="submit">Book</button>
+      <button type="submit" onClick={payInfoHandler}>Book</button>
       <h1>Total: {price}€</h1>
       {error && <h1>Please select available dates</h1>}
       
     </form>
+    {showPay && 
+        <PaypalPop price ={price}  />
+   
+    }
+    
+    </div>
   );
 }
 

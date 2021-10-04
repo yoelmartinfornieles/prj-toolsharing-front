@@ -11,6 +11,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProviderWrapper>
+      
         <App />
       </AuthProviderWrapper>
     </Router>
