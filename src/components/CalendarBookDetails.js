@@ -25,6 +25,8 @@ function BookForm(props) {
 
   const {product} = props
 
+  console.log('paypal:',process.env.REACT_APP_JORDI)
+
 
   const[showPay, setShowPay] = useState(false) // <--- STORES SHOWING/HIDING PAYING INFO STATE ----> 
  
