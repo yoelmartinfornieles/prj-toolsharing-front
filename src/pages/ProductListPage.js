@@ -3,6 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import ProductCard from '../components/ProductCard'
 /* import {Image} from "cloudinary-react" */
+//import ProductCard from '../components/ProductCard'
+import {Image} from "cloudinary-react"
+import FilteredProduct from "../components/Filter"
 
 
 
@@ -21,11 +24,25 @@ function ProductListPage() {
       } )
       .catch((error) => console.log(error));
     }, 
-    [])
+    []) 
+
+  const handleSearch = (filteredProduct) => {
+      setProducts(filteredProduct)
+      console.log("products filtrado barra busqueda", Products)
+
+  }
+
+
+  
   
 if (Products) {
 
   return (
+  <>
+    <div>
+      <FilteredProduct handleSearch={handleSearch}/>
+    </div>
+
     <div className="cards-container">
       {Products.map((product) => (
         <ProductCard product={product}/>
@@ -35,6 +52,7 @@ if (Products) {
 
       
     </div>
+  </>
   );
 } else {
   return (

@@ -3,6 +3,9 @@ import axios from "axios";
 
 
 function SearchProduct(props) {
+  console.log ("SearchProduct prop: ", props)
+
+  const {setProductsBySearch, setThereAreProducts} = props
 
   const [searchLetters, setSearchLetters] = useState("");
 
@@ -20,7 +23,17 @@ function SearchProduct(props) {
     console.log ("looking for =>", productToSearch)
     //llamar a la base de datos y recoger todos los objetos
     axios
-      .get (API_URL + "/product")
+      .get (API_URL + "/product/search/"+productToSearch)
+      .then (response => {
+        console.log("productsBySearch: " + response.data
+        )
+        setProductsBySearch (response);
+        setThereAreProducts (true)
+      } 
+        )
+
+
+/*       .get (API_URL + "/product")
       .then (response => {
         console.log ("data: ", response.data)
         let productList = response.data;
@@ -32,7 +45,7 @@ function SearchProduct(props) {
         console.log("filtered: ", filteredByDesc)
 
       } )
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error)); */
   }                                  
 
   return (

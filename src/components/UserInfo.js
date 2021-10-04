@@ -4,7 +4,7 @@ import React from "react";
 
 function UserInfo(props) {
   console.log ("tpm: ", props)
-  const {username, address , email, fullName, products } = props.userInfo.data
+  const {username, address , email } = props.userInfo.data
   return (
     <div>
       <div>
@@ -16,22 +16,6 @@ function UserInfo(props) {
         <p>{address.number}</p>
         <p>{address.city}</p>
         <p>{address.postalCode}</p>
-      </div>
-      <div>
-        <h3>PRODUCTS</h3>
-
-        {/* <p>{products[0].name}</p> */}
-        {/* {products.map(product => (
-          <div>
-            <p>Producto: {product.name}</p>
-            <p>Descripción: {product.description}</p>
-            <p>Precio: {product.amount}</p>
-            <p>Categoría: {product.category}</p>
-            <p>Año de adquisición: {product.yearOfAcquisition}</p>
-            <button>Borrar producto</button>
-          </div>
-
-        ))} */}
       </div>
     </div>
   );

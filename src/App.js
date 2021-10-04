@@ -2,13 +2,13 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import {useState} from 'react'
 import Navbar from "./components/navbar";
-import NavbarTopMobile from "./components/navbar-top-mobile";
 import HomePage from "./pages/HomePage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewProductPage from "./pages/NewProductPage";
 import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
+import SearchBar from './components/SearchBar'
 //import Footer from "./components/footer";
 
 /* ------------WIP: CHAT IMPORTS-----------------------*/
@@ -35,7 +35,6 @@ function App() {
   return (
     <div className="App">
     {isShowForm && <Popup clickToShow={toggleShowForm}/>}
-      <NavbarTopMobile/>
       <Navbar clickToShow={toggleShowForm}/>
       <div className="body-switch">
       <Switch>  
@@ -47,8 +46,8 @@ function App() {
  */}
         <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
         <PrivateRoute exact path={PATHS.BOOKING} component={BookingPage} />
-        <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
-        <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
+{/*         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
+ */}    <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
         <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} clickToShow={toggleShowForm} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         
