@@ -25,25 +25,28 @@ function ProductListPage() {
   
 if (Products) {
 
-  return(
+  return (
     <div className="cards-container">
-        { 
-           Products.map (product => (
-          <div key={product._id} className="product-card">
-
-
+      {Products.map((product) => (
+        <div className="product-card">
+        <a href={`/product/${product._id}`}>
+          <div className="img-cropper">
             <Image
-            cloudName ="toolsharing"
-            publicId={product.photo}
+              className="img-cropper-img"
+              cloudName="toolsharing"
+              publicId={product.photo}
             />
-            <p>{product.name}</p>  
-            <p>{product.amount}</p>
-            <Link to={`/product/${product._id}`} >PRODUCT DETAILS</Link>
           </div>
-        ))
-      }
+          <p>{product.name}</p>
+          <p>{product.amount} €/day</p>
+        </a>
+      </div>
+        
+      ))}
+
+      
     </div>
-  )
+  );
 } else {
   return (
     <p>Loading ...productlist</p>
