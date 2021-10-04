@@ -1,9 +1,10 @@
 import ProductCard from './ProductCard'
-
-function ListProducts(props) {
+    
+  function ListProducts(props) {
 
   const {products} = props;
-  let productsToShow = products.data
+  console.log ("LISTPRODUCTs: ", products)  
+  let productsToShow = products
   console.log ("ListProducts product array is: ", productsToShow)
   
 if (products) {
@@ -23,7 +24,7 @@ if (products) {
 } else {
 
   return (
-    <p>Loading ...aqui</p>
+    <p>Loading ...</p>
   )
 
   }

@@ -3,7 +3,6 @@ import axios from "axios";
 
 
 function SearchProduct(props) {
-  console.log ("SearchProduct prop: ", props)
 
   const {setProductsBySearch, setThereAreProducts} = props
 
@@ -25,9 +24,7 @@ function SearchProduct(props) {
     axios
       .get (API_URL + "/product/search/"+productToSearch)
       .then (response => {
-        console.log("productsBySearch: " + response.data
-        )
-        setProductsBySearch (response);
+        setProductsBySearch (response.data);
         setThereAreProducts (true)
       } 
         )

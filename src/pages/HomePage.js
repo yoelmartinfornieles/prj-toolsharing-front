@@ -1,7 +1,7 @@
 import Carrusel from "../components/carrusel"
 import HomeCategories from "../components/HomeCategories";
 import ListProducts from "../components/ListProducts"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import SearchBar from "../components/SearchBar"
 import Filter from "../components/Filter"
 
@@ -10,14 +10,14 @@ function HomePage(props) {
 
   //const {products, setProducts} = props;
   const [products, setProducts] = useState([])
+  const [productsCopy, setProductsCopy] = useState(products)
   const [thereAreProducts, setThereAreProducts] = useState (false)
-  const [filter, setFilter] = useState ([])
   
 
-/*   useEffect(() => {
-    setProducts (productsByCategory)
+  useEffect(() => {
+    setProductsCopy (products)
   }
-  ,[productsByCategory]) */
+  ,[products]) 
 
   //RECORDAR: hay que pasar a HomePage products
 
@@ -26,9 +26,10 @@ function HomePage(props) {
     <>
       <nav className="top-navbar">
         <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
+        {console.log("products:" , productsCopy)}
       </nav>
-      <Filter setProductsByFilter={setFilter} products={products} setFilter={setFilter} />
-      <ListProducts products={products} setProducts={setProducts}/>
+      <Filter setProductsByFilter={setProducts} products={products}/>
+      <ListProducts products={productsCopy} setProducts={setProducts}/>
     </>
   )
    }
@@ -48,7 +49,7 @@ function HomePage(props) {
       <div className="info-home">
         <h1>Find a solution to bring your ideas to life or offer your tools to get the most out of them.</h1>
         <div>
-          <img src="./how-it-works.png" />
+          <img src="./how-it-works.png" alt="Graphic explaining how the page"/>
         </div>
       </div>
     </div>
