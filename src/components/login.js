@@ -3,8 +3,6 @@ import {useHistory} from "react-router-dom"
 import axios from "axios";
 //import { Link } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
-/* import LoginGoogle from './LoginGoogle'
-import LogoutGoogle from './LogoutGoogle' */
 
 const API_URL = process.env.REACT_APP_API_URL;
 

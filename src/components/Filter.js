@@ -20,6 +20,15 @@ function Filter (props) {
       let filteredProducts = []
       let filteredByCategory = []
 
+      filteredProducts = [...filteredByCategory]
+
+      console.log ("Filtered Products: ", filteredProducts)
+
+      if (filteredByRating.length!==0){
+        setProductsByFilter (filteredProducts) 
+      } else {
+        console.log ("nothing to show")
+      }
 
     //IF filteredByCategory
 
@@ -38,24 +47,15 @@ function Filter (props) {
         .then ((response) => {
           console.log ("response: ", response)
           filteredByCategory = response.data;
-          
-          filteredProducts = [...filteredByCategory]
 
-            console.log ("Filtered Products: ", filteredProducts)
-
-            if (filteredByRating.length!==0){
-              setProductsByFilter (filteredProducts) 
-            } else {
-              console.log ("nothing to show")
-            }
         })
         .catch((error) => console.log(error))
-      
-
   }
 
   },
   [searchByCategory, searchByPrice, searchByRating])
+
+  
 
   const handleCategory = (e) => {
     setSearchByCategory(e.target.value)
