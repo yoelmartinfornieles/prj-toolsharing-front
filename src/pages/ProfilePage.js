@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 //import { Link } from "react-router-dom";
 import  UserInfo  from "../components/UserInfo"
 import axios from "axios"
+import UserProducts from "../components/UserProducts"
 
 
 
@@ -35,6 +36,7 @@ function ProfilePage(){
 	return (
 		<nav>
 			<UserInfo  userInfo={userInfo}/>
+			<UserProducts userInfo={userInfo}/>
 		</nav>
 	  );
 	}
