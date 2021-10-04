@@ -3,6 +3,8 @@ import {useHistory} from "react-router-dom"
 import axios from "axios";
 //import { Link } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
+import LoginGoogle from "../googleComponents/LoginGoogle"
+import LogoutGoogle from "../googleComponents/LogoutGoogle"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -14,7 +16,7 @@ function LoginPage() {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const { logInUser } = useContext(AuthContext);
-
+ 
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   
@@ -38,8 +40,8 @@ function LoginPage() {
   return (
     <div className="LoginPage">
       <h1>Login</h1>
-{/*       <LoginGoogle/>
-      <LogoutGoogle/> */}
+      <LoginGoogle/>
+      <LogoutGoogle/>
 
       <form onSubmit={handleLoginSubmit}>
         
