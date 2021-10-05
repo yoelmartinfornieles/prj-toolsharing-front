@@ -7,13 +7,12 @@ function Carrusel() {
       <AwesomeSlider className="carrusel" animation="cubeAnimation">
         <div className="c1">
             <h1>A workshop with miles of tools.</h1>
-            <img src="./photo2.jpg" />
+            <img src="./photo2.jpg" alt="carrusel 1"/>
         </div>
         <div className="c2">
             <h1>The right tool at the right time.</h1>
-            <img src="./photo1.jpeg" />
+            <img src="./photo1.jpeg" alt="carrusel 2"/>
         </div>
-     
       </AwesomeSlider>
     );
 }

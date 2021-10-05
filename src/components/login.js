@@ -15,7 +15,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, loginChat } = useContext(AuthContext);
  
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -29,10 +29,13 @@ function LoginPage() {
         console.log("JWT token", response.data.authToken);
         const token = response.data.authToken;
         logInUser(token);
+/*         setTimeout(() => {
+          loginChat ()
+        }, 800); */
         history.push("/profile");
       })
       .catch((error) => {
-      	const errorDescription = error.response.data.message;
+      	const errorDescription = error.data;
       	setErrorMessage(errorDescription);
     	})
   };
@@ -40,8 +43,7 @@ function LoginPage() {
   return (
     <div className="LoginPage">
       <h1>Login</h1>
-      <LoginGoogle/>
-      <LogoutGoogle/>
+    
 
       <form onSubmit={handleLoginSubmit}>
         

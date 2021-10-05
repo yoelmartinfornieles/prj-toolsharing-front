@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import ProductCard from '../components/ProductCard'
 /* import {Image} from "cloudinary-react" */
 //import ProductCard from '../components/ProductCard'
-import {Image} from "cloudinary-react"
 import FilteredProduct from "../components/Filter"
-import SearchBar from "../components/SearchBar"
-
-
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -43,7 +38,7 @@ if (Products) {
   return (
     <>
       <nav className="top-navbar">
-        <img src="./tooly-logo.png" />
+        <img src="./tooly-logo.png" alt=""/>
       </nav>
       <div>
         <FilteredProduct handleSearch={handleSearch} />

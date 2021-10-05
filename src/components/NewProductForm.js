@@ -19,7 +19,7 @@ function NewProductForm(props) {
   /* ------Logged User ----- */
 
   const { user } = useContext(AuthContext);
-	const [userInfo, setUserInfo] = useState ("")
+	/* const [userInfo, setUserInfo] = useState ("") */
 	let API_URL = process.env.REACT_APP_API_URL
 	let userId = user._id
 
@@ -75,7 +75,7 @@ try {
 
   /* ------Logged User ----- */
 
-  useEffect(() => {
+ /*  useEffect(() => {
 		console.log("useEffect")
 		axios
 		 .get (API_URL+"/user/"+userId)
@@ -84,9 +84,9 @@ try {
     
 		 }
 		)
-	}, 
+	},  */
   // eslint-disable-next-line react-hooks/exhaustive-deps
-	[])
+	/* []) */
 
 
   /* Add product ID to user & user ID to product */
@@ -110,19 +110,20 @@ try {
 
     let p1 = axios.post(API_URL + "/product", objectToSubmit)
     .then((response) => {
-      productId = response.data._id
+      console.log("creado")
+      /* productId = response.data._id
       updatedUser = JSON.parse(JSON.stringify(userInfo))
-      updatedUser.products.push(productId)
+      updatedUser.products.push(productId) */
     })
 
-    Promise.all([p1])
+    /* Promise.all([p1])
     .then(response => {
       axios.put((API_URL + `/user/${userInfo._id}`), updatedUser)
         .then((response) => {
           console.log("RESPONSE: " , response.data)
           setUserInfo(response.data)})
         .catch((error) => {console.log("error", error)})
-    })
+    }) */
     
   }
   

@@ -5,16 +5,18 @@ import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
 import CalendarBook from '../components/CalendarBookDetails'
+
 import OwnerCard from '../components/UserCard'
 import Logo from "../images/tooly-logo.png"
 import ArrowLeft from '../images/arrow-left.png'
 import ArrowRight from '../images/arrow-right.png'
-
+import ChatComponent from "../chatComponents/ChatComponent"
 
 //const API_URL = process.env.REACT_APP_API_URL;
 
 function ProductDetailsPage (props) {
   const [product, setProduct] = useState(null)
+  const [owner, setOwner] = useState (null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFav, setIsFav] = useState(false)
 
@@ -53,9 +55,9 @@ function ProductDetailsPage (props) {
     axios
       .get (API_URL+"/product/"+id)
       .then (response => {
-        setProduct (response.data)
+        setProduct (response.data.product)
+        setOwner (response.data.user)
         setIsLoaded(true)
-    
         console.log ("product: ", response.data)
       }
     ) 
@@ -92,7 +94,6 @@ function ProductDetailsPage (props) {
     ) 
 
   }
-
   
   return ( <div className="product-details">
         <nav className="top-navbar">
@@ -118,12 +119,12 @@ function ProductDetailsPage (props) {
                   <div className="review-cards">
                           {product.reviews.map ( (review) => { 
                           return (<ReviewCard key={review._id} review={review} />)})}
-
                   </div>
+      <ChatComponent owner= {owner}/>
+
                 {/* <div className="gradient-right"><img src={ArrowRight} alt="Arrow to the right"/></div> */}
             
           {/* <Link to={`/product/${product._id}/book`}>BOOK THIS</Link> */}
-
     </div>}
     </div>
   );

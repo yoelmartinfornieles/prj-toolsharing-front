@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useState, useEffect , useLayoutEffect} from "react";
+import { useState, useLayoutEffect} from "react";
 
 
 function Filter (props) {
   console.log ("PROPS", props)
-  const {setProductsByFilter, products, setProductsCopy} = props
+  const { products, setProductsCopy} = props
 
   const [searchByCategory, setSearchByCategory] = useState("assembly");
   const [searchByPrice, setSearchByPrice] = useState(300);
@@ -24,16 +24,6 @@ function Filter (props) {
       console.log("SEARCH PRICE", searchByPrice)
       console.log("SEARCH RATING", searchByRating)
 
-
-    //IF filteredByCategory
-
-    //llamada a axios
-
-    /* let filteredByCategory = products.filter( product => {
-    console.log ("PRODUCT.CATEGORY: "+product.categories+" = "+"SEARCHCATEGORY: "+searchByCategory)
-    return product.categories.includes(searchByCategory)
-    })
-    console.log ("filtered by category: ", filteredByCategory) */
     let firstFilterArr = []
     let finalFilteredArr = []
 
@@ -77,10 +67,7 @@ function Filter (props) {
          
           console.log("FIRST FILTERED ARR" , firstFilterArr)
           console.log("FINAL ARR" , finalFilteredArr)
-    
-
-          
-
+  
             console.log ("Filtered Products: ", filteredProducts)
             console.log ("Filtered Price: ", filteredByPrice)
             console.log ("Filtered Rating: ", filteredByRating)
@@ -93,8 +80,8 @@ function Filter (props) {
         })
         .catch((error) => console.log(error))
   }
-
   },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   [searchByCategory, searchByPrice, searchByRating])
 
   const handleCategory = (e) => {
@@ -118,7 +105,7 @@ function Filter (props) {
           <label>Category:</label>
           <select onChange={handleCategory}>
               <option value="assembly">Assembly Tools</option>
-              <option value="cutting">Cuting Tools</option>
+              <option value="cutting">Cutting Tools</option>
               <option value="hammering">Hammering Tools</option>
               <option value="painting">Painting Tools</option>
               <option value="clamping">Clamping Tools</option>
