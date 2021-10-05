@@ -11,6 +11,7 @@ function HomePage(props) {
   //const {products, setProducts} = props;
   const [products, setProducts] = useState([])
   const [productsCopy, setProductsCopy] = useState([])
+  const [searchValue, setSearchValue] = useState("")
 
   const [fetch, setFetch] = useState(false)
 
@@ -19,6 +20,7 @@ function HomePage(props) {
    
   console.log("PRODUCTS", products)
   console.log("PRODUCTS COPY", productsCopy)
+  console.log("searchValue", searchValue)
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,6 +30,9 @@ function HomePage(props) {
   }
   ,[products, fetch]) 
 
+  const handleSearch = (str) => {
+    setSearchValue(str)
+  }
  
 
   //RECORDAR: hay que pasar a HomePage products
@@ -37,18 +42,16 @@ function HomePage(props) {
     <>
       <nav className="top-navbar">
       <img src="./tooly-logo.png" alt="Logo"/>
-      <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
+      <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts} handleSearch={handleSearch}/>
       </nav>
       {/* <button onClick={handleShowFilter}>Filtro</button> */}
 
-      <Filter products={products} setProductsCopy={setProductsCopy} setFetch={setFetch}/> 
+      <Filter products={products} setProductsCopy={setProductsCopy} setFetch={setFetch} searchValue={searchValue}/> 
 
 
     {/*   <Filter products={products} setProductsCopy={setProductsCopy}/> */}
       <ListProducts products={productsCopy} setProducts={setProducts}/>
       
-
-      <p>hola</p>
     </>
   )
    }
@@ -61,7 +64,7 @@ function HomePage(props) {
     </div>
     <nav className="top-navbar">
     <img src="./tooly-logo.png" alt="Logo"/>
-        <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
+        <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts} handleSearch={handleSearch} />
       </nav>
       <HomeCategories setProductsByCategory={setProducts} setThereAreProducts={setThereAreProducts}/>
       <Carrusel/> 

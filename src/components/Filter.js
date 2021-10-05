@@ -5,11 +5,11 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function Filter (props) {
   
-  const { products, setProductsCopy} = props
+  const { products, setProductsCopy, searchValue } = props;
 
   const [searchByCategory, setSearchByCategory] = useState("assembly");
   const [searchByPrice, setSearchByPrice] = useState(300);
-  const [searchByRating, setSearchByRating] = useState(0)
+  const [searchByRating, setSearchByRating] = useState(5)
 
   
  /*    if (products.length !== 0){
@@ -84,7 +84,8 @@ function Filter (props) {
     const objectToSubmit = { 
       category: searchByCategory,
       amount: searchByPrice,
-      averageRating: searchByRating
+      averageRating: searchByRating,
+      nameSearch: searchValue
     }
     
     axios.post(API_URL+"/product/filter", objectToSubmit)
