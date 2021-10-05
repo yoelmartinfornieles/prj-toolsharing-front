@@ -24,10 +24,9 @@ function BookForm(props) {
   const [error, setError] = useState(false);
 
   const {product} = props
+ 
 
-  console.log('paypal:',process.env.REACT_APP_JORDI)
-
-
+  const[bookings, setBookings] = useState({})
   const[showPay, setShowPay] = useState(false) // <--- STORES SHOWING/HIDING PAYING INFO STATE ----> 
  
 
@@ -35,6 +34,7 @@ function BookForm(props) {
   const payInfoHandler= ()=>{   // <--- SWITCHES SHOWING/HIDING PAYING INFO----> 
     setShowPay(!showPay)
     console.log(showPay)
+    console.log(bookings)
   }
 
 
@@ -49,7 +49,7 @@ function BookForm(props) {
 
   let dataPrint = new Date(moment(startDate).format("MM/DD/YYYY"));
 
-  console.log("startDate:", dataPrint);
+  //console.log("startDate:", dataPrint);
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -83,6 +83,7 @@ function BookForm(props) {
     let lastDay = moment.utc(endDate);
 
     const finalDateArray = totalDays(firstDay, lastDay);
+    
    
     let newFinalArr = finalDateArray.filter ((element) => product.bookDates.includes ( element ))
 
@@ -94,7 +95,7 @@ function BookForm(props) {
       } return ("ok")
     }) */
  
-    console.log('El que volem!!!:',newFinalArr)
+    
 
     if (newFinalArr.length > 0) {
       setError(!error);
@@ -105,7 +106,6 @@ function BookForm(props) {
         booking: finalDateArray,
       };
 
-      console.log(objectToSubmit);
     }
     /* axios
         .post(`${API_URL}/new-product`, objectToSubmit)
@@ -130,7 +130,7 @@ function BookForm(props) {
       
     </form>
     {showPay && 
-        <PaypalPop price ={price}  />
+        <PaypalPop price ={price}  product={product} startDate={startDate} endDate={endDate} />
    
     }
     
