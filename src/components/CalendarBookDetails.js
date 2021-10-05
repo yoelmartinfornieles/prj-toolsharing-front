@@ -124,8 +124,7 @@ function BookForm(props) {
         endDate={endDate}
         excludeDays={dateArrayToPrint(product.bookDates)}
       />
-      <button type="submit" onClick={payInfoHandler}>Book</button>
-      <h1>Total: {price}€</h1>
+      <button className="book-button" type="submit" onClick={payInfoHandler}><h1>Book for {price}€</h1></button>
       {error && <h1>Please select available dates</h1>}
       
     </form>

@@ -8,6 +8,7 @@ import UserProducts from "../components/UserProducts"
 
 
 
+
 function ProfilePage(){
 	const { user } = useContext(AuthContext);
 	const [userInfo, setUserInfo] = useState ("")

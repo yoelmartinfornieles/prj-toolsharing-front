@@ -508,3 +508,296 @@ top: 0;
     color: #414141;
     margin-top: 10px;
 }
+
+
+ /* ------------PORDUCT DETAIL-----------------------*/
+
+ .product-details{
+    padding-top:30px;
+    padding-bottom:100px;
+    background-color: #f5f5f5;
+    text-align: center;
+ }
+
+
+
+ .owner-card{
+     background-color:white;
+     border:1px solid #e4e4e4;
+     width:300px;
+     height: 130px;
+     text-align:center;
+     border-radius: 20px;
+     display: flex;
+     justify-content:flex-start;
+     align-items:center;
+     position: absolute;
+     bottom: -100px;
+     right: 10px;
+
+ }
+
+ .picture-owner{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-left: 20px;
+    text-align: center;
+}
+
+
+.picture-owner img{
+    width: 100%;
+    height: 100%;
+   
+}
+
+.text-owner{
+    background-color: none;
+    margin-left: 20px;
+}
+
+.text-owner h3{
+    font-size:1rem;
+    font-weight: bolder;
+    color: rgb(36, 36, 36);
+   
+   
+}
+
+.text-owner h2{
+    font-size:1.3rem;
+    font-weight: bolder;
+    color: #788EFF;
+    
+   
+}
+
+.review-title{
+    margin-top: 70px;
+    color: rgb(36, 36, 36);
+}
+
+.review-cards {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    overflow:auto;
+    white-space:unset;
+    padding-left: 5px;
+
+
+}
+
+.review-cards::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+
+
+.review-card{
+    background-color:white;
+     border:1px solid #e4e4e4;
+     height: 110px;
+     text-align:center;
+     border-radius: 20px;
+     display: flex;
+     margin: 5px;
+     padding: 10px;
+     padding-top: 15px;
+   
+}
+ 
+.review-photo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.review-photo img{
+    width: 100%;
+    height: 100%;
+   
+}
+
+.review-text{
+    width: 200px;
+    text-align:left;
+    padding-left: 20px;
+    
+}
+
+.review-text h4{
+   font-size:1rem;
+    margin:0;
+    color: rgb(36, 36, 36);
+}
+
+.review-text p{
+    font-size:1rem;
+    margin-top: 10px;
+    color: rgb(36, 36, 36);
+    
+}
+
+.review-text div{
+    width: 100%;
+    text-align:right;
+}
+
+.review-text div img{
+    width: 50%;
+}
+
+
+
+
+.product-detail-card{
+    text-align: left;
+    width: 320px;
+    height: 500px;
+    border-radius: 20px;
+    background-color:white;
+    margin: auto;
+    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border:1px solid #e4e4e4;
+    position: relative;
+    margin-bottom: 150px;
+
+}
+
+
+
+.product-detail-img{
+    width: 310px;
+    height: 310px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+    
+
+}
+
+.product-detail-img img{
+    width: auto;
+    height: 100%;
+}
+
+
+.product-header-text{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    height: 50px;
+    background-color:none;
+    padding: 10px;
+ 
+
+}
+
+
+
+.product-header-text h2{
+    color:#788EFF;
+}
+
+.product-detail-card p{
+    color:rgb(36, 36, 36);
+    font-weight: 500;
+
+}
+
+.fav-but{
+    height:35px;
+    width: auto;
+    background-color:none;
+    background: none;
+    border: none;
+}
+
+.fav-but img{
+    height:100%;
+    width: auto;
+}
+
+.no-fav-but{
+    height:40px;
+    width: auto;
+    background-color:none;
+    background: none;
+    border: none;
+}
+
+.no-fav-but img{
+    height:100%;
+    width: auto;
+}
+
+.react-datepicker{
+    border: 2px solid #788EFF!important;
+    border-radius: 30px!important;
+    width: 300px;
+    height: auto;
+    padding-bottom: 20px;
+   
+}
+
+.react-datepicker__month-container{
+    background-color:white!important;
+    border-radius: 30px!important;
+    width: 100%;
+}
+
+
+.react-datepicker__month{
+
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+.react-datepicker__header{
+    background-color:white!important;
+    border: none!important;
+    border-bottom: 3px solid #788EFF !important;
+    border-radius: 30px!important;
+    width: 100%;
+}
+
+.react-datepicker__day--selected{
+    background-color:#788EFF!important;
+}
+
+.react-datepicker__header div {
+    color: rgb(36, 36, 36)!important;
+    font-weight: bolder !important;
+}
+
+
+.react-datepicker__day--in-range{
+    background-color:#788EFF!important;
+    color: white!important;
+}
+
+.react-datepicker__day--keyboard-selected{
+    background-color:#788EFF!important;
+}
+
+.book-button{
+    background-color:white!important;
+    border-radius: 30px!important;
+    border: none !important;
+    border: 2px solid #788EFF !important;
+    width: 300px;
+    color: #788EFF;
+
+}

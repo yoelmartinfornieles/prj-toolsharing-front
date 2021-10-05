@@ -5,6 +5,10 @@ import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
 import CalendarBook from '../components/CalendarBookDetails'
+import OwnerCard from '../components/UserCard'
+import Logo from "../images/tooly-logo.png"
+import ArrowLeft from '../images/arrow-left.png'
+import ArrowRight from '../images/arrow-right.png'
 
 
 //const API_URL = process.env.REACT_APP_API_URL;
@@ -90,28 +94,36 @@ function ProductDetailsPage (props) {
   }
 
   
-  return ( <div>
-    {isLoaded && <div>
-        <h1>PRODUCT DETAILS</h1>
-        <FavButton handleSubmitFav={handleSubmitFav} handleSubmitDeleteFav={handleSubmitDeleteFav} isFav={isFav}/>
-   
-      
-    <div>
-      <img src={product.photo}/>
-     <p>{product.name}</p>
-      
+  return ( <div className="product-details">
+        <nav className="top-navbar">
+            <img src={Logo}/>
+        </nav>
+        {isLoaded && <div>
+            <div className="product-detail-card">
+              <div className="product-detail-img">
+                <img src={product.photo}/>
+              </div>
+              <div className="product-header-text">
+                <h2>{product.name}</h2>
+                <FavButton handleSubmitFav={handleSubmitFav} handleSubmitDeleteFav={handleSubmitDeleteFav} isFav={isFav}/>  
+              </div>
+              <p>{product.description}</p>
+              <OwnerCard ownerId={product.ownerId}/> 
+            </div>
+              <CalendarBook product={product} />
 
-      { /* ------------TODO: UserCard----------------------*/ }
-      {/* <UserCard owner={product.ownerId}/> */}
+              
+      	        {/* <div className="gradient-left"><img src={ArrowLeft} alt="Arrow to the left"/></div> */}
+                <h2 className="review-title">Tool reviews:</h2>
+                  <div className="review-cards">
+                          {product.reviews.map ( (review) => { 
+                          return (<ReviewCard key={review._id} review={review} />)})}
 
-      {product.reviews.map ( (review) => { 
-            return (
-              <ReviewCard key={review._id} review={review} />
-            )
-      })}
-      <Link to={`/product/${product._id}/book`}>BOOK THIS</Link>
-      <CalendarBook product={product} />
-      </div>
+                  </div>
+                {/* <div className="gradient-right"><img src={ArrowRight} alt="Arrow to the right"/></div> */}
+            
+          {/* <Link to={`/product/${product._id}/book`}>BOOK THIS</Link> */}
+
     </div>}
     </div>
   );
