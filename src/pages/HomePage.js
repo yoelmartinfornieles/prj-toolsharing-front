@@ -11,8 +11,12 @@ function HomePage(props) {
   //const {products, setProducts} = props;
   const [products, setProducts] = useState([])
   const [productsCopy, setProductsCopy] = useState(products)
+
+
   const [thereAreProducts, setThereAreProducts] = useState (false)
-  
+   
+  console.log("PRODUCTS", products)
+  console.log("PRODUCTS COPY", productsCopy)
 
   useEffect(() => {
     setProductsCopy (products)
@@ -27,10 +31,9 @@ function HomePage(props) {
       <nav className="top-navbar">
       <img src="./tooly-logo.png" alt="Logo"/>
         <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
-        {console.log("products:" , productsCopy)}
       </nav>
-      <Filter setProductsByFilter={setProducts} products={products}/>
-      <ListProducts products={products} setProducts={setProducts}/>
+      <Filter setProductsByFilter={setProducts} products={products} setProductsCopy={setProductsCopy}/>
+      <ListProducts products={productsCopy} setProducts={setProducts}/>
     </>
   )
    }
