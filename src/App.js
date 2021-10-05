@@ -3,12 +3,10 @@ import { Switch, Route } from "react-router-dom";
 import {useState} from 'react'
 import Navbar from "./components/navbar";
 import HomePage from "./pages/HomePage";
-import ProductListPage from "./pages/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewProductPage from "./pages/NewProductPage";
 import BookingPage from "./pages/BookingPage";
 import Popup from './components/Popup'
-import SearchBar from './components/SearchBar'
 //import Footer from "./components/footer";
 
 /* ------------WIP: CHAT IMPORTS-----------------------*/

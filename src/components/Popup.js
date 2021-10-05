@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Signup from "./signup";
 import Login from "./login";
 
@@ -22,8 +21,8 @@ function Popup(props) {
 
       <button className="popup-button" onClick={toggleShowLogin}>
         {isShowLogin
-          ? "Aún no tienes cuenta? registrate" 
-          : "Ya tienes cuenta? Inicia sessión"}
+          ? "You don´t have an account? Register with us!" 
+          : "Login"}
       </button>
     </div>
     </div>

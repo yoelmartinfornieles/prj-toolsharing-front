@@ -11,8 +11,6 @@ function SearchProduct(props) {
   const handleSelect = (e) => {
     
     setSearchLetters(e.target.value);
-    /* props.searchProduct(e.target.value); */
-    //console.log("searchLetters: ", e.target.value)
   }; 
 
   const handleSubmit = (e) => {
@@ -28,21 +26,6 @@ function SearchProduct(props) {
         setThereAreProducts (true)
       } 
         )
-
-
-/*       .get (API_URL + "/product")
-      .then (response => {
-        console.log ("data: ", response.data)
-        let productList = response.data;
-        //filtrar el producto que queremos
-        let filteredByName = productList.filter(product => product.name.toLowerCase().includes(productToSearch.toLowerCase()) )
-        let filteredByDesc = productList.filter(product => product.description.toLowerCase().includes(productToSearch.toLowerCase()) )
-
-        console.log("filtered: ", filteredByName)
-        console.log("filtered: ", filteredByDesc)
-
-      } )
-      .catch((error) => console.log(error)); */
   }                                  
 
   return (

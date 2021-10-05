@@ -9,7 +9,6 @@ import { AuthContext } from "./../context/auth.context";
 const clientId = '103678780845-vsp1r3hrboarvi7ccaqilouat5kaf9mr.apps.googleusercontent.com';
 
 function LoginGoogle() {
-
 	const [errorMessage, setErrorMessage] = useState(undefined);
     const API_URL = process.env.REACT_APP_API_URL;
 	const { logInUser } = useContext(AuthContext);
@@ -26,7 +25,7 @@ name: "Yoel Martin Fornieles" */
 
 	const onSuccess = (res) => {
 	  const googleObject = res.profileObj;
-	  const requestBody = {email: googleObject.email, username: googleObject.givenName, password: googleObject.googleId }
+	  const requestBody = {email: googleObject.email, username: googleObject.name, password: googleObject.googleId }
 	  console.log('Login Success: currentUser:', res.profileObj);
 	  alert(
 		`Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
