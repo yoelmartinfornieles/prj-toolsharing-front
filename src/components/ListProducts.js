@@ -11,8 +11,8 @@ if (products) {
 
   return (
     <>
-{/*       <Filter setProductsByFilter={setProducts} products={products} />
- */}      <div className="cards-container">
+       {/* <Filter setProductsByFilter={setProducts} products={products} /> */}
+       <div className="cards-container">
         {productsToShow.map((product) => (
           <>
           <ProductCard key={product._id} product={product}/>

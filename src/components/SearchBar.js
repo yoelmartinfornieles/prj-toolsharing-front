@@ -22,6 +22,7 @@ function SearchProduct(props) {
     axios
       .get (API_URL + "/product/search/"+productToSearch)
       .then (response => {
+        console.log("Aquiiiiiiii: ", response.data)
         setProductsBySearch (response.data);
         setThereAreProducts (true)
       } 

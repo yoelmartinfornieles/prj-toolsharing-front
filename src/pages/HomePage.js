@@ -10,7 +10,9 @@ function HomePage(props) {
 
   //const {products, setProducts} = props;
   const [products, setProducts] = useState([])
-  const [productsCopy, setProductsCopy] = useState(products)
+  const [productsCopy, setProductsCopy] = useState([])
+
+  const [fetch, setFetch] = useState(false)
 
 
   const [thereAreProducts, setThereAreProducts] = useState (false)
@@ -19,9 +21,14 @@ function HomePage(props) {
   console.log("PRODUCTS COPY", productsCopy)
 
   useEffect(() => {
-    setProductsCopy (products)
+    setTimeout(() => {
+      setProductsCopy(products)
+      
+    }, 100);
   }
-  ,[products]) 
+  ,[products, fetch]) 
+
+ 
 
   //RECORDAR: hay que pasar a HomePage products
 
@@ -30,10 +37,18 @@ function HomePage(props) {
     <>
       <nav className="top-navbar">
       <img src="./tooly-logo.png" alt="Logo"/>
-        <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
+      <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
       </nav>
-      <Filter setProductsByFilter={setProducts} products={products} setProductsCopy={setProductsCopy}/>
+      {/* <button onClick={handleShowFilter}>Filtro</button> */}
+
+      <Filter products={products} setProductsCopy={setProductsCopy} setFetch={setFetch}/> 
+
+
+    {/*   <Filter products={products} setProductsCopy={setProductsCopy}/> */}
       <ListProducts products={productsCopy} setProducts={setProducts}/>
+      
+
+      <p>hola</p>
     </>
   )
    }
