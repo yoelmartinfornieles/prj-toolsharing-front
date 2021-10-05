@@ -2,9 +2,9 @@
 import {useEffect, useState, useContext} from "react"
 import { AuthContext } from "../context/auth.context";
 //import { Link } from "react-router-dom";
-import  UserInfo  from "../components/UserInfo"
+import  UserInfo  from "../components/profileComponents/UserInfo"
 import axios from "axios"
-import UserProducts from "../components/UserProducts"
+import UserProducts from "../components/profileComponents/UserProducts"
 
 
 
