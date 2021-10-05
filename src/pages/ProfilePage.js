@@ -13,6 +13,7 @@ function ProfilePage(){
 	const { user } = useContext(AuthContext);
 	const [userInfo, setUserInfo] = useState ("")
 	let API_URL = process.env.REACT_APP_API_URL
+	console.log ("USER._ID: ", user)
 	let userId = user._id
 
 

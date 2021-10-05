@@ -1,7 +1,7 @@
 import React from 'react';
 import Talk from "talkjs";
 import axios from "axios"
-//import { useState } from "react"
+import ChatContactCard from "./ChatContactCard"
 
 class MyNetwork extends React.Component {
 	constructor(props) {
@@ -23,14 +23,11 @@ class MyNetwork extends React.Component {
 	const regex = /"id":"([^"]+)"/ig
 	const currentTalkjsUser = localStorage.getItem('currentTalkjsUser');
 	const result = regex.exec(currentTalkjsUser)
-	console.log ("result: ",result[1])
 	let currentUserId = result[1]
-	console.log("currentUserId: ", currentUserId)
 	axios
 		.get (API_URL+`/chat/${currentUserId}`)
 		.then((response) => {
 			let transactions = response.data
-			console.log ("transactions")
 			let usersInvolved = []
 			for (let i=0; i<transactions.length; i++){
 				if (transactions[i].ownerId._id === currentUserId){
@@ -40,38 +37,40 @@ class MyNetwork extends React.Component {
 					usersInvolved.push(transactions[i].ownerId)
 				}
 			}
-			console.log("usersInvolved: ", usersInvolved)
-			this.otherUsers = [...new Set(usersInvolved)] 
-			console.log ("otherUsers:", this.otherUsers)
+			let uniqueUsers = []
+			let repeated
+			for (let i=0; i<usersInvolved.length; i++) {
+				for (let j = 0; j < uniqueUsers.length; j++) {
+					if (usersInvolved[i]._id === uniqueUsers[j]._id){
+						repeated=true;
+					}
+				}
+				if (!repeated) {
+					uniqueUsers.push (usersInvolved[i])
+				}
+				repeated = false;
+			}
+			console.log("UNIQUE: ", uniqueUsers)
+			this.otherUsers = [...uniqueUsers] 
+			console.log ("OTHERUSERS:", this.otherUsers)
 			this.setState ({...this.state, isLoading: false})
 		})
    }
 
    handleClick(userId) {
 
-	let TALK_JS_DEV_ID= "teiWhWmj"//process.env.TALK_JS_DEV_ID
-	console.log ("/* ------------TALK_JS_DEV_ID-----------------------*", TALK_JS_DEV_ID)
-
-	//retrieve the two users that will participate in the conversation 
+    let TALK_JS_DEV_ID = "teiWhWmj"//process.env.TALK_JS_DEV_ID
 	const { currentUser } = this.state;
-	
-	//const user = dummyUsers.find(user => user.id === userId)
 	let user = this.otherUsers.find(user => user._id === userId)
 	user.id = user._id
 	user.name = user.username
 	user.role = "Member"
 
-	console.log("USER: ", user)
-
-
-	//Session initialization code 
 	Talk.ready
 	.then(() => {
-		//Create the two users that will participate in the conversation 
 		const me = new Talk.User(currentUser);
 		const other = new Talk.User(user)
 
-		//Create a talk session if this does not exist. Remember to replace tthe APP ID with the one on your dashboard 
 		if (!window.talkSession) {
 			window.talkSession = new Talk.Session({
 				appId: TALK_JS_DEV_ID,
@@ -79,15 +78,12 @@ class MyNetwork extends React.Component {
 			});
 		} 
 		
-		//Get a conversation ID or create one 
 		const conversationId = Talk.oneOnOneId(me, other);
 		const conversation = window.talkSession.getOrCreateConversation(conversationId);
 		
-		//Set participants of the conversations 
 		conversation.setParticipant(me);
 		conversation.setParticipant(other);
 
-		//Create and mount chatbox in container 
 		this.chatbox = window.talkSession.createChatbox(conversation);
 		this.chatbox.mount(this.container);
 	})            
@@ -96,42 +92,29 @@ class MyNetwork extends React.Component {
 
    render() {
 	const { currentUser } = this.state;
+	console.log ("CURRENTUSER: ", currentUser)
 	return (
 		<div className="users">
 			<div className="current-user-container">
 				{currentUser &&
 					<div>
-						<picture className="current-user-picture">
-							<img alt={currentUser.name} src={currentUser.photoUrl} />
-						</picture>
 						<div className="current-user-info">
 							<h3>{currentUser.name}</h3>
-							<p>{currentUser.description}</p>
 						</div>
 					</div>
 				}
 			</div>
                 {this.state.isLoading ? null :
 				 <div className="users-container"> 
-                    <ul>
-					{console.log("hey: ", this.otherUsers)}
+     
                         { this.otherUsers.map(user => 
-                          <li key={user.id} className="user">
-                              <picture className="user-picture">
-                                  <img src={user.profileImg} alt={`${user.username}`} />
-                              </picture>
-                              <div className="user-info-container">
-                                  <div className="user-info">
-                                      <h4>{user.username}</h4>
-                                      <p>{user.email}</p>
-                                  </div>
+                         <>
+                              <ChatContactCard user={user} key={user.id} />
                                   <div className="user-action">
         							 <button onClick={(userId) => this.handleClick(user._id)}>Message</button>
       							</div>
-                              </div>
-                          </li>
+                         </>
                         )}
-                        </ul>
 					<div className="chatbox-container" ref={c => this.container = c}>
 						<div id="talkjs-container" style={{height: "300px"}}><i></i></div>
 					</div>
