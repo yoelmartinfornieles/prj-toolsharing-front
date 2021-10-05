@@ -41,7 +41,7 @@ class MyNetwork extends React.Component {
 				}
 			}
 			console.log("usersInvolved: ", usersInvolved)
-			this.otherUsers = [...usersInvolved] 
+			this.otherUsers = [...new Set(usersInvolved)] 
 			console.log ("otherUsers:", this.otherUsers)
 			this.setState ({...this.state, isLoading: false})
 		})
