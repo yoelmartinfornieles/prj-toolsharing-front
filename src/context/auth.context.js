@@ -28,6 +28,10 @@ function AuthProviderWrapper(props) {
         const user = response.data;
         setUser(user);
         setIsLoggedIn(true);
+        console.log("CONTEXTUSER: ", user)
+        setTimeout(() => {
+          loginChat(response.data)
+        }, 500);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -43,12 +47,12 @@ function AuthProviderWrapper(props) {
     }
   }
 
-  function loginChat () {
+  function loginChat (currentUser) {
        
     let API_URL = process.env.REACT_APP_API_URL
-    let userId = user._id
+    let userId = currentUser._id
     
-    console.log("CHATuser: ", user) 
+    console.log("CHATuser: ", userId) 
     axios
     .get (API_URL+"/user/"+userId)
     .then ((response)=> {

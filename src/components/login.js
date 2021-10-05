@@ -29,9 +29,9 @@ function LoginPage() {
         console.log("JWT token", response.data.authToken);
         const token = response.data.authToken;
         logInUser(token);
-        setTimeout(() => {
+/*         setTimeout(() => {
           loginChat ()
-        }, 500);
+        }, 800); */
         history.push("/profile");
       })
       .catch((error) => {

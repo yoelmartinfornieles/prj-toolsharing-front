@@ -5,12 +5,12 @@ import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
 import CalendarBook from '../components/CalendarBookDetails'
-
-
+import ChatComponent from "../chatComponents/ChatComponent"
 //const API_URL = process.env.REACT_APP_API_URL;
 
 function ProductDetailsPage (props) {
   const [product, setProduct] = useState(null)
+  const [owner, setOwner] = useState (null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFav, setIsFav] = useState(false)
 
@@ -49,9 +49,9 @@ function ProductDetailsPage (props) {
     axios
       .get (API_URL+"/product/"+id)
       .then (response => {
-        setProduct (response.data)
+        setProduct (response.data.product)
+        setOwner (response.data.user)
         setIsLoaded(true)
-    
         console.log ("product: ", response.data)
       }
     ) 
@@ -111,6 +111,7 @@ function ProductDetailsPage (props) {
       })}
       <Link to={`/product/${product._id}/book`}>BOOK THIS</Link>
       <CalendarBook product={product} />
+      <ChatComponent owner= {owner}/>
       </div>
     </div>}
     </div>
