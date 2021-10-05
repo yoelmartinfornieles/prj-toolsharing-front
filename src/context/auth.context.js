@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 const API_URL = process.env.REACT_APP_API_URL;
 
 const AuthContext = React.createContext();
-
+ 
 function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +42,34 @@ function AuthProviderWrapper(props) {
       setIsLoading(false);
     }
   }
-  
+
+  function loginChat () {
+       
+    let API_URL = process.env.REACT_APP_API_URL
+    let userId = user._id
+    
+    console.log("CHATuser: ", user) 
+    axios
+    .get (API_URL+"/user/"+userId)
+    .then ((response)=> {
+        console.log ("response: ", response)
+        /* setUserInfo(response.data) */
+        const { username, email, imgUrl } = response.data
+        /* Generate random number that will be serve as the ID of the user */
+        const userData = {
+            name: username,
+            email: email,
+            id: userId,
+            role: "Member",
+            photoUrl: imgUrl
+        }
+
+        /* Store user data in browser's local storage */
+        localStorage.setItem("currentTalkjsUser", JSON.stringify(userData))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    
+    }) 
+  }
 
   const logInUser = (token) => {
     localStorage.setItem("authToken", token);
@@ -62,8 +91,7 @@ function AuthProviderWrapper(props) {
     // Update the state variables
     setIsLoggedIn(false);
     setUser(null);
-  }    
-
+  }     
 
   useEffect(() => {
     verifyStoredToken();
@@ -71,7 +99,7 @@ function AuthProviderWrapper(props) {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, isLoading, user, logInUser, logOutUser }}
+      value={{ isLoggedIn, isLoading, user, logInUser, logOutUser, loginChat }}
     >
       {props.children}
     </AuthContext.Provider>

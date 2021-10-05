@@ -10,7 +10,7 @@ function FavButton(props){
     
     return (
         <div>
-        {isFav? <button onClick={handleSubmitDeleteFav}><img src={fav}/></button> : <button onClick={handleSubmitFav}><img src={noFav} /></button>}
+        {isFav? <button onClick={handleSubmitDeleteFav}><img src={fav} alt=""/></button> : <button onClick={handleSubmitFav}><img src={noFav} alt=""/></button>}
         </div>
     )
 }

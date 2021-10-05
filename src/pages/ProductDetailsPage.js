@@ -97,7 +97,7 @@ function ProductDetailsPage (props) {
    
       
     <div>
-      <img src={product.photo}/>
+      <img src={product.photo} alt=""/>
      <p>{product.name}</p>
       
 
