@@ -8,25 +8,23 @@ import LogoutGoogle from "../googleComponents/LogoutGoogle"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-function LoginPage() {
-  let history = useHistory();
+function LoginPage(props) {
 
-  const [username, setUsername] = useState("");
+  var {clickToShow} = props
+  let history = useHistory();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-
-  const { logInUser, loginChat } = useContext(AuthContext);
- 
-  const handleUsername = (e) => setUsername(e.target.value);
+  const { logInUser } = useContext(AuthContext);
+  const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { username, password };
+    const requestBody = { email, password };
 
     axios.post(`${API_URL}/login`, requestBody)
       .then((response) => {
-        console.log("JWT token", response.data.authToken);
         const token = response.data.authToken;
         logInUser(token);
 /*         setTimeout(() => {
@@ -35,7 +33,7 @@ function LoginPage() {
         history.push("/profile");
       })
       .catch((error) => {
-      	const errorDescription = error.data;
+      	const errorDescription = error;
       	setErrorMessage(errorDescription);
     	})
   };
@@ -44,13 +42,12 @@ function LoginPage() {
     <div className="LoginPage">
       <h1>Login</h1>
 
-      <LoginGoogle />
-      <LogoutGoogle />   
+      <LoginGoogle clickToShow={clickToShow}/>
 
       <form onSubmit={handleLoginSubmit}>
         
         {/* <label>Username:</label> */}
-        <input type="text" name="username" placeholder="Username" value={username} onChange={handleUsername} />
+        <input type="text" name="email" placeholder="email" value={email} onChange={handleEmail} />
 
         {/* <label>Password:</label> */}
         <input type="password" name="password" placeholder="Password" value={password} onChange={handlePassword} />

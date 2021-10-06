@@ -32,12 +32,9 @@ function App() {
         {/* ------------REMEMBER THAT PRIVATEROUTES PROVIDES US WITH USER INFO----------------------*/ }
 
         <Route exact path={PATHS.HOMEPAGE} component={HomePage} />
-{/*     <AnonRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} />
- */}
         <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
         <PrivateRoute exact path={PATHS.BOOKING} component={BookingPage} />
-{/*         <Route exact path={PATHS.PRODUCTS} component={ProductListPage} />
- */}    <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
+        <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
         <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} clickToShow={toggleShowForm} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         

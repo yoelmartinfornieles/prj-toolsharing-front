@@ -5,23 +5,16 @@ import {useState, useEffect} from "react"
 import SearchBar from "../components/SearchBar"
 import Filter from "../components/Filter"
 
-
 function HomePage(props) {  
 
-  //const {products, setProducts} = props;
   const [products, setProducts] = useState([])
   const [productsCopy, setProductsCopy] = useState([])
   const [searchValue, setSearchValue] = useState("")
 
   const [fetch, setFetch] = useState(false)
 
-
   const [thereAreProducts, setThereAreProducts] = useState (false)
-   
-  console.log("PRODUCTS", products)
-  console.log("PRODUCTS COPY", productsCopy)
-  console.log("searchValue", searchValue)
-
+  
   useEffect(() => {
     setTimeout(() => {
       setProductsCopy(products)
@@ -34,9 +27,6 @@ function HomePage(props) {
     setSearchValue(str)
   }
  
-
-  //RECORDAR: hay que pasar a HomePage products
-
   if (thereAreProducts){
    return (
     <>
