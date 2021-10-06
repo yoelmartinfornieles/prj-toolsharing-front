@@ -33,8 +33,10 @@ function LoginPage(props) {
         history.push("/profile");
       })
       .catch((error) => {
-      	const errorDescription = error;
-      	setErrorMessage(errorDescription);
+      	/* const errorDescription = error;
+      	setErrorMessage(errorDescription); */
+        console.log(error)
+        
     	})
   };
   

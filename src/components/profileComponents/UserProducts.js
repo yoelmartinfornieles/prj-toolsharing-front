@@ -1,9 +1,12 @@
 import axios from "axios"
 import EditProduct from "./EditProduct"
+import{useState} from 'react'
+import {Image} from 'cloudinary-react'
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function UserProduct(props) {
+    const[showEditor, setShowEditor] = useState(false)
    
     const { products } = props.userInfo.data
     console.log("USERPRODUCT", products)
@@ -15,24 +18,49 @@ function UserProduct(props) {
 
     }
 
+    const handleClick = () => {
+        setShowEditor(!showEditor)
+    }
+
     return (
         <div>
         <div>
             <h3>PRODUCTS</h3>
         </div>
-        {products.map(product => (
-            <div key={product._id}>
-                <p>Producto: {product.name}</p>
-                <p>Descripción: {product.description}</p>
-                <p>Precio: {product.amount}</p>
-                <p>Categoría: {product.category}</p>
-                <p>Año de adquisición: {product.adquisitionYear}</p>
+        <div className="review-cards">
+        {products.map(product => (<div>
+            {!showEditor && 
+        
+                <div className="review-card" key={product._id}>
+                <div className="review-photo">
+                
+                <Image
+                  className="img-product-cloud"
+                  cloudName="toolsharing"
+                  publicId={product.photo}/>
+                </div>
+                
+                <div className="review-text">
+                <p>{product.name}</p>
+                <p>{product.amount}€/day</p>
+                <p>{product.adquisitionYear}</p>
+                </div>
+                </div>
+                
+                }
+                {showEditor && <EditProduct product={product} />}
+                {showEditor? <button onClick={handleClick}>Save</button>:<button onClick={handleClick}>Edit Product</button>}
                 <button onClick={() => handleSubmit(product._id)}>Borrar producto</button>
-                <EditProduct product={product} />
+
+              
             </div>
         ))
         }
         </div>
+        </div>
   )}
   
   export default UserProduct;
+
+
+ 
