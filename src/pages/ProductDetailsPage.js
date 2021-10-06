@@ -102,9 +102,9 @@ function ProductDetailsPage (props) {
             <div className="product-detail-card">
               <div className="product-detail-img">
                 <Image
-                className="img-prodcut-card"
-                cloudName="toolsharing"
-                publicId={product.photo}/>
+                  className="img-product-cloud"
+                  cloudName="toolsharing"
+                  publicId={product.photo}/>
               </div>
               <div className="product-header-text">
                 <h2>{product.name}</h2>
