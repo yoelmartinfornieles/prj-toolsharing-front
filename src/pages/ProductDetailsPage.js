@@ -20,6 +20,8 @@ function ProductDetailsPage (props) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFav, setIsFav] = useState(false)
 
+  console.log('product!!!!MODHEWRFUKER', product)
+
   const {id} = useParams()
   console.log ("id: ", id)
   console.log('is fav??',isFav)
@@ -32,7 +34,7 @@ function ProductDetailsPage (props) {
   console.log('this is the current user:', userId)
 
 	useEffect(() => {
-		console.log("useEffectdfsdfdsfdfsdfs")
+
 		axios
 		 .get (API_URL+"/user/"+userId)
 		 .then ((response)=> {
@@ -89,6 +91,7 @@ function ProductDetailsPage (props) {
       }
     ) 
   }
+  
   
   return ( <div className="product-details">
         <nav className="top-navbar">
