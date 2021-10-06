@@ -4,14 +4,13 @@ import axios from "axios";
 //import { Link } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
 import LoginGoogle from "../googleComponents/LoginGoogle"
-import LogoutGoogle from "../googleComponents/LogoutGoogle"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 console.log(API_URL)
 function LoginPage(props) {
 
-  var {clickToShow} = props
+  var {setIsShowLogin, clickToShow} = props
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,11 +30,11 @@ function LoginPage(props) {
 /*         setTimeout(() => {
           loginChat ()
         }, 800); */
-        history.push("/profile");
+        setIsShowLogin (false);
       })
       .catch((error) => {
-        setErrorMessage(error);
-      	console.log(error)
+        const errorDescription = error.response.data.message;
+        setErrorMessage (errorDescription);
     	})
   };
   

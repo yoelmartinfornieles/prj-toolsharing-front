@@ -34,8 +34,8 @@ function App() {
         <Route exact path={PATHS.HOMEPAGE} component={HomePage} />
         <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
         <PrivateRoute exact path={PATHS.BOOKING} component={BookingPage} />
-        <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
-        <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} clickToShow={toggleShowForm} />
+{/*         <PrivateRoute exact path={PATHS.NEWPRODUCT} component={NewProductPage} clickToShow={toggleShowForm}/>
+ */}    <PrivateRoute exact path={PATHS.PRODUCTDETAILS} component={ProductDetailsPage} clickToShow={toggleShowForm} />
         <PrivateRoute exact path={PATHS.PROFILE} component={ProfilePage} clickToShow={toggleShowForm}/>
         
         {/* ------------WIP: CHAT ROUTES-----------------------*/ }

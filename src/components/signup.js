@@ -50,13 +50,17 @@ function Signup(props) {
               history.push("/profile");
             })
             .catch((error) => {
-              console.log("error: ", error);
+              const errorDescription = error.reponse.data.message;
+              setErrorMessage(errorDescription)
             })
 
         });
       })
       .catch((error) => {
-        console.log("error: ", error);
+        console.log(error.response.data.message)
+        const errorDescription = error.response.data.message;
+        console.log(errorDescription)
+        setErrorMessage(errorDescription)
       });
   };
 

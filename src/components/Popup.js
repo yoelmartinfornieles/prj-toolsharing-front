@@ -16,7 +16,7 @@ function Popup(props) {
     <div className="popup-div">
     <div className="popup">
       <button className="close-button" onClick={clickToShow}><h1>✖</h1></button>
-      {isShowLogin && <Login clickToShow={clickToShow}/>}
+      {isShowLogin && <Login clickToShow={clickToShow} setIsShowLogin={setIsShowLogin}/>}
       {!isShowLogin && <Signup />}
 
       <button className="popup-button" onClick={toggleShowLogin}>
