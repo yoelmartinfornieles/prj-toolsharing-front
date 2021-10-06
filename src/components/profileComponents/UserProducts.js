@@ -6,7 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 function UserProduct(props) {
    
     const { products } = props.userInfo.data
-    console.log("USERPRODUCT")
+    console.log("USERPRODUCT", products)
 
     const handleSubmit = (id) => {
             axios.delete(`${API_URL}/product/${id}`)

@@ -37,10 +37,10 @@ function EditUserInfo(props) {
 
   const handleFullName = (e) => setFullName(e.target.value);
   const handleUsername = (e) => setUsername(e.target.value);
-  const handleStreet = (e) => setStreet(e.target.value);
+ /*  const handleStreet = (e) => setStreet(e.target.value);
   const handleNumberStreet = (e) => setNumberStreet(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
-  const handlePostalCode = (e) => setPostalCode(e.target.value);
+  const handlePostalCode = (e) => setPostalCode(e.target.value); */
   const handleProfileImg = (e) => setProfileImg(e.target.value);
 
   const handleSignupSubmit = (e) => {
@@ -49,12 +49,12 @@ function EditUserInfo(props) {
     const requestBody = {
       fullName: fullName,
       username: username,
-      address: {
+      /* address: {
         street: street,
         number: numberStreet,
         city: city,
         postalCode: postalCode,
-      },
+      }, */
       profileImg: profileImg,
     };
 
@@ -91,38 +91,6 @@ function EditUserInfo(props) {
             placeholder="Username"
             value={username}
             onChange={handleUsername}
-          />
-
-          <input
-            type="text"
-            name="street"
-            placeholder="Street"
-            value={street}
-            onChange={handleStreet}
-          />
-
-          <input
-            type="text"
-            name="numberStreet"
-            placeholder="Number"
-            value={numberStreet}
-            onChange={handleNumberStreet}
-          />
-
-          <input
-            type="text"
-            name="city"
-            value={city}
-            placeholder="City"
-            onChange={handleCity}
-          />
-
-          <input
-            type="text"
-            name="postalCode"
-            placeholder="Postal Code"
-            value={postalCode}
-            onChange={handlePostalCode}
           />
 
           <input
