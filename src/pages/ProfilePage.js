@@ -51,6 +51,7 @@ function ProfilePage(){
 	if (userInfo) {
 
 	return (
+		<>
 		<nav>
 			<UserInfo  userInfo={userInfo}/>
 			<UserProducts userInfo={userInfo}/>
@@ -58,14 +59,13 @@ function ProfilePage(){
 			{showLocationForm && <AdressConverter id={userId} close={handleUnshow}/> }
 			
 		</nav>
-		<>
+
 			<nav>
 				<UserInfo  userInfo={userInfo}/>
 				<a className="" href={MYNETWORK}>GO TO MY NETWORK<img alt=""/></a>
 				<UserProducts userInfo={userInfo}/>
 			</nav>
-		</>
-	  );
+	  </>);
 	}
 	else {
 		return (

@@ -20,7 +20,7 @@ function GoogleMap(props){
     // Important! Always set the container height explicitly
     <div className="container-google">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyCO6vMEzrsXbc43qNmIEzbkTrV7nwhEf_Q" }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_KEY }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import GoogleMap from "./GoogleMap";
-let API_KEY = process.env.REACT_GOOGLE_API_KEY;
 
 function AdressConverter(props) {
   const [street, setStreet] = useState("");
@@ -41,7 +40,7 @@ function AdressConverter(props) {
 
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${searchStreet},+${number},+${postalCode},+${searchCity}&key=AIzaSyCO6vMEzrsXbc43qNmIEzbkTrV7nwhEf_Q`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${searchStreet},+${number},+${postalCode},+${searchCity}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
       )
       .then((response) => {
         console.log(response.data.results[0].geometry.location);
