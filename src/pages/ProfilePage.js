@@ -13,17 +13,18 @@ import {MYNETWORK} from "../utils/paths";
 
 
 function ProfilePage(){
+	
 	const { user } = useContext(AuthContext);
 	const [userInfo, setUserInfo] = useState ("")
 	const [showLocationForm, setShowLocationForm] = useState(false)
 	let API_URL = process.env.REACT_APP_API_URL
-	console.log ("USER._ID: ", user)
+	
 	let userId = user._id
 
 
 
 	useEffect(() => {
-		console.log("useEffect")
+		
 		axios
 		 .get (API_URL+"/user/"+userId)
 		 .then ((response)=> {
@@ -46,7 +47,7 @@ function ProfilePage(){
 		setShowLocationForm(!showLocationForm)
 	}
 	
-	console.log(userInfo)
+	
 	
 	if (userInfo) {
 
