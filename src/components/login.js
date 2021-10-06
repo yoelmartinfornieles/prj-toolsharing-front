@@ -8,6 +8,7 @@ import LogoutGoogle from "../googleComponents/LogoutGoogle"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
+console.log(API_URL)
 function LoginPage(props) {
 
   var {clickToShow} = props
@@ -33,10 +34,7 @@ function LoginPage(props) {
         history.push("/profile");
       })
       .catch((error) => {
-      	/* const errorDescription = error;
-      	setErrorMessage(errorDescription); */
-        console.log(error)
-        
+      	console.log(error)
     	})
   };
   

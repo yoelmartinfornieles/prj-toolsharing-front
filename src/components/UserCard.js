@@ -5,11 +5,11 @@ function OwnerCard(props) {
   const [ownerInfo, setOwnerInfo] = useState({});
   let API_URL = process.env.REACT_APP_API_URL;
 
-  const { ownerId } = props;
+  const { owner } = props;
 
   useEffect(
     () => {
-      axios.get(API_URL + "/user/" + ownerId).then((response) => {
+      axios.get(API_URL + "/user/" + owner).then((response) => {
         console.log("responseOwner: ", response);
         setOwnerInfo(response.data);
       });

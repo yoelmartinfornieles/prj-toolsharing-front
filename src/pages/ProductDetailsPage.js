@@ -59,7 +59,7 @@ function ProductDetailsPage (props) {
         setProduct (response.data.product)
         setOwner (response.data.user)
         setIsLoaded(true)
-        console.log ("product: ", response.data)
+        console.log ("product encontrado: ", response.data)
       }
     ) 
   }, 
@@ -109,7 +109,7 @@ function ProductDetailsPage (props) {
                 <FavButton handleSubmitFav={handleSubmitFav} handleSubmitDeleteFav={handleSubmitDeleteFav} isFav={isFav}/>  
               </div>
               <p>{product.description}</p>
-              <OwnerCard ownerId={product.ownerId}/> 
+              <OwnerCard owner={product.owner}/> 
             </div>
               <CalendarBook product={product} />
                 <h2 className="review-title">Tool reviews:</h2>
