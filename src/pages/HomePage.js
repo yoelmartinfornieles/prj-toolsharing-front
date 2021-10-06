@@ -10,18 +10,30 @@ function HomePage(props) {
 
   //const {products, setProducts} = props;
   const [products, setProducts] = useState([])
-  const [productsCopy, setProductsCopy] = useState(products)
+  const [productsCopy, setProductsCopy] = useState([])
+  const [searchValue, setSearchValue] = useState("")
+
+  const [fetch, setFetch] = useState(false)
 
 
   const [thereAreProducts, setThereAreProducts] = useState (false)
    
   console.log("PRODUCTS", products)
   console.log("PRODUCTS COPY", productsCopy)
+  console.log("searchValue", searchValue)
 
   useEffect(() => {
-    setProductsCopy (products)
+    setTimeout(() => {
+      setProductsCopy(products)
+      
+    }, 100);
   }
-  ,[products]) 
+  ,[products, fetch]) 
+
+  const handleSearch = (str) => {
+    setSearchValue(str)
+  }
+ 
 
   //RECORDAR: hay que pasar a HomePage products
 
@@ -30,10 +42,16 @@ function HomePage(props) {
     <>
       <nav className="top-navbar">
       <img src="./tooly-logo.png" alt="Logo"/>
-        <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
+      <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts} handleSearch={handleSearch}/>
       </nav>
-      <Filter setProductsByFilter={setProducts} products={products} setProductsCopy={setProductsCopy}/>
+      {/* <button onClick={handleShowFilter}>Filtro</button> */}
+
+      <Filter products={products} setProductsCopy={setProductsCopy} setFetch={setFetch} searchValue={searchValue}/> 
+
+
+    {/*   <Filter products={products} setProductsCopy={setProductsCopy}/> */}
       <ListProducts products={productsCopy} setProducts={setProducts}/>
+      
     </>
   )
    }
@@ -46,7 +64,7 @@ function HomePage(props) {
     </div>
     <nav className="top-navbar">
     <img src="./tooly-logo.png" alt="Logo"/>
-        <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts}/>
+        <SearchBar setProductsBySearch={setProducts} setThereAreProducts={setThereAreProducts} handleSearch={handleSearch} />
       </nav>
       <HomeCategories setProductsByCategory={setProducts} setThereAreProducts={setThereAreProducts}/>
       <Carrusel/> 

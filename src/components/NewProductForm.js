@@ -7,7 +7,7 @@ function NewProductForm(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState("assembly");
   const [yearOfAcquisition, setYearOfAcquisition] = useState(0);
   const [imageId, setImageId] = useState("")
 
@@ -29,7 +29,8 @@ function NewProductForm(props) {
   const handleDescription = (e) => setDescription(e.target.value);
   const handleAmount = (e) => setAmount(e.target.value);
  
-  const handleCategory = (e) => setCategory(e.target.value);
+  const handleCategory = (e) => {setCategory(e.target.value)
+  console.log("category", category)};
   const handleYearOfAcquisition = (e) => setYearOfAcquisition(e.target.value);
 
   /* ----- Image ------ */
@@ -100,7 +101,7 @@ try {
       description: description,
       amount: amount,
       photo:imageId,
-      category: category,
+      categories: category,
       yearOfAcquisition: yearOfAcquisition,
       ownerId: userId
     };
@@ -172,9 +173,16 @@ try {
           onChange={handleCategory}
         >
 
-          <option value="handTools">Hand tools</option>
-          <option value="portableElectricTools">Portable electric tools</option>
-          <option value="workBench">Work Bench</option>
+          <option value="assembly">Assembly Tools</option>
+          <option value="cutting">Cutting Tools</option>
+          <option value="hammering">Hammering Tools</option>
+          <option value="painting">Painting Tools</option>
+          <option value="clamping">Clamping Tools</option>
+          <option value="gardening">Gardering Tools</option>
+          <option value="measuring">Measuring Tools</option>
+          <option value="vacuum cleaners">Vacuum cleaners</option>
+          <option value="stairs">Stairs</option>
+          <option value="industrial">Industrial Tools</option>
 
         </select>
         <label>Year of acquisition:</label>

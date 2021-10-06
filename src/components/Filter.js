@@ -1,38 +1,35 @@
 import axios from "axios";
 import { useState, useLayoutEffect} from "react";
+const API_URL = process.env.REACT_APP_API_URL;
 
 
 function Filter (props) {
-  console.log ("PROPS", props)
-  const { products, setProductsCopy} = props
+  
+  const { products, setProductsCopy, searchValue } = props;
 
   const [searchByCategory, setSearchByCategory] = useState("assembly");
   const [searchByPrice, setSearchByPrice] = useState(300);
-  const [searchByRating, setSearchByRating] = useState(0)
+  const [searchByRating, setSearchByRating] = useState(5)
 
-  useLayoutEffect(() => {
-
-    const API_URL = process.env.REACT_APP_API_URL;
-
-    if (products.length !== 0){
+  
+ /*    if (products.length !== 0){
 
       let productsToFilter = products;
-      let filteredProducts = []
       let filteredByCategory = []
-
-      console.log("SEARCH CATEGORY", searchByCategory)
+ */
+     /*  console.log("SEARCH CATEGORY", searchByCategory)
       console.log("SEARCH PRICE", searchByPrice)
-      console.log("SEARCH RATING", searchByRating)
+      console.log("SEARCH RATING", searchByRating) */
 
-    let firstFilterArr = []
+    /* let firstFilterArr = []
     let finalFilteredArr = []
 
       let filteredByPrice = productsToFilter.filter (product => product.amount <= searchByPrice)
-      let filteredByRating = productsToFilter.filter(product => product.avarageRating >= searchByRating)
+      let filteredByRating = productsToFilter.filter(product => product.averageRating >= searchByRating)
       axios
         .get(API_URL+"/product/category/"+searchByCategory)
         .then ((response) => {
-          console.log ("response: ", response)
+          //console.log ("response: ", response)
           filteredByCategory = response.data;
 
           for (let i = 0; i< filteredByPrice.length; i++){
@@ -41,9 +38,9 @@ function Filter (props) {
                     firstFilterArr.push(filteredByPrice[i])
                   }
               }
-          }
+          } */
 
-          for (let i = 0; i< firstFilterArr.length; i++){
+        /*   for (let i = 0; i< firstFilterArr.length; i++){
             for (let j = 0; j < filteredByCategory.length; j++){
                 if (firstFilterArr[i]._id === filteredByCategory[j]._id){
                   finalFilteredArr.push(firstFilterArr[i])
@@ -51,38 +48,20 @@ function Filter (props) {
             }
         }
 
-        setProductsCopy(finalFilteredArr)
+        console.log("FILTEREDBYPRICE", filteredByPrice)
+        console.log("FILTEREDbyRating", filteredByRating)
+        console.log("FILTEREDBYcategory", filteredByCategory) */
 
-          
+        /* etProductsCopy(finalFilteredArr) */
+       /*  setFetch(false) */
 
-        /*   for (let i = 0; i< filteredByPrice.length; i++){
-            for (let j = 0; j < filteredByRating.length; j++){
-                for(let x = 0; x < filteredByCategory.length; x++){
-                    if (filteredByPrice[i]._id === filteredByRating[j]._id === filteredByCategory[x]._id) {
-                  firstFilterArr.push(filteredByPrice[i])
-                }
-                }
-            }} */
-
-         
-          console.log("FIRST FILTERED ARR" , firstFilterArr)
-          console.log("FINAL ARR" , finalFilteredArr)
-  
-            console.log ("Filtered Products: ", filteredProducts)
-            console.log ("Filtered Price: ", filteredByPrice)
-            console.log ("Filtered Rating: ", filteredByRating)
-
-/*             if (filteredByRating.length!==0){
-              setProductsByFilter (filteredProducts) 
-            } else {
-              console.log ("nothing to show")
-            } */
-        })
-        .catch((error) => console.log(error))
-  }
-  },
+    
+       /*  })
+        .catch((error) => console.log(error)) */
+ // }
+ // }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  [searchByCategory, searchByPrice, searchByRating])
+ 
 
   const handleCategory = (e) => {
     setSearchByCategory(e.target.value)
@@ -96,14 +75,32 @@ function Filter (props) {
   const handleRating = (e) => {
   console.log("rating", e.target.value)
   setSearchByRating(e.target.value) 
+  }
+
+  const handleSubmit = (e) => {
+
+    console.log("hemos llegado al submit")
+    e.preventDefault()
+    const objectToSubmit = { 
+      category: searchByCategory,
+      amount: searchByPrice,
+      averageRating: searchByRating,
+      nameSearch: searchValue
+    }
+    
+    axios.post(API_URL+"/product/filter", objectToSubmit)
+      .then(response => {
+        console.log("response: ", response.data)
+        setProductsCopy(response.data)
+      })
 
   }
 
   return (
 
-    <form>
+    <form onSubmit={handleSubmit}>
           <label>Category:</label>
-          <select onChange={handleCategory}>
+          <select value={searchByCategory} onChange={handleCategory}>
               <option value="assembly">Assembly Tools</option>
               <option value="cutting">Cutting Tools</option>
               <option value="hammering">Hammering Tools</option>
@@ -116,7 +113,7 @@ function Filter (props) {
               <option value="industrial">Industrial Tools</option>
           </select>
           <label>Price:</label>
-          <input type="range" min="0" max="300" step="5" value={searchByPrice} onChange={handlePrice}
+          <input type="range" min="0" max="600" step="5" value={searchByPrice} onChange={handlePrice}
               list="tickmarks" multiple/> 
               <label>{searchByPrice}</label>
               <datalist id="tickmarks">
@@ -134,7 +131,7 @@ function Filter (props) {
                   <option value="90">90</option>
                   <option value="100">100</option>
                   <option value="120">120</option>
-                  <option value="150">150</option>
+                  <option value="550">550</option>
               </datalist>
           <label>Rating:</label>
           <input type="range" min="0" max="5" step="1" value={searchByRating} onChange={handleRating}
@@ -148,6 +145,7 @@ function Filter (props) {
                   <option value="5">5</option>
                   
               </datalist>
+              <button type="submit">Filter</button>
     </form>
  
 );

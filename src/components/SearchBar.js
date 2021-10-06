@@ -4,9 +4,12 @@ import axios from "axios";
 
 function SearchProduct(props) {
 
-  const {setProductsBySearch, setThereAreProducts} = props
+
+  const {setProductsBySearch, setThereAreProducts, handleSearch} = props
 
   const [searchLetters, setSearchLetters] = useState("");
+
+  console.log("typeof", typeof handleSearch)
 
   const handleSelect = (e) => {
     
@@ -22,8 +25,13 @@ function SearchProduct(props) {
     axios
       .get (API_URL + "/product/search/"+productToSearch)
       .then (response => {
+        console.log("Aquiiiiiiii: ", response.data)
         setProductsBySearch (response.data);
-        setThereAreProducts (true)
+        setThereAreProducts (true);
+        handleSearch(searchLetters)
+    
+        console.log("searchletter mierdiii")
+        
       } 
         )
   }                                  
