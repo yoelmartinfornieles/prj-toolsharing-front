@@ -13,13 +13,14 @@ const API_URL = process.env.REACT_APP_API_URL
 
 const PaypalPop = (props) =>{
 
- const {price, product, endDate, startDate} = props
+ const {price, product, endDate, startDate, excludeDays} = props
  const history = useHistory()
 
 const ProductDetails ={
     product,
     endDate,
-    startDate
+    startDate,
+    excludeDays
 }
 
 
