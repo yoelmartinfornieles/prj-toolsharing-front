@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import {useHistory} from "react-router-dom"
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
@@ -10,6 +11,8 @@ function NewProductForm(props) {
   const [category, setCategory] = useState("assembly");
   const [adquisitionYear, setAdquisitionYear] = useState(0);
   const [imageId, setImageId] = useState("")
+
+  let history = useHistory()
 
   //const[fileInput,setFileInput]= useState("")
   const fileInput = ""
@@ -106,16 +109,16 @@ try {
       owner: userId
     };
 
-    let productId
-    let updatedUser
-
-    let p1 = axios.post(API_URL + "/product", objectToSubmit)
+   axios
+    .post(API_URL + "/product", objectToSubmit)
     .then((response) => {
+      history.push("/profile")
       console.log("creado")
       /* productId = response.data._id
       updatedUser = JSON.parse(JSON.stringify(userInfo))
       updatedUser.products.push(productId) */
     })
+    .catch(error => console.log("error: ", error))
 
     /* Promise.all([p1])
     .then(response => {

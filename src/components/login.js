@@ -31,6 +31,7 @@ function LoginPage(props) {
           loginChat ()
         }, 800); */
         setIsShowLogin (false);
+        history.push("/profile")
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
