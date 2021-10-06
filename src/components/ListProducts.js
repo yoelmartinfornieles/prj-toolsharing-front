@@ -7,12 +7,12 @@ import ProductCard from './ProductCard'
   let productsToShow = products
   console.log ("ListProducts product array is: ", productsToShow)
   
-if (products) {
+if (products.length > 0) {
 
   return (
     <>
-{/*       <Filter setProductsByFilter={setProducts} products={products} />
- */}      <div className="cards-container">
+       {/* <Filter setProductsByFilter={setProducts} products={products} /> */}
+       <div className="cards-container">
         {productsToShow.map((product) => (
           <>
           <ProductCard key={product._id} product={product}/>
@@ -24,7 +24,9 @@ if (products) {
 } else {
 
   return (
-    <p>Loading ...</p>
+    <div>
+    <img width="400" src="https://smartbookings.rw/views/assets/images/no_result.gif"/>
+    </div>
   )
 
   }

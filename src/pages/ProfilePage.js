@@ -6,6 +6,8 @@ import  UserInfo  from "../components/profileComponents/UserInfo"
 import axios from "axios"
 import UserProducts from "../components/profileComponents/UserProducts"
 import AdressConverter from "../components/AdressConverter";
+import {MYNETWORK} from "../utils/paths";
+
 
 
 
@@ -15,6 +17,7 @@ function ProfilePage(){
 	const [userInfo, setUserInfo] = useState ("")
 	const [showLocationForm, setShowLocationForm] = useState(false)
 	let API_URL = process.env.REACT_APP_API_URL
+	console.log ("USER._ID: ", user)
 	let userId = user._id
 
 
@@ -55,6 +58,13 @@ function ProfilePage(){
 			{showLocationForm && <AdressConverter id={userId} close={handleUnshow}/> }
 			
 		</nav>
+		<>
+			<nav>
+				<UserInfo  userInfo={userInfo}/>
+				<a className="" href={MYNETWORK}>GO TO MY NETWORK<img alt=""/></a>
+				<UserProducts userInfo={userInfo}/>
+			</nav>
+		</>
 	  );
 	}
 	else {

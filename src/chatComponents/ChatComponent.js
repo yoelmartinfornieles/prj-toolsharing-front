@@ -1,7 +1,6 @@
 import React from "react";
 import Talk from "talkjs";
 import axios from "axios";
-//import { useState } from "react"
 
 class MyNetwork extends React.Component {
   constructor(props) {
@@ -47,30 +46,17 @@ class MyNetwork extends React.Component {
   }
 
   handleClick(owner) {
-    let TALK_JS_DEV_ID = "teiWhWmj"; //process.env.TALK_JS_DEV_ID
-    console.log(
-      "/* ------------TALK_JS_DEV_ID-----------------------*",
-      TALK_JS_DEV_ID
-    );
-
-    //retrieve the two users that will participate in the conversation
+    let TALK_JS_DEV_ID = "teiWhWmj"//process.env.TALK_JS_DEV_ID
     const { currentUser } = this.state;
-
     let user = owner;
     user.id = user._id;
     user.name = user.username;
     user.role = "Member";
 
-    console.log("USER: ", user);
-
-    //Session initialization code
     Talk.ready
       .then(() => {
-        //Create the two users that will participate in the conversation
         const me = new Talk.User(currentUser);
         const other = new Talk.User(user);
-
-        //Create a talk session if this does not exist. Remember to replace tthe APP ID with the one on your dashboard
         if (!window.talkSession) {
           window.talkSession = new Talk.Session({
             appId: TALK_JS_DEV_ID,
