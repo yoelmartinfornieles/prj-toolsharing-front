@@ -59,7 +59,7 @@ class MyNetwork extends React.Component {
 
    handleClick(userId) {
 
-    let TALK_JS_DEV_ID = "teiWhWmj"//process.env.TALK_JS_DEV_ID
+    let TALK_JS_DEV_ID = process.env.REACT_APP_TALK_JS_DEV_ID
 	const { currentUser } = this.state;
 	let user = this.otherUsers.find(user => user._id === userId)
 	user.id = user._id
@@ -92,7 +92,6 @@ class MyNetwork extends React.Component {
 
    render() {
 	const { currentUser } = this.state;
-	console.log ("CURRENTUSER: ", currentUser)
 	return (
 		<div className="users">
 			<div className="current-user-container">

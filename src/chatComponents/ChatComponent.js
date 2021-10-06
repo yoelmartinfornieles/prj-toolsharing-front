@@ -46,7 +46,7 @@ class MyNetwork extends React.Component {
   }
 
   handleClick(owner) {
-    let TALK_JS_DEV_ID = "teiWhWmj"//process.env.TALK_JS_DEV_ID
+    let TALK_JS_DEV_ID = process.env.REACT_APP_TALK_JS_DEV_ID
     const { currentUser } = this.state;
     let user = owner;
     user.id = user._id;

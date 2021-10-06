@@ -7,7 +7,7 @@ function Logout() {
     alert('Logout made successfully ✌'); */
   };
   
-  const clientId = "103678780845-vsp1r3hrboarvi7ccaqilouat5kaf9mr.apps.googleusercontent.com"//process.env.GOOGLE_ID
+  const clientId = process.env.REACT_APP_GOOGLE_ID
 
   return (
     <div>

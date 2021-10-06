@@ -6,9 +6,10 @@ import { useState, useContext } from "react";
 import {useHistory} from "react-router-dom"
 import { AuthContext } from "./../context/auth.context";
 
-const clientId = "103678780845-vsp1r3hrboarvi7ccaqilouat5kaf9mr.apps.googleusercontent.com"//process.env.GOOGLE_ID
+const clientId = process.env.REACT_APP_LOGIN_GOOGLE
 
 function LoginGoogle(props) {
+	console.log("CLIENTid: ", process.env.REACT_APP_LOGIN_GOOGLE)
 	const [errorMessage, setErrorMessage] = useState(undefined);
     const API_URL = process.env.REACT_APP_API_URL;
 	const { logInUser } = useContext(AuthContext);
@@ -32,7 +33,7 @@ function LoginGoogle(props) {
         .post (`${API_URL}/send-email`, req)
         .then ( (response) => {
         console.log("EMAIL sent successfully", response.data)
-        props.history.push("/profile")});
+        history.push("/profile")});
       })
       .catch((error) => {
       	const errorDescription = error.response.data.message;
