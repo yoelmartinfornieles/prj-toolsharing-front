@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
 import CalendarBook from '../components/CalendarBookDetails'
+import {Image} from 'cloudinary-react'
 
 import OwnerCard from '../components/UserCard'
 import Logo from "../images/tooly-logo.png"
@@ -20,6 +21,8 @@ function ProductDetailsPage (props) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFav, setIsFav] = useState(false)
 
+  console.log('product!!!!MODHEWRFUKER', product)
+
   const {id} = useParams()
   console.log ("id: ", id)
   console.log('is fav??',isFav)
@@ -32,7 +35,7 @@ function ProductDetailsPage (props) {
   console.log('this is the current user:', userId)
 
 	useEffect(() => {
-		console.log("useEffectdfsdfdsfdfsdfs")
+
 		axios
 		 .get (API_URL+"/user/"+userId)
 		 .then ((response)=> {
@@ -90,6 +93,7 @@ function ProductDetailsPage (props) {
     ) 
   }
   
+  
   return ( <div className="product-details">
         <nav className="top-navbar">
             <img src={Logo}/>
@@ -97,7 +101,10 @@ function ProductDetailsPage (props) {
         {isLoaded && <div>
             <div className="product-detail-card">
               <div className="product-detail-img">
-                <img src={product.photo}/>
+                <Image
+                  className="img-product-cloud"
+                  cloudName="toolsharing"
+                  publicId={product.photo}/>
               </div>
               <div className="product-header-text">
                 <h2>{product.name}</h2>

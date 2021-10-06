@@ -7,6 +7,9 @@ function HomeCategories(props) {
 
   const handleClick = (e) => {
       let API_URL = process.env.REACT_APP_API_URL
+      console.log("PROCESS ENV", process.env)
+      console.log("REACT_APP_API_URL", process.env.REACT_APP_API_URL)
+      console.log("TALK JS ID", process.env.TALK_JS_DEV_ID)
       e.preventDefault()
       let categoryToSearch = e.target.id
       console.log ("category :", categoryToSearch)
