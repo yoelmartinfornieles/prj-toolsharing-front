@@ -30,11 +30,11 @@ class MyNetwork extends React.Component {
 			let transactions = response.data
 			let usersInvolved = []
 			for (let i=0; i<transactions.length; i++){
-				if (transactions[i].ownerId._id === currentUserId){
-					console.log (transactions[i].renterId._id+" = "+currentUserId)
-					usersInvolved.push(transactions[i].renterId)
-				} else if (transactions[i].renterId._id === currentUserId) {
-					usersInvolved.push(transactions[i].ownerId)
+				if (transactions[i].owner._id === currentUserId){
+					console.log (transactions[i].renter._id+" = "+currentUserId)
+					usersInvolved.push(transactions[i].renter)
+				} else if (transactions[i].renter._id === currentUserId) {
+					usersInvolved.push(transactions[i].owner)
 				}
 			}
 			let uniqueUsers = []
