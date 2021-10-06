@@ -1,37 +1,43 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../context/auth.context";
+let API_URL = process.env.REACT_APP_API_URL
 
-function NewProductForm(props) {
-  //let history = useHistory()
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [category, setCategory] = useState("assembly");
-  const [adquisitionYear, setAdquisitionYear] = useState(0);
-  const [imageId, setImageId] = useState("")
 
-  //const[fileInput,setFileInput]= useState("")
+function EditProduct(props) {
+
+   /*  const history = useHistory() */
+
+   console.log("PROPS EDITPROD", props.product)
+
+    const oldProductInfo = props.product
+    const productId = oldProductInfo._id
+
+  const oldName = oldProductInfo.name
+  const oldDescription = oldProductInfo.description
+  const oldAmount = oldProductInfo.amount
+  const oldCategory = oldProductInfo.category
+  const oldAdquisitionYear = oldProductInfo.adquisitionYear
+  const oldImageId = oldProductInfo.imageId
+  
+  const [name, setName] = useState(oldName);
+  const [description, setDescription] = useState(oldDescription);
+  const [amount, setAmount] = useState(oldAmount);
+  const [category, setCategory] = useState(oldCategory);
+  const [adquisitionYear, setAdquisitionYear] = useState(oldAdquisitionYear);
+  const [imageId, setImageId] = useState(oldImageId)
+
   const fileInput = ""
 
   const[previewSource,setPreviewSource]= useState("")
 
-  /* ------Logged User ----- */
 
-  const { user } = useContext(AuthContext);
-	/* const [userInfo, setUserInfo] = useState ("") */
-	let API_URL = process.env.REACT_APP_API_URL
-	let userId = user._id
-
-  console.log('this is the current user:', userId)
 
   const handleName = (e) => setName(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleAmount = (e) => setAmount(e.target.value);
  
-  const handleCategory = (e) => {setCategory(e.target.value)
-  console.log("category", category)};
-  const handleAdquisitionYear = (e) => setAdquisitionYear(e.target.value);
+  const handleCategory = (e) => {setCategory(e.target.value)};
+  const handleYearOfAcquisition = (e) => setAdquisitionYear(e.target.value);
 
   /* ----- Image ------ */
   const handleFileChange =(e)=>{
@@ -74,23 +80,6 @@ try {
 
 }
 
-  /* ------Logged User ----- */
-
- /*  useEffect(() => {
-		console.log("useEffect")
-		axios
-		 .get (API_URL+"/user/"+userId)
-		 .then ((response)=> {
-			setUserInfo(response.data)
-    
-		 }
-		)
-	},  */
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-	/* []) */
-
-
-  /* Add product ID to user & user ID to product */
 
 
   const handleSubmit = (e) => {
@@ -103,28 +92,14 @@ try {
       photo:imageId,
       category: category,
       adquisitionYear: adquisitionYear,
-      owner: userId
     };
 
-    let productId
-    let updatedUser
+    
 
-    let p1 = axios.post(API_URL + "/product", objectToSubmit)
+    axios.put(API_URL + `/product/${productId}`, objectToSubmit)
     .then((response) => {
-      console.log("creado")
-      /* productId = response.data._id
-      updatedUser = JSON.parse(JSON.stringify(userInfo))
-      updatedUser.products.push(productId) */
+      console.log("creado", response)
     })
-
-    /* Promise.all([p1])
-    .then(response => {
-      axios.put((API_URL + `/user/${userInfo._id}`), updatedUser)
-        .then((response) => {
-          console.log("RESPONSE: " , response.data)
-          setUserInfo(response.data)})
-        .catch((error) => {console.log("error", error)})
-    }) */
     
   }
   
@@ -190,7 +165,7 @@ try {
           type="number"
           name="YearOfAcquisition"
           value={adquisitionYear}
-          onChange={handleAdquisitionYear}
+          onChange={handleYearOfAcquisition}
         ></input>
         <button type="submit">Add</button>
       </form>
@@ -199,4 +174,4 @@ try {
   );
 }
 
-export default NewProductForm;
+export default EditProduct;
