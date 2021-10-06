@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
 import CalendarBook from '../components/CalendarBookDetails'
@@ -9,8 +9,6 @@ import {Image} from 'cloudinary-react'
 
 import OwnerCard from '../components/UserCard'
 import Logo from "../images/tooly-logo.png"
-import ArrowLeft from '../images/arrow-left.png'
-import ArrowRight from '../images/arrow-right.png'
 import ChatComponent from "../chatComponents/ChatComponent"
 
 //const API_URL = process.env.REACT_APP_API_URL;
@@ -96,7 +94,7 @@ function ProductDetailsPage (props) {
   
   return ( <div className="product-details">
         <nav className="top-navbar">
-            <img src={Logo}/>
+            <img src={Logo} alt="Logo" />
         </nav>
         {isLoaded && <div>
             <div className="product-detail-card">

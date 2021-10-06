@@ -22,7 +22,7 @@ function Navbar(props) {
       {/* esto de abajo deberia de ser un boton? */}
       {/* Condicional con authcontext para hacer switch del boton*/}
       {/* {user? <button className="navbar-button" to="/" onClick={logOutUser} ><p>log out</p></button> : <button className="navbar-button" onClick={props.clickToShow}><p>log in</p></button>} */}
-      {user? <a className="navbar-button" href={PROFILE}><img alt="" src={userIcon}/></a> : <button className="navbar-button" onClick={props.clickToShow}><p>LogIn</p></button>}
+      {user? <Link className="navbar-button" to={PROFILE}><img alt="" src={userIcon}/></Link> : <button className="navbar-button" onClick={props.clickToShow}><p>LogIn</p></button>}
 
       {/* ------------WIP: CHAT LINKS-----------------------*/ }
 

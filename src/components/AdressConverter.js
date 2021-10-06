@@ -40,7 +40,7 @@ function AdressConverter(props) {
 
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${searchStreet},+${number},+${postalCode},+${searchCity}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${searchStreet},+${number},+${postalCode},+${searchCity}&key=AIzaSyCO6vMEzrsXbc43qNmIEzbkTrV7nwhEf_Q`
       )
       .then((response) => {
         console.log(response.data.results[0].geometry.location);
