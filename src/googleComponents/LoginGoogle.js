@@ -8,7 +8,7 @@ import { AuthContext } from "./../context/auth.context";
 
 const clientId = "103678780845-vsp1r3hrboarvi7ccaqilouat5kaf9mr.apps.googleusercontent.com"//process.env.GOOGLE_ID
 
-function LoginGoogle() {
+function LoginGoogle(props) {
 	const [errorMessage, setErrorMessage] = useState(undefined);
     const API_URL = process.env.REACT_APP_API_URL;
 	const { logInUser } = useContext(AuthContext);
@@ -24,9 +24,15 @@ function LoginGoogle() {
 	  axios
 	  .post(API_URL+"/google", requestBody)
 	  .then((response) => {
+        let req = {email:requestBody.email, subject:"Welcome to Tooly", message:"You succesfully registered, enjoy"}
         const token = response.data.authToken;
         logInUser(token);
-        history.push("/profile");
+		console.log("Signed up correct WITH GOOGLE")
+		axios
+        .post (`${API_URL}/send-email`, req)
+        .then ( (response) => {
+        console.log("EMAIL sent successfully", response.data)
+        props.history.push("/profile")});
       })
       .catch((error) => {
       	const errorDescription = error.response.data.message;
