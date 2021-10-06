@@ -109,7 +109,7 @@ class MyNetwork extends React.Component {
      
                         { this.otherUsers.map(user => 
                          <>
-                              <ChatContactCard user={user} key={user.id} />
+                              <ChatContactCard className="user" user={user} key={user.id} />
                                   <div className="user-action">
         							 <button onClick={(userId) => this.handleClick(user._id)}>Message</button>
       							</div>

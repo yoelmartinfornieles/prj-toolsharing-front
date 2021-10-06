@@ -5,6 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import  UserInfo  from "../components/profileComponents/UserInfo"
 import axios from "axios"
 import UserProducts from "../components/profileComponents/UserProducts"
+import {MYNETWORK} from "../utils/paths";
 
 
 
@@ -36,10 +37,13 @@ function ProfilePage(){
 	if (userInfo) {
 
 	return (
-		<nav>
-			<UserInfo  userInfo={userInfo}/>
-			<UserProducts userInfo={userInfo}/>
-		</nav>
+		<>
+			<nav>
+				<UserInfo  userInfo={userInfo}/>
+				<a className="" href={MYNETWORK}>GO TO MY NETWORK<img alt=""/></a>
+				<UserProducts userInfo={userInfo}/>
+			</nav>
+		</>
 	  );
 	}
 	else {
