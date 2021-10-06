@@ -74,12 +74,8 @@ function ProductDetailsPage (props) {
     axios
       .post (API_URL+"/fav/"+id, {userId})
       .then (response => {
-    
-
-        console.log("product Fav: ", response.data)
-      }
+          }
     ) 
-
   }
 
   const handleSubmitDeleteFav = (e) => {
@@ -94,7 +90,6 @@ function ProductDetailsPage (props) {
         console.log("product delete Fav: ", response.data)
       }
     ) 
-
   }
   
   
@@ -115,19 +110,12 @@ function ProductDetailsPage (props) {
               <OwnerCard ownerId={product.ownerId}/> 
             </div>
               <CalendarBook product={product} />
-
-              
-      	        {/* <div className="gradient-left"><img src={ArrowLeft} alt="Arrow to the left"/></div> */}
                 <h2 className="review-title">Tool reviews:</h2>
                   <div className="review-cards">
                           {product.reviews.map ( (review) => { 
                           return (<ReviewCard key={review._id} review={review} />)})}
                   </div>
       <ChatComponent owner= {owner}/>
-
-                {/* <div className="gradient-right"><img src={ArrowRight} alt="Arrow to the right"/></div> */}
-            
-          {/* <Link to={`/product/${product._id}/book`}>BOOK THIS</Link> */}
     </div>}
     </div>
   );

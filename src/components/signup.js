@@ -52,11 +52,16 @@ function Signup(props) {
     axios
       .post(`${API_URL}/signup`, requestBody)
       .then((response) => {
-        props.history.push("/profile")
+        console.log("signed up correct")
+        let req = {email:requestBody.email, subject:"Welcome to Tooly", message:"You succesfully registered, enjoy"}
+        axios
+        .post (`${API_URL}/send-email`, req)
+        .then ( (response) => {
+        console.log("email sent successfully", response.data)
+        props.history.push("/profile")})
       })
       .catch((error) => {
-         const errorDescription = error.response.data.message;
-         setErrorMessage(errorDescription); 
+         console.log("error: ", error)
       });
   };
 

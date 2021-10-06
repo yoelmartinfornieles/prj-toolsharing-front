@@ -24,20 +24,15 @@ function BookForm(props) {
   const [error, setError] = useState(false);
 
   const {product} = props
- 
 
-  const[bookings, setBookings] = useState({})
+  const bookings = {}
   const[showPay, setShowPay] = useState(false) // <--- STORES SHOWING/HIDING PAYING INFO STATE ----> 
  
-
-
   const payInfoHandler= ()=>{   // <--- SWITCHES SHOWING/HIDING PAYING INFO----> 
     setShowPay(!showPay)
     console.log(showPay)
     console.log(bookings)
   }
-
-
 
   const dateArrayToPrint = (arr) =>{
     let newArr = []
@@ -47,7 +42,7 @@ function BookForm(props) {
     return newArr
   }
 
-  let dataPrint = new Date(moment(startDate).format("MM/DD/YYYY"));
+  //let dataPrint = new Date(moment(startDate).format("MM/DD/YYYY"));
 
   //console.log("startDate:", dataPrint);
 
@@ -88,15 +83,12 @@ function BookForm(props) {
     let newFinalArr = finalDateArray.filter ((element) => product.bookDates.includes ( element ))
 
 /*     
-
       finalDateArray.map((result) => {
       if (dataArray.includes(result)) {
         newFinalArr.push(result)
       } return ("ok")
     }) */
  
-    
-
     if (newFinalArr.length > 0) {
       setError(!error);
     } else {
