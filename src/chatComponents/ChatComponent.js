@@ -28,14 +28,15 @@ class MyNetwork extends React.Component {
     console.log("currentUserId: ", currentUserId);
     axios.get(API_URL + `/chat/${currentUserId}`).then((response) => {
       let transactions = response.data;
-      console.log("transactions");
+      console.log("transactions", transactions.length);
       let usersInvolved = [];
+
       for (let i = 0; i < transactions.length; i++) {
-        if (transactions[i].ownerId._id === currentUserId) {
-          console.log(transactions[i].renterId._id + " = " + currentUserId);
-          usersInvolved.push(transactions[i].renterId);
-        } else if (transactions[i].renterId._id === currentUserId) {
-          usersInvolved.push(transactions[i].ownerId);
+        if (transactions[i].owner === currentUserId) {
+          console.log(transactions[i].renter + " = " + currentUserId);
+          usersInvolved.push(transactions[i].renter);
+        } else if (transactions[i].renter === currentUserId) {
+          usersInvolved.push(transactions[i].owner);
         }
       }
       console.log("usersInvolved: ", usersInvolved);
