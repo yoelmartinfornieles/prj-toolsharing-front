@@ -8,7 +8,7 @@ function NewProductForm(props) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("assembly");
-  const [yearOfAcquisition, setYearOfAcquisition] = useState(0);
+  const [adquisitionYear, setAdquisitionYear] = useState(0);
   const [imageId, setImageId] = useState("")
 
   //const[fileInput,setFileInput]= useState("")
@@ -31,7 +31,7 @@ function NewProductForm(props) {
  
   const handleCategory = (e) => {setCategory(e.target.value)
   console.log("category", category)};
-  const handleYearOfAcquisition = (e) => setYearOfAcquisition(e.target.value);
+  const handleAdquisitionYear = (e) => setAdquisitionYear(e.target.value);
 
   /* ----- Image ------ */
   const handleFileChange =(e)=>{
@@ -101,9 +101,9 @@ try {
       description: description,
       amount: amount,
       photo:imageId,
-      categories: category,
-      yearOfAcquisition: yearOfAcquisition,
-      ownerId: userId
+      category: category,
+      adquisitionYear: adquisitionYear,
+      owner: userId
     };
 
     let productId
@@ -189,8 +189,8 @@ try {
         <input
           type="number"
           name="YearOfAcquisition"
-          value={yearOfAcquisition}
-          onChange={handleYearOfAcquisition}
+          value={adquisitionYear}
+          onChange={handleAdquisitionYear}
         ></input>
         <button type="submit">Add</button>
       </form>
