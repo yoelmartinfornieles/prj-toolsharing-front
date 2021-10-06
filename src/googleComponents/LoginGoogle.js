@@ -2,25 +2,20 @@ import axios from "axios";
 import React from "react";
 import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../utils/refreshToken';
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import {useHistory} from "react-router-dom"
 import { AuthContext } from "./../context/auth.context";
 
 function LoginGoogle(props) {
   const clientId = process.env.REACT_APP_LOGIN_GOOGLE;
-  const [errorMessage, setErrorMessage] = useState(undefined);
   const API_URL = process.env.REACT_APP_API_URL;
   const { logInUser } = useContext(AuthContext);
   let history = useHistory();
-  var { clickToShow } = props;
+  //var { clickToShow } = props;
 
   const onSuccess = (res) => {
 	const googleObject = res.profileObj;
 	const requestBody = {email: googleObject.email, username: googleObject.name, password: googleObject.googleId }
-/* 	  console.log('Login Success: currentUser:', res.profileObj);
-*//* 	  alert(
-	  `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-	); */
 	axios
 	.post(API_URL+"/google", requestBody)
 	.then((response) => {
@@ -35,8 +30,7 @@ function LoginGoogle(props) {
 	  history.push("/profile")});
 	})
 	.catch((error) => {
-		const errorDescription = error.response.data.message;
-		setErrorMessage(errorDescription);
+		console.log("error: ", error);
 	  })
 
 	refreshTokenSetup(res);

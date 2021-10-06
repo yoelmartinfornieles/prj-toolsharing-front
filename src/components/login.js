@@ -34,6 +34,7 @@ function LoginPage(props) {
         history.push("/profile");
       })
       .catch((error) => {
+        setErrorMessage(error);
       	console.log(error)
     	})
   };
