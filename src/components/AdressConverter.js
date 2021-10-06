@@ -55,25 +55,29 @@ function AdressConverter(props) {
   const handleSubmitCoords = (e) => {
     console.log("holaaaaaaa");
     e.preventDefault();
-    let location = { lat: lat, lng: lng };
-    let address = {
+    let requestBody = {
+    location:{ lat: lat, lng: lng },
+    address:{
       street: street,
       number: number,
       city: city,
       postalCode: postalCode,
-    };
-    let objectToSubmit = { location, address };
-    console.log("object to submit:", objectToSubmit);
-    setShowForm(false)
+    }
+    }
+
+    
+    console.log("object to submit:", requestBody);
 
     axios
-      .put(API_URL + `/user/+${props.id}`, { objectToSubmit })
+      .put(API_URL + `/user/${props.id}`, requestBody)
       .then((response) => {
         console.log("this is your location:", response);
       })
       .catch((err) => {
         console.log("Error:", err);
       });
+
+      setShowForm(false)
   };
 
   return (

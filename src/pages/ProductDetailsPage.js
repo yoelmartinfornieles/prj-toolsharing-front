@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
 import CalendarBook from '../components/CalendarBookDetails'
+import {Image} from 'cloudinary-react'
 
 import OwnerCard from '../components/UserCard'
 import Logo from "../images/tooly-logo.png"
@@ -105,7 +106,10 @@ function ProductDetailsPage (props) {
         {isLoaded && <div>
             <div className="product-detail-card">
               <div className="product-detail-img">
-                <img src={product.photo}/>
+                <Image
+                  className="img-product-cloud"
+                  cloudName="toolsharing"
+                  publicId={product.photo}/>
               </div>
               <div className="product-header-text">
                 <h2>{product.name}</h2>

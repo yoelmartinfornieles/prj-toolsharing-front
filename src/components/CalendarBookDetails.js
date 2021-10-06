@@ -129,7 +129,7 @@ function BookForm(props) {
       
     </form>
     {showPay && 
-        <PaypalPop price ={price}  product={product} startDate={startDate} endDate={endDate} />
+        <PaypalPop price ={price}  product={product} startDate={startDate} endDate={endDate} excludeDays={dateArrayToPrint(product.bookDates)}/>
    
     }
     
