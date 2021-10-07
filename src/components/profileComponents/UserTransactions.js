@@ -7,14 +7,20 @@ const API_URL = process.env.REACT_APP_API_URL
 const UserTransactions = ()=>{
 
     const[transactions, setTransactions] = useState([])
+    
 
 
 
     useEffect( 
         () =>{
+            const storedToken = localStorage.getItem('authToken');
         
-            axios.get(API_URL + "/transaction")
-            .then(response => setTransactions(response.data))
+            axios.get(API_URL + "/transaction",    { headers: { Authorization: `Bearer ${storedToken}` } } )
+            .then(response => {setTransactions(response.data)
+                console.log('transaction',response.data)
+            }
+            )
+       
 
     } 
     ,[])
