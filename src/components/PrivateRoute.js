@@ -11,7 +11,7 @@ function PrivateRoute(props) {
   console.log("isLoggedIn",isLoggedIn)
 
   // If the authentication is still loading ⏳
-  if (isLoading) return <p>Loading ...</p>;
+  if (isLoading) return <div class="lds-ring"><div></div><div></div><div></div><div></div></div>;
 
   // If the user is not logged in ❌
   if (!isLoggedIn) {

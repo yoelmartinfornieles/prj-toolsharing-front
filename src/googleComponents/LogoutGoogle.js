@@ -30,7 +30,7 @@ function Logout() {
       </div>
     );
   } else {
-    return <>Loading ...</>
+    return <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
   }
 }
 

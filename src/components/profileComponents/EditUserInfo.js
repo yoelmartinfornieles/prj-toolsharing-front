@@ -7,6 +7,8 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function EditUserInfo(props) {
 
+    const setIsShowEditUserForm = props.setIsShowEditUserForm
+
     const history = useHistory()
 
     const oldUserInfo = props.userInfo
@@ -32,16 +34,60 @@ function EditUserInfo(props) {
   const [city, setCity] = useState(oldCity);
   const [postalCode, setPostalCode] = useState(oldPostalCode);
   const [profileImg, setProfileImg] = useState(oldProfileImg);
+  //const[fileInput,setFileInput]= useState("")
+  const fileInput = ""
+
+  const[previewSource,setPreviewSource]= useState("")
+
+  let API_URL = process.env.REACT_APP_API_URL
 
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const handleFullName = (e) => setFullName(e.target.value);
   const handleUsername = (e) => setUsername(e.target.value);
- /*  const handleStreet = (e) => setStreet(e.target.value);
-  const handleNumberStreet = (e) => setNumberStreet(e.target.value);
-  const handleCity = (e) => setCity(e.target.value);
-  const handlePostalCode = (e) => setPostalCode(e.target.value); */
   const handleProfileImg = (e) => setProfileImg(e.target.value);
+
+  const handleFileChange =(e)=>{
+    const file = e.target.files[0]
+    previewFile(file)
+  }
+
+  const previewFile = (file) =>{
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend=() =>{
+        setPreviewSource(reader.result)
+    }
+  }
+
+  const handleSubmitImage = (e) => {
+
+    e.preventDefault()
+    console.log("image send")
+    if(!previewSource) return;
+   uploadImage(previewSource)
+}
+
+const uploadImage = async (base64EncodedImage) => {
+
+  console.log("image uploaded")
+try {
+    const res = await fetch(API_URL+"/upload", {
+        method: "POST",
+        body: JSON.stringify({data: base64EncodedImage}),
+        headers: {"Content-type": "application/json"}
+    })
+    const data = await res.json()
+    console.log('this is the photo madafaka',data.response)
+    setProfileImg(data.response)
+
+} catch (err){
+    console.error(err)
+}
+
+}
+
+
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
@@ -49,23 +95,15 @@ function EditUserInfo(props) {
     const requestBody = {
       fullName: fullName,
       username: username,
-      /* address: {
-        street: street,
-        number: numberStreet,
-        city: city,
-        postalCode: postalCode,
-      }, */
       profileImg: profileImg,
     };
 
     console.log(requestBody);
 
-    // Make an axios request to the API
-    // If POST request is successful redirect to login page
-    // If the request resolves with an error, set the error message in the state
     axios
       .put(`${API_URL}/user/${userId}`, requestBody)
       .then(() => {
+        setIsShowEditUserForm(false)
         window.location.reload()
       })
       .catch((error) => {console.log(error); 
@@ -73,7 +111,20 @@ function EditUserInfo(props) {
   };
 
   return (
-    <div className="Signup">
+    <div className="Signup edit-profile">
+    <div className="new-product-form">
+          <form className="new-product-form-photo" onSubmit={handleSubmitImage} >
+            <input multiple 
+              type="file"
+              name="image" 
+              onChange={handleFileChange} 
+              value={fileInput} />
+              <button type="submit">Select Photo</button>
+          </form>
+          {previewSource && (
+            <img src={previewSource} alt=""/>
+            )}
+          </div>
 
       <div className="scroll-signup">
         <form onSubmit={handleSignupSubmit}>
@@ -91,14 +142,6 @@ function EditUserInfo(props) {
             placeholder="Username"
             value={username}
             onChange={handleUsername}
-          />
-
-          <input
-            type="file"
-            name="profileImg"
-            placeholder="Imagen de perfil"
-            value={profileImg}
-            onChange={handleProfileImg}
           />
 
           <button type="submit">Accept</button>

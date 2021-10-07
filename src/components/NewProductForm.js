@@ -26,14 +26,11 @@ function NewProductForm(props) {
 	let API_URL = process.env.REACT_APP_API_URL
 	let userId = user._id
 
-  console.log('this is the current user:', userId)
-
   const handleName = (e) => setName(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleAmount = (e) => setAmount(e.target.value);
  
-  const handleCategory = (e) => {setCategory(e.target.value)
-  console.log("category", category)};
+  const handleCategory = (e) => {setCategory(e.target.value)};
   const handleAdquisitionYear = (e) => setAdquisitionYear(e.target.value);
 
   /* ----- Image ------ */
@@ -53,14 +50,12 @@ function NewProductForm(props) {
   const handleSubmitImage = (e) => {
 
     e.preventDefault()
-    console.log("image send")
     if(!previewSource) return;
    uploadImage(previewSource)
 }
 
 const uploadImage = async (base64EncodedImage) => {
 
-  console.log("image uploaded")
 try {
     const res = await fetch(API_URL+"/upload", {
         method: "POST",
@@ -68,7 +63,6 @@ try {
         headers: {"Content-type": "application/json"}
     })
     const data = await res.json()
-    console.log(data.response)
     setImageId(data.response)
 
 } catch (err){
@@ -133,9 +127,9 @@ try {
   
   return (
 
-    <div>
+    <div className="new-product-form">
       <div>
-          <form onSubmit={handleSubmitImage} >
+          <form className="new-product-form-photo" onSubmit={handleSubmitImage} >
             <input multiple 
               type="file"
               name="image" 
@@ -149,7 +143,7 @@ try {
       </div>
 
 
-      <form onSubmit={handleSubmit}>
+      <form  className="new-product-form-text"onSubmit={handleSubmit}>
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName}></input>
         <label>Description:</label>

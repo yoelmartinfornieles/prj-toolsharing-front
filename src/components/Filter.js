@@ -68,18 +68,15 @@ function Filter (props) {
   }
 
   const handlePrice = (e) => {
-    console.log("EVENTO", e.target.value)
     setSearchByPrice(e.target.value)
   }
 
   const handleRating = (e) => {
-  console.log("rating", e.target.value)
   setSearchByRating(e.target.value) 
   }
 
   const handleSubmit = (e) => {
 
-    console.log("hemos llegado al submit")
     e.preventDefault()
     const objectToSubmit = { 
       category: searchByCategory,
@@ -90,7 +87,6 @@ function Filter (props) {
     
     axios.post(API_URL+"/product/filter", objectToSubmit)
       .then(response => {
-        console.log("response: ", response.data)
         setProductsCopy(response.data)
       })
 

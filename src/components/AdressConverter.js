@@ -82,8 +82,8 @@ function AdressConverter(props) {
   return (
     <div>
       {showForm && (
-        <div>
-          <form onSubmit={handleSubmit}>
+        <div clssName="new-location-form">
+          <form className="new-location-form-text" onSubmit={handleSubmit}>
             <label>Street:</label>
             <input
               type="text"
@@ -112,13 +112,13 @@ function AdressConverter(props) {
               value={city}
               onChange={handleCity}
             ></input>
-            <button type="submit">Check Location</button>
+            <button type="submit" class="location-button">Check Location</button>
           </form>
           {showMap && (
-            <div>
+            <div className="google-map">
               <GoogleMap lat={lat} lng={lng} />
               <form onSubmit={handleSubmitCoords}>
-                <button>Confirm</button>
+                <button className="location-button">Confirm</button>
               </form>
             </div>
           )}
@@ -126,10 +126,10 @@ function AdressConverter(props) {
       )}
       {!showForm && (
         <div>
-          <h1>
-            Allright! you're new direction is: {street}, {number}, {postalCode}, {city}.
+          <h1 className="location-text">
+            Allright! you're new location is: {street}, {number}, {postalCode}, {city}.
           </h1>
-          <button onClick={props.close}>Close</button>
+          <button onClick={props.close} className="location-button">Close</button>
         </div>
       )}
     </div>

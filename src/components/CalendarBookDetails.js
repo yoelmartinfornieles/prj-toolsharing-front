@@ -126,7 +126,7 @@ function BookForm(props) {
         excludeDays={printArr}
       />
       <button className="book-button" type="submit" onClick={payInfoHandler}><h1>Book for {price}€</h1></button>
-      {error && <h1>Please select available dates</h1>}
+      {error && <div className="err-dates"><h3>Please select available dates</h3></div>}
       
     </form>
     {showPay && !error &&

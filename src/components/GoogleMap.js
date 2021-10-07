@@ -1,11 +1,11 @@
-import { Map, GoogleApiWrapper, Marker, LoadScript } from 'google-maps-react';
+import {Marker} from 'google-maps-react';
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 import Pointer from '../images/location-pointer.png'
 
 
 function GoogleMap(props){
-    const AnyReactComponent = ({ imgSrc }) => <img className="google-map-pointer" src={imgSrc} />;
+    const AnyReactComponent = ({ imgSrc }) => <img className="google-map-pointer" src={imgSrc}  alt="google-pointer"/>;
 
     
   const defaultProps = {

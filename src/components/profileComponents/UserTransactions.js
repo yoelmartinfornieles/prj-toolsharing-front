@@ -7,25 +7,36 @@ const API_URL = process.env.REACT_APP_API_URL
 const UserTransactions = ()=>{
 
     const[transactions, setTransactions] = useState([])
+    
 
 
 
     useEffect( 
         () =>{
+            const storedToken = localStorage.getItem('authToken');
         
-            axios.get(API_URL + "/transaction")
-            .then(response => setTransactions(response.data))
+            axios.get(API_URL + "/transaction",    { headers: { Authorization: `Bearer ${storedToken}` } } )
+            .then(response => {setTransactions(response.data)
+                console.log('transaction',response.data)
+            }
+            )
+       
 
     } 
     ,[])
 
 
     return(
+        <div>
+        <h3 className="profile-titles">My Transactions:</h3>
+        <div className="user-product-cards">
+            
+      
 
        
-        transactions.map(
+        {transactions.map(
             transaction => (
-                <div className="transactionCard">
+                <div className="user-trans-card">
 
                     <h2>{transaction.product.name}</h2>
                     <p>{transaction.startDate} - {transaction.startDate}</p>
@@ -36,8 +47,9 @@ const UserTransactions = ()=>{
                 
 
                 </div>
-            ))
-       
+            ) )}
+            </div>
+            </div>    
 
     )
 }
