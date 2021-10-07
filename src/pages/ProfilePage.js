@@ -1,13 +1,13 @@
 
 import {useEffect, useState, useContext} from "react"
 import { AuthContext } from "../context/auth.context";
-//import { Link } from "react-router-dom";
 import  UserInfo  from "../components/profileComponents/UserInfo"
 import axios from "axios"
 import UserProducts from "../components/profileComponents/UserProducts"
 import AdressConverter from "../components/AdressConverter";
 import {MYNETWORK} from "../utils/paths";
 import Logo from "../images/tooly-logo.png";
+import { GoogleLogout } from "react-google-login";
 
 function ProfilePage() {
   const { user } = useContext(AuthContext);
@@ -49,6 +49,7 @@ function ProfilePage() {
         </nav>
         <div className="profile-container">
 		<button onClick={logOutUser}>Logout</button>
+    <GoogleLogout />
           <UserInfo userInfo={userInfo} />
          
             <UserProducts userInfo={userInfo} />

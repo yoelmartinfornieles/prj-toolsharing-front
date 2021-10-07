@@ -11,33 +11,9 @@ function LoginGoogle(props) {
   const API_URL = process.env.REACT_APP_API_URL;
   const { logInUser } = useContext(AuthContext);
   let history = useHistory();
-  //var { clickToShow } = props;
+  var { clickToShow } = props;
 
   const onSuccess = (res) => {
-	const googleObject = res.profileObj;
-	const requestBody = {email: googleObject.email, username: googleObject.name, password: googleObject.googleId }
-	axios
-	.post(API_URL+"/google", requestBody)
-	.then((response) => {
-	  let req = {email:requestBody.email, subject:"Welcome to Tooly", message:"You succesfully registered, enjoy"}
-	  const token = response.data.authToken;
-	  logInUser(token);
-	  console.log("Signed up correct WITH GOOGLE")
-	  axios
-	  .post (`${API_URL}/send-email`, req)
-	  .then ( (response) => {
-	  console.log("EMAIL sent successfully", response.data)
-	  history.push("/profile")});
-	})
-	.catch((error) => {
-		console.log("error: ", error);
-	  })
-
-	refreshTokenSetup(res);
-
-  };
-
-/*   const onSuccess = (res) => {
     clickToShow();
     const googleObject = res.profileObj;
     const requestBody = {
@@ -45,64 +21,55 @@ function LoginGoogle(props) {
       username: googleObject.name,
       password: googleObject.googleId,
     };
-	console.log("ANTES DE EMPEZAR: ", typeof googleObject.email )
-
     axios
-      .post(API_URL+"/user/email", googleObject.email)
+      .post(API_URL+"/user/email", requestBody)
       .then((res) => {
-		console.log ("RES: ", res.data)
+		    console.log ("RES: ", res.data)
         if (res.data === "1") {
-          console.log("USUARIO ENCONTRADO");
           axios
-            .post(`${API_URL}/google`, requestBody)
+            .post(`${API_URL}/login`, requestBody)
             .then((response) => {
               const token = response.data.authToken;
               logInUser(token);
               history.push("/profile");
             })
             .catch((error) => {
-              const errorDescription = error;
-              setErrorMessage(errorDescription);
+              console.log("error: " + error)
             });
         } else if (res.data === "0") {
-          console.log("USUARIO NO ENCONTRADO");
-		  console.log("REQUEST_BODY", requestBody)
           axios
-            .post(`${API_URL}/signup`, requestBody)
+            .post(`${API_URL}/google/signup`, requestBody)
             .then((response) => {
-              console.log("signed up correct");
               let req = {
                 email: requestBody.email,
                 subject: "Welcome to Tooly",
-                message: "You succesfully registered, enjoy",
+                message: `Nice to meet you, ${requestBody.username}. Enjoy!`,
               };
-              axios.post(`${API_URL}/send-email`, req)
-			  .then((response) => {
-                console.log("email sent successfully", response.data);
-                axios
-                  .post(`${API_URL}/google`, requestBody)
-                  .then((response) => {
-                    console.log("logged in correct");
-                    const token = response.data.authToken;
-                    logInUser(token);
-                    history.push("/profile");
-                  })
-                  .catch((error) => {
+              axios
+                .post(`${API_URL}/send-email`, req)
+			          .then((response) => {
+                  axios
+                    .post(`${API_URL}/google`, requestBody)
+                    .then((response) => {
+                      const token = response.data.authToken;
+                      logInUser(token);
+                      history.push("/profile");
+                    })
+                    .catch((error) => {
                     console.log("error: ", error);
                   });
               });
             })
             .catch((error) => {
-              console.log("error: ", error);
+            console.log("error: ", error);
             });
         }
       })
       .catch((error) => {
-        const errorDescription = error;
-        setErrorMessage(errorDescription);
+      console.log("error: " + error)
       });
 	  refreshTokenSetup(res);
-  }; */
+  };
 
   const onFailure = (res) => {
     /* 	  console.log('Login failed: res:', res);

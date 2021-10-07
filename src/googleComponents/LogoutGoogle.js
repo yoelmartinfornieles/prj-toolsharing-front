@@ -1,24 +1,37 @@
 import React from 'react';
 import { GoogleLogout } from 'react-google-login';
+import {useHistory} from "react-router-dom"
+import { AuthContext } from "../context/auth.context";
+import { useContext} from "react"
+
 
 function Logout() {
-  const onSuccess = () => {
-/*     console.log('Logout made successfully');
-    alert('Logout made successfully ✌'); */
+  let history = useHistory();
+  
+
+  const onSuccess = (response) => {
+    console.log("Logged out")
+    alert("Logged out")
+  logOutUser()
+  history.push("/")
   };
   
-  const clientId = process.env.REACT_APP_GOOGLE_ID
+  const clientId = process.env.REACT_APP_LOGIN_GOOGLE;
+  const { logOutUser } = useContext(AuthContext);
 
-  return (
-    <div>
-      <GoogleLogout
-        clientId={clientId}
-        buttonText="Logout"
-        onLogoutSuccess={onSuccess}
-      >
-      </GoogleLogout>
-    </div>
-  );
+  if (clientId) {
+    return (
+      <div>
+        <GoogleLogout
+          clientId={clientId}
+          buttonText="Logout"
+          onLogoutSuccess={onSuccess}
+        ></GoogleLogout>
+      </div>
+    );
+  } else {
+    return <>Loading ...</>
+  }
 }
 
 export default Logout;
