@@ -5,7 +5,7 @@ const API_URL = process.env.REACT_APP_API_URL
 const ReviewForm = (props)=>{
 
     const [reviewText, setReviewText] = useState("")
-    const [rating, setRating] = useState("")
+    const [rating, setRating] = useState("0")
     const {productId} = props
 
 
@@ -29,7 +29,7 @@ const ReviewForm = (props)=>{
 
             productId: productId,
             content:reviewText,
-            reting:rating,
+            rating:rating,
         }
 
         axios.post( API_URL + "/review" , objectToSubmit)
@@ -55,7 +55,8 @@ const ReviewForm = (props)=>{
                   <option value="5">5</option>
                   
               </datalist>
-
+        
+        <button type="submit"> Review </button>
         </form>
 
     )

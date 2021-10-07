@@ -141,7 +141,7 @@ function ProfilePage() {
           {showLocationForm && (
             <AdressConverter id={userId} close={handleUnshow} />
           )}
-          <UserTransactions />
+          <UserTransactions userInfo= {userId} />
           
 
           <a className="" href={MYNETWORK}>
