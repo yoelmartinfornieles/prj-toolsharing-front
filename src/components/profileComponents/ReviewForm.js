@@ -6,11 +6,11 @@ const ReviewForm = (props)=>{
 
     const [reviewText, setReviewText] = useState("")
     const [rating, setRating] = useState("0")
-    const {productId} = props
+    const {productId, userInfo} = props
 
 
 
-
+console.log("USER INFO DEL REVIEW FORM" , userInfo)
 
     const handleText = (e) =>{
         setReviewText(e.target.value)
@@ -30,6 +30,7 @@ const ReviewForm = (props)=>{
             productId: productId,
             content:reviewText,
             rating:rating,
+            user:userInfo
         }
 
         axios.post( API_URL + "/review" , objectToSubmit)
