@@ -31,7 +31,7 @@ function Filter (props) {
       });
     }else{
       let dummyUser = {
-        data: {        _id: "615f0a4b5e7a9b0016302795",
+        data: { _id: "615f0a4b5e7a9b0016302795",
         address:{ street: "Pamplona", number: "96", city: "Barcelona",  },
         email:"tooly.project@gmail.com",
         favorites: [],
