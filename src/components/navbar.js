@@ -5,7 +5,7 @@ import {NEWPRODUCT, PROFILE} from "../utils/paths";
 import home from '../images/home-white.png'
 import plus from '../images/plus-white.png'
 import userIcon from '../images/user-white.png'
-
+ 
 function Navbar(props) {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
@@ -15,9 +15,15 @@ function Navbar(props) {
 
   const { user } = useContext(AuthContext);
 
+  const refresHome = (e)=>{
+    e.preventDefault()
+    console.log("")
+    window.location.reload(false);
+  }
+
   return (
     <nav className="navbar">
-      <Link className="navbar-button" to="/"><img src={home} alt="Home"/></Link>
+      <Link className="navbar-button" to="/"><img src={home} alt="Home"  onClick={refresHome}/></Link>
       <Link className="navbar-button" to={NEWPRODUCT}><img src={plus} alt="Plus" /></Link>
       {/* esto de abajo deberia de ser un boton? */}
       {/* Condicional con authcontext para hacer switch del boton*/}

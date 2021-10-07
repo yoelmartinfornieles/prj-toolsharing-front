@@ -20,16 +20,31 @@ function Filter (props) {
   userLng,
   productLat,productLng = undefined
 
-
-
  console.log("DATOS USUARIO " ,userInfo)
 
  useEffect(
   () => {
-    axios.get(API_URL + "/user/" + user._id).then((response) => {
-      console.log("response: ", response);
-      setUserInfo(response);
-    });
+    if (userInfo){
+      axios.get(API_URL + "/user/" + user._id).then((response) => {
+        console.log("response: ", response);
+        setUserInfo(response);
+      });
+    }else{
+      let dummyUser = {
+        data: { _id: "615f0a4b5e7a9b0016302795",
+        address:{ street: "Pamplona", number: "96", city: "Barcelona",  },
+        email:"tooly.project@gmail.com",
+        favorites: [],
+        location: { lat: "41.3979343", 
+                    lng: "2.190108" },
+        password: "$2a$10$y7HjulCcLJFrgD10lhLBieuP5z3aOYtwlsguVeeUEC.yC41a8PHg.",
+        products:  [],
+        transactions: [],
+        username: "Dummy User"}
+      }
+      setUserInfo(dummyUser)
+    }
+
   },
   // eslint-disable-next-line react-hooks/exhaustive-deps
   []

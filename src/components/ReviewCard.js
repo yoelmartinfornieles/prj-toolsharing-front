@@ -72,7 +72,7 @@ function ReviewCard(props) {
 	);
   } else {
 	  return (
-		  <p>Loading ... REVIEWcard</p>
+		  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 	  )
   }
 
