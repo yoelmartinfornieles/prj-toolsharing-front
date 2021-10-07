@@ -14,7 +14,7 @@ function HomeCategories(props) {
       let categoryToSearch = e.target.id
       console.log ("category :", categoryToSearch)
       axios
-        .get (API_URL+"/product/category/"+categoryToSearch)
+        .get (API_URL+"/product/category/"+categoryToSearch, "Access-Control-Allow-Origin: https://prj-toolsharing-front.herokuapp.com")
         .then (response => {
           console.log ("productsByCategory :", response.data)
           setProductsByCategory (response.data);

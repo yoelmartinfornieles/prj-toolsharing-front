@@ -24,7 +24,6 @@ function LoginGoogle(props) {
     axios
       .post(API_URL+"/user/email", requestBody)
       .then((res) => {
-		    console.log ("RES: ", res.data)
         if (res.data === "1") {
           axios
             .post(`${API_URL}/login`, requestBody)
