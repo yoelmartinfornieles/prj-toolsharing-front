@@ -25,6 +25,7 @@ function ReviewCard(props) {
 	[])
 	let rate
 	
+	console.log("review INOFOOOOOOOO:", reviewInfo)
 	switch (reviewInfo.rating){
 		case 0:
 			rate = stars0
@@ -43,6 +44,8 @@ function ReviewCard(props) {
 			break;
 			case 5:
 			rate = stars5
+			break;
+			default: rate = stars0
 	}
 
 

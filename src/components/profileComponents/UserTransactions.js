@@ -39,7 +39,7 @@ console.log("Transactions estado aqui:" , transactions)
                     <p>{transaction.startDate} - {transaction.startDate}</p>
                     <p>Owner: {transaction.owner.username}</p>
                     <p>Renter: {transaction.renter.username}</p>
-                    <ReviewForm productId={transaction.product._id}  />
+                    <ReviewForm productId={transaction.product._id}  userInfo={userInfo}  />
                 </div>
             ))
         }
