@@ -62,7 +62,7 @@ function HomePage(props) {
       <div className="info-home">
         <h1>Find a solution to bring your ideas to life or offer your tools to get the most out of them.</h1>
         <div>
-          <img src="./how-it-works.png" alt="Graphic explaining how the page"/>
+          <img src="./how-it-works.png" alt="Graphic explaining how the page works"/>
         </div>
       </div>
     </div>
