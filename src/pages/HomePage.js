@@ -36,7 +36,7 @@ function HomePage(props) {
       </nav>
       {/* <button onClick={handleShowFilter}>Filtro</button> */}
 
-      <Filter products={products} setProductsCopy={setProductsCopy} setFetch={setFetch} searchValue={searchValue}/> 
+      <Filter setProductsCopy={setProductsCopy} setFetch={setFetch} searchValue={searchValue}/> 
 
 
     {/*   <Filter products={products} setProductsCopy={setProductsCopy}/> */}
