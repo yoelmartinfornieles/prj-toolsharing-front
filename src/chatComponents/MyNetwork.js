@@ -28,12 +28,23 @@ class MyNetwork extends React.Component {
 		.get (API_URL+`/chat/${currentUserId}`)
 		.then((response) => {
 			let transactions = response.data
+			console.log ("TRANSACTIONS: ", transactions.length)
+			/* 0:
+endDate: "19-10-2021"
+owner: {address: {…}, location: {…}, products: Array(1), transactions: Array(0), favorites: Array(0), …}
+product: "615ec6663c611e167c03414a"
+renter: {address: {…}, location: {…}, products: Array(0), transactions: Array(0), favorites: Array(0), …}
+startDate: "18-10-2021"
+__v: 0
+_id: "615eef5637fc7a39334b73e7" */
+
 			let usersInvolved = []
 			for (let i=0; i<transactions.length; i++){
-				if (transactions[i].owner === currentUserId){
-					console.log (transactions[i].renter+" = "+currentUserId)
+				console.log("vuelta : "+i+ ": "+transactions[i].owner._id)
+				if (transactions[i].owner._id === currentUserId){
+					console.log (transactions[i].renter._id+" = "+currentUserId)
 					usersInvolved.push(transactions[i].renter)
-				} else if (transactions[i].renter === currentUserId) {
+				} else if (transactions[i].renter._id === currentUserId) {
 					usersInvolved.push(transactions[i].owner)
 				}
 			}
@@ -105,8 +116,9 @@ class MyNetwork extends React.Component {
 			</div>
                 {this.state.isLoading ? null :
 				 <div className="users-container"> 
-     
+				 {console.log (this.otherUsers)}
                         { this.otherUsers.map(user => 
+						
                          <>
                               <ChatContactCard className="user" user={user} key={user.id} />
                                   <div className="user-action">
