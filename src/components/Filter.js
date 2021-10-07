@@ -1,67 +1,39 @@
 import axios from "axios";
-import { useState, useLayoutEffect} from "react";
+import { useState,useContext, useEffect} from "react";
+import { AuthContext } from "../context/auth.context";
+import distance from "../utils/distance"
 const API_URL = process.env.REACT_APP_API_URL;
+
 
 
 function Filter (props) {
   
-  const { products, setProductsCopy, searchValue } = props;
-
+  const {  setProductsCopy, searchValue } = props;
+  const { user } = useContext(AuthContext);
   const [searchByCategory, setSearchByCategory] = useState("assembly");
-  const [searchByPrice, setSearchByPrice] = useState(300);
+  const [searchByPrice, setSearchByPrice] = useState(50000);
   const [searchByRating, setSearchByRating] = useState(5)
+  const [searchByDistance, setSearchByDistance] = useState(50)
+  const [userInfo, setUserInfo] = useState("");
 
-  
- /*    if (products.length !== 0){
+  let userLat,
+  userLng,
+  productLat,productLng = undefined
 
-      let productsToFilter = products;
-      let filteredByCategory = []
- */
-     /*  console.log("SEARCH CATEGORY", searchByCategory)
-      console.log("SEARCH PRICE", searchByPrice)
-      console.log("SEARCH RATING", searchByRating) */
 
-    /* let firstFilterArr = []
-    let finalFilteredArr = []
 
-      let filteredByPrice = productsToFilter.filter (product => product.amount <= searchByPrice)
-      let filteredByRating = productsToFilter.filter(product => product.averageRating >= searchByRating)
-      axios
-        .get(API_URL+"/product/category/"+searchByCategory)
-        .then ((response) => {
-          //console.log ("response: ", response)
-          filteredByCategory = response.data;
+ console.log("DATOS USUARIO " ,userInfo)
 
-          for (let i = 0; i< filteredByPrice.length; i++){
-              for (let j = 0; j < filteredByRating.length; j++){
-                  if (filteredByPrice[i]._id === filteredByRating[j]._id){
-                    firstFilterArr.push(filteredByPrice[i])
-                  }
-              }
-          } */
-
-        /*   for (let i = 0; i< firstFilterArr.length; i++){
-            for (let j = 0; j < filteredByCategory.length; j++){
-                if (firstFilterArr[i]._id === filteredByCategory[j]._id){
-                  finalFilteredArr.push(firstFilterArr[i])
-                }
-            }
-        }
-
-        console.log("FILTEREDBYPRICE", filteredByPrice)
-        console.log("FILTEREDbyRating", filteredByRating)
-        console.log("FILTEREDBYcategory", filteredByCategory) */
-
-        /* etProductsCopy(finalFilteredArr) */
-       /*  setFetch(false) */
-
-    
-       /*  })
-        .catch((error) => console.log(error)) */
- // }
- // }
+ useEffect(
+  () => {
+    axios.get(API_URL + "/user/" + user._id).then((response) => {
+      console.log("response: ", response);
+      setUserInfo(response);
+    });
+  },
   // eslint-disable-next-line react-hooks/exhaustive-deps
- 
+  []
+);
 
   const handleCategory = (e) => {
     setSearchByCategory(e.target.value)
@@ -76,6 +48,10 @@ function Filter (props) {
   console.log("rating", e.target.value)
   setSearchByRating(e.target.value) 
   }
+  const handleDistance = (e) => {
+  console.log("rating", e.target.value)
+  setSearchByDistance(e.target.value) 
+  }
 
   const handleSubmit = (e) => {
 
@@ -85,14 +61,35 @@ function Filter (props) {
       category: searchByCategory,
       amount: searchByPrice,
       averageRating: searchByRating,
-      nameSearch: searchValue
+      nameSearch: searchValue,
+  
     }
     
     axios.post(API_URL+"/product/filter", objectToSubmit)
       .then(response => {
-        console.log("response: ", response.data)
-        setProductsCopy(response.data)
+        console.log("RESPONSE FILTRADA AQUI: ", response.data)
+        let firstFiltered = response.data
+
+        
+        let filteredByLocation =[]
+        let distanceBetween 
+
+        userLat= parseFloat(userInfo.data.location.lat)
+        userLng= parseFloat(userInfo.data.location.lng)
+
+        for (let filteredProduct of firstFiltered){
+            productLat =  parseFloat(filteredProduct.location.lat)
+            productLng =  parseFloat(filteredProduct.location.lng)
+
+            distanceBetween = distance(userLat, userLng, productLat, productLng )
+            if( distanceBetween < searchByDistance){
+              filteredByLocation.push( filteredProduct)
+            }
+        }
+        setProductsCopy(filteredByLocation)
       })
+
+
 
   }
 
@@ -139,10 +136,24 @@ function Filter (props) {
               <label>{searchByRating}</label>
               <datalist id="tickmarks">
                   <option value="1">1</option>
-                  <option value="2">2</option>
+                  <option value="2">2</option> 
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
+                  
+              </datalist>
+              
+
+
+          <input type="range" min="1" max="50" step="1" value={searchByDistance} onChange={handleDistance}
+              list="tickmarks"/> 
+              <label>{searchByDistance}</label>
+              <datalist id="tickmarks">
+                  <option value="1">1km</option>
+                  <option value="2">2km</option> 
+                  <option value="5">5km</option>
+                  <option value="10">10km</option>
+                  <option value="50">50km</option>
                   
               </datalist>
               <button type="submit">Filter</button>
