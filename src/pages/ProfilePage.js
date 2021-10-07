@@ -8,6 +8,8 @@ import AdressConverter from "../components/AdressConverter";
 import {MYNETWORK} from "../utils/paths";
 import Logo from "../images/tooly-logo.png";
 import { GoogleLogout } from "react-google-login";
+import UserTransactions from '../components/profileComponents/UserTransactions'
+import Favorites from "../components/profileComponents/Favorites"
 
 function ProfilePage() {
   const { user } = useContext(AuthContext);
@@ -41,30 +43,45 @@ function ProfilePage() {
     setShowLocationForm(!showLocationForm);
   };
 
+  console.log('useeeeeeer INFooofofoffofo:', userInfo)
+
   if (userInfo) {
     return (
       <>
         <nav className="top-navbar">
           <img src={Logo} alt="Logo" />
         </nav>
+        
         <div className="profile-container">
-		<button onClick={logOutUser}>Logout</button>
-    <GoogleLogout />
+        <div className="user-info-back">
           <UserInfo userInfo={userInfo} />
-         
-            <UserProducts userInfo={userInfo} />
-    
-          {!showLocationForm && (
-            <button onClick={handleShow}>Choose Location</button>
+         </div>
+         <div className="user-location">
+         <h3 className="profile-titles">Current location:</h3>
+         <h2>{userInfo.data.address.street}, {userInfo.data.address.number}, {userInfo.data.address.postalCode}, {userInfo.data.address.city}.</h2>
+         {!showLocationForm && (
+            <button onClick={handleShow} class="location-big-button">Choose Location</button>
           )}
           {showLocationForm && (
             <AdressConverter id={userId} close={handleUnshow} />
           )}
+         </div>
+         <div className="user-products-container">
+            <UserProducts userInfo={userInfo} />
+            </div>
+            <Favorites userInfo={userInfo} />
+          <div className="user-products-container">
+          <UserTransactions />
+          </div>
+          
 
           <a className="" href={MYNETWORK}>
             GO TO MY NETWORK
             <img alt="" />
           </a>
+          <div className="logout-container"></div>
+          <button className="logout-button" onClick={logOutUser}>Logout</button>
+          <GoogleLogout className="logout-button"/>
         </div>
       </>
     );

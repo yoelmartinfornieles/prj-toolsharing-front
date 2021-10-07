@@ -1,10 +1,10 @@
 import React, { useState} from "react";
 import EditUserInfo from "./EditUserInfo"
+import {Image} from 'cloudinary-react'
 //import Signup from "./signup";
 //import Login from "./login";
 
 function UserInfo(props) {
-
 
   const userInfo = props.userInfo.data
   const {username, email, profileImg } = props.userInfo.data
@@ -14,24 +14,29 @@ function UserInfo(props) {
   const handleSubmitEditForm = () => {
 
       setIsShowEditUserForm(!isShowEditUserForm)
+  
 
   }
 
 
   return (
- 
+
       <div className="user-info">
-        <h3>Información de usuario</h3>
         <div className="picture-user">
-        <img src={profileImg} alt="profileImg"/>
+        <Image
+        className="picutre-user-img"
+        cloudName="toolsharing"
+        publicId={profileImg}
+        />
         </div>
-        <p>{username}</p>
-        <p>email: {email}</p>
+        <div className="text-user">
+        <h3>{username}</h3>
 
-        {!isShowEditUserForm ? <button onClick={handleSubmitEditForm}> Edit profile </button>
-                               :<button onClick={handleSubmitEditForm}> Ocultar datos </button>} 
+        {!isShowEditUserForm ? <button onClick={handleSubmitEditForm} className="edit-user-button"> Edit profile </button>
+                               :<button onClick={handleSubmitEditForm} className="edit-user-button"> Save</button>} 
 
-        {isShowEditUserForm ? <EditUserInfo userInfo={userInfo}/> : <></>}
+        </div>
+        {isShowEditUserForm ? <EditUserInfo userInfo={userInfo} setIsShowEditUserForm={setIsShowEditUserForm}/> : <></>}
 
 
       </div>

@@ -6,6 +6,7 @@ import FavButton from '../components/FavButton'
 import ReviewCard from '../components/ReviewCard'
 import CalendarBook from '../components/CalendarBookDetails'
 import {Image} from 'cloudinary-react'
+import GoogleMap from '../components/GoogleMap'
 
 import OwnerCard from '../components/UserCard'
 import Logo from "../images/tooly-logo.png"
@@ -18,6 +19,10 @@ function ProductDetailsPage (props) {
   const [owner, setOwner] = useState (null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFav, setIsFav] = useState(false)
+  const [isLoad, setIsLoad] = useState(false)
+  /* onst [showMap, setShowMap] = useState(false) */
+  const [lat, setLat] = useState('')
+  const [lng, setLng] = useState('')
 
   console.log('product!!!!MODHEWRFUKER', product)
 
@@ -39,9 +44,10 @@ function ProductDetailsPage (props) {
 		 .then ((response)=> {
 			console.log ("response111: ", response.data.favorites)
 			//setUserInfo(response)
-      if(response.data.favorites.includes(id)){
-        setIsFav(true)
-        console.log('lo tengo!')
+      for(let fav of response.data.favorites){
+        if(fav._id === id){
+          setIsFav(true)
+        }
       }
 		 }
 		)
@@ -60,6 +66,10 @@ function ProductDetailsPage (props) {
         setOwner (response.data.user)
         setIsLoaded(true)
         console.log ("product encontrado: ", response.data)
+        setLat(response.data.user.location.lat)
+        setLng(response.data.user.location.lng)
+        console.log('tipoooooo:', typeof response.data.user.location.lat)
+        setIsLoad(true)
       }
     ) 
   }, 
@@ -90,6 +100,11 @@ function ProductDetailsPage (props) {
       }
     ) 
   }
+
+  /* const handleShowMap = (e) => {
+    setShowMap(!showMap)
+    console.log('cordenades:',lat, lng)
+  } */
   
   
   return ( <div className="product-details">
@@ -111,13 +126,19 @@ function ProductDetailsPage (props) {
               <p>{product.description}</p>
               <OwnerCard owner={product.owner}/> 
             </div>
+            <div className="Map">
+            {/* {showMap ? <button onClick={handleShowMap}>Hide Map</button> : <button onClick={handleShowMap}>Show Location</button>} */}
+            {isLoad && <GoogleMap  className="google-map" lat={parseFloat(lat)} lng={parseFloat(lng)}/>}
+            
+            {!isLoad && <div class="lds-ring"><div></div><div></div><div></div><div></div></div>}
+            </div>
               <CalendarBook product={product} />
                 <h2 className="review-title">Tool reviews:</h2>
                   <div className="review-cards">
                           {product.reviews.map ( (review) => { 
                           return (<ReviewCard key={review._id} review={review} />)})}
                   </div>
-      <ChatComponent owner= {owner}/>
+      {/* <ChatComponent owner= {owner}/> */}
     </div>}
     </div>
   );
