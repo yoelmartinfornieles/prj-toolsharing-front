@@ -5,10 +5,6 @@ let API_URL = process.env.REACT_APP_API_URL
 
 function EditProduct(props) {
 
-   /*  const history = useHistory() */
-
-   console.log("PROPS EDITPROD", props.product)
-
     const oldProductInfo = props.product
     const productId = oldProductInfo._id
 
@@ -56,14 +52,12 @@ function EditProduct(props) {
   const handleSubmitImage = (e) => {
 
     e.preventDefault()
-    console.log("image send")
     if(!previewSource) return;
    uploadImage(previewSource)
 }
 
 const uploadImage = async (base64EncodedImage) => {
 
-  console.log("image uploaded")
 try {
     const res = await fetch(API_URL+"/upload", {
         method: "POST",
@@ -71,7 +65,6 @@ try {
         headers: {"Content-type": "application/json"}
     })
     const data = await res.json()
-    console.log(data.response)
     setImageId(data.response)
 
 } catch (err){
@@ -98,7 +91,6 @@ try {
 
     axios.put(API_URL + `/product/${productId}`, objectToSubmit)
     .then((response) => {
-      console.log("creado", response)
     })
     
   }

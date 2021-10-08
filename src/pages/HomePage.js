@@ -36,7 +36,7 @@ function HomePage(props) {
       </nav>
       {/* <button onClick={handleShowFilter}>Filtro</button> */}
 
-      <Filter setProductsCopy={setProductsCopy} setFetch={setFetch} searchValue={searchValue}/> 
+      <Filter products={products} setProductsCopy={setProductsCopy} setFetch={setFetch} searchValue={searchValue}/> 
 
 
     {/*   <Filter products={products} setProductsCopy={setProductsCopy}/> */}
@@ -62,7 +62,7 @@ function HomePage(props) {
       <div className="info-home">
         <h1>Find a solution to bring your ideas to life or offer your tools to get the most out of them.</h1>
         <div>
-          <img src="./how-it-works.png" alt="Graphic explaining how the page works"/>
+          <img src="./how-it-works.png" alt="Graphic explaining how the page"/>
         </div>
       </div>
     </div>

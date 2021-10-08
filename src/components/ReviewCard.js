@@ -25,7 +25,6 @@ function ReviewCard(props) {
 	[])
 	let rate
 	
-	console.log("review INOFOOOOOOOO:", reviewInfo)
 	switch (reviewInfo.rating){
 		case 0:
 			rate = stars0
@@ -45,24 +44,21 @@ function ReviewCard(props) {
 			case 5:
 			rate = stars5
 			break;
-			default: rate = stars0
+			default:rate = stars0
 	}
 
 
 	if (reviewInfo) {
 
 	return (
-
 		
-
-
 		<div className="review-card">
 		<div className="review-photo">
 		<img src= {reviewInfo.user.profileImg} alt="Review person"></img>
 		</div>
 		<div className="review-text">
 		<div>
-		<img src={rate}/>
+		<img src={rate} alt="rating"/>
 		</div>
 		<h4>{reviewInfo.user.username}:</h4>
 		<p>{review.content}</p>
@@ -72,8 +68,13 @@ function ReviewCard(props) {
 	);
   } else {
 	  return (
-		  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-	  )
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   }
 
 }

@@ -18,30 +18,23 @@ class MyNetwork extends React.Component {
   }
 
   componentDidMount() {
-	console.log("PROPS: ", this.props)
     const API_URL = process.env.REACT_APP_API_URL;
     const regex = /"id":"([^"]+)"/gi;
     const currentTalkjsUser = localStorage.getItem("currentTalkjsUser");
     const result = regex.exec(currentTalkjsUser);
-    console.log("result: ", result[1]);
     let currentUserId = result[1];
-    console.log("currentUserId: ", currentUserId);
     axios.get(API_URL + `/chat/${currentUserId}`).then((response) => {
       let transactions = response.data;
-      console.log("transactions", transactions.length);
       let usersInvolved = [];
 
       for (let i = 0; i < transactions.length; i++) {
         if (transactions[i].owner === currentUserId) {
-          console.log(transactions[i].renter + " = " + currentUserId);
           usersInvolved.push(transactions[i].renter);
         } else if (transactions[i].renter === currentUserId) {
           usersInvolved.push(transactions[i].owner);
         }
       }
-      console.log("usersInvolved: ", usersInvolved);
       this.otherUsers = [...usersInvolved];
-      console.log("otherUsers:", this.otherUsers);
       this.setState({ ...this.state, isLoading: false });
     });
   }

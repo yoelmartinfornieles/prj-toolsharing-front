@@ -33,18 +33,15 @@ function Signup(props) {
     axios
       .post(`${API_URL}/signup`, requestBody)
       .then((response) => {
-        console.log("signed up correct");
         let req = {
           email: requestBody.email,
           subject: "Welcome to Tooly",
           message: "You succesfully registered, enjoy",
         };
         axios.post(`${API_URL}/send-email`, req).then((response) => {
-          console.log("email sent successfully", response.data);
           axios
             .post(`${API_URL}/login`, requestBody)
             .then((response) => {
-              console.log("logged in correct");
               const token = response.data.authToken;
               logInUser(token);
               history.push("/profile");
@@ -57,9 +54,7 @@ function Signup(props) {
         });
       })
       .catch((error) => {
-        console.log(error.response.data.message)
         const errorDescription = error.response.data.message;
-        console.log(errorDescription)
         setErrorMessage(errorDescription)
       });
   };

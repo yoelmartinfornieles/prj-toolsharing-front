@@ -3,32 +3,34 @@ import ProductCard from './ProductCard'
   function ListProducts(props) {
 
   const {products} = props;
-  console.log ("LISTPRODUCTs: ", products)  
   let productsToShow = products
-  console.log ("ListProducts product array is: ", productsToShow)
   
 if (products.length > 0) {
 
   return (
-    <>
-       {/* <Filter setProductsByFilter={setProducts} products={products} /> */}
        <div className="cards-container">
-        {productsToShow.map((product) => (
-          <>
+        {productsToShow.map((product) => (     
           <ProductCard key={product._id} product={product}/>
-          </>
         ))}      
       </div>
-    </>
   );
-} else {
+} else if (products.length === 0){
 
   return (
-    <div>
-    <img width="400" src="https://smartbookings.rw/views/assets/images/no_result.gif"/>
+    <div className="not-found">
+    <img src="./no-results.png" alt="no results" />
     </div>
   )
 
+  } else { 
+    return (
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   }
 }
 

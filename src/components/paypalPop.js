@@ -1,64 +1,53 @@
-
-//import { useEffect, useRef } from "react"
-
 import { PayPalButton } from "react-paypal-button-v2"
 import axios from "axios"
 import { useHistory } from "react-router"
+import {useContext} from "react"
+import { AuthContext } from "../context/auth.context";
 
 
 const API_URL = process.env.REACT_APP_API_URL
 
 const PaypalPop = (props) =>{
+ const { user } = useContext(AuthContext);
+ const { price, product, endDate, startDate, excludedDays } = props;
+ const history = useHistory();
 
- const {price, product, endDate, startDate, excludedDays} = props
- const history = useHistory()
- const ProductDetails ={
-    product,
-    endDate,
-    startDate,
-    excludedDays
-}
+ let userId = user._id;
 
+ const ProductDetails = {
+   product,
+   endDate,
+   startDate,
+   excludedDays,
+   userId,
+ };
 
-const createTransaction = ()=>{
-    const storedToken = localStorage.getItem('authToken');
-    
+ const createTransaction = () => {
+   axios.post(API_URL + "/transaction", ProductDetails).then((response) => {
+     history.push("/");
+   });
+ };
+ return (
+   <div>
+     <PayPalButton
+       options={{
+         clientId: process.env.REACT_APP_PAYPAL,
+         currency: "EUR",
+       }}
+       amount={price}
+       // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+       onSuccess={(details, data) => {
+         createTransaction();
 
-
-    console.log("Create transaction")
-axios.post(API_URL + "/transaction", ProductDetails,   { headers: { Authorization: `Bearer ${storedToken}` } }  )
-.then(history.push("/profile"))
-}
-
-
-    return(
-    <div>
-         <PayPalButton
-        options={{
-          clientId: process.env.REACT_APP_PAYPAL,
-          currency:"EUR"
-
-        }}
-        amount={price}
-        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-        onSuccess={(details, data) => {
-          createTransaction()
-          alert("Transaction completed by " + details.payer.name.given_name);
-
-          
-          // OPTIONAL: Call your server to save the transaction
-          return fetch("/transaction", {
-            method: "post",
-            body: JSON.stringify({
-              orderID: data.orderID
-            })
-          });
-        }}
-      />
-    </div>
-       
-           
-    )
+         // OPTIONAL: Call your server to save the transaction
+         return fetch(API_URL + "/tortuga", {
+           method: "post",
+           body: JSON.stringify({}).then((response) => response),
+         });
+       }}
+     />
+   </div>
+ );
 }
 
 export default PaypalPop

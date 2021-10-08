@@ -3,7 +3,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Calendar = (props) => {
 let today = new Date()
-console.log('today',props)
     return (
       <DatePicker
         minDate={today}

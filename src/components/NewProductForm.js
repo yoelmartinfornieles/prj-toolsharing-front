@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import {useHistory} from "react-router-dom"
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
@@ -11,6 +11,9 @@ function NewProductForm(props) {
   const [category, setCategory] = useState("assembly");
   const [adquisitionYear, setAdquisitionYear] = useState(0);
   const [imageId, setImageId] = useState("")
+
+  const [isCheck, setIsCheck] = useState(false)
+  const [isImgErr, setIsImgErr] = useState(false)
 
   let history = useHistory()
 
@@ -64,31 +67,15 @@ try {
     })
     const data = await res.json()
     setImageId(data.response)
+    setIsCheck(true)
+    setIsImgErr(false)
 
 } catch (err){
     console.error(err)
+    setIsImgErr(true)
 }
 
 }
-
-  /* ------Logged User ----- */
-
- /*  useEffect(() => {
-		console.log("useEffect")
-		axios
-		 .get (API_URL+"/user/"+userId)
-		 .then ((response)=> {
-			setUserInfo(response.data)
-    
-		 }
-		)
-	},  */
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-	/* []) */
-
-
-  /* Add product ID to user & user ID to product */
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,27 +94,15 @@ try {
     .post(API_URL + "/product", objectToSubmit)
     .then((response) => {
       history.push("/profile")
-      console.log("creado")
-      /* productId = response.data._id
-      updatedUser = JSON.parse(JSON.stringify(userInfo))
-      updatedUser.products.push(productId) */
     })
     .catch(error => console.log("error: ", error))
-
-    /* Promise.all([p1])
-    .then(response => {
-      axios.put((API_URL + `/user/${userInfo._id}`), updatedUser)
-        .then((response) => {
-          console.log("RESPONSE: " , response.data)
-          setUserInfo(response.data)})
-        .catch((error) => {console.log("error", error)})
-    }) */
     
   }
   
   return (
 
     <div className="new-product-form">
+      {!isCheck &&
       <div>
           <form className="new-product-form-photo" onSubmit={handleSubmitImage} >
             <input multiple 
@@ -142,7 +117,17 @@ try {
             )}
       </div>
 
-
+        }
+        {isCheck &&
+          <div className="upload-succes">
+          <h4> Upload successful</h4>
+          </div>
+        }
+        {isImgErr &&
+          <div className="img-error">
+          <h4>Not valid image</h4>
+          </div>
+        }
       <form  className="new-product-form-text"onSubmit={handleSubmit}>
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName}></input>

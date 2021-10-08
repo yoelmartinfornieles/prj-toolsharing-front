@@ -1,13 +1,11 @@
 import React, { useState} from "react";
 import EditUserInfo from "./EditUserInfo"
 import {Image} from 'cloudinary-react'
-//import Signup from "./signup";
-//import Login from "./login";
 
 function UserInfo(props) {
 
   const userInfo = props.userInfo.data
-  const {username, email, profileImg } = props.userInfo.data
+  const {username, profileImg } = props.userInfo.data
 
   const [isShowEditUserForm, setIsShowEditUserForm] = useState(false)
 
@@ -17,7 +15,6 @@ function UserInfo(props) {
   
 
   }
-
 
   return (
 

@@ -19,7 +19,6 @@ function App() {
 
   function toggleShowForm(){
     setIsShowForm(!isShowForm)
-    console.log(isShowForm)
   }
 
   return (
