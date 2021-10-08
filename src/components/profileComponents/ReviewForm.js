@@ -8,20 +8,13 @@ const ReviewForm = (props)=>{
     const [rating, setRating] = useState("0")
     const {productId, userInfo} = props
 
-
-
-console.log("USER INFO DEL REVIEW FORM" , userInfo)
-
     const handleText = (e) =>{
         setReviewText(e.target.value)
     }
     const handleRating = (e) =>{
         setRating(e.target.value)
     }
-
-
-
-
+    
     const handleSubmit = (e) =>{
         e.preventDefault()
 

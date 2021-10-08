@@ -5,18 +5,10 @@ import ReviewForm from "./ReviewForm"
 const API_URL = process.env.REACT_APP_API_URL
 
 const UserTransactions = (props)=>{
-
     const[transactions, setTransactions] = useState([])
-    
-
     const {userInfo} = props
-    
-    
     useEffect( 
         () =>{
-            
-            
-            console.log("user info coming :" , typeof userInfo)
             axios.get(API_URL + "/transaction/profile/"+userInfo)
             .then(response => {setTransactions(response.data)
                 console.log('transaction',response.data)
