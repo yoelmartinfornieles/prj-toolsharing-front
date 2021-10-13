@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import GoogleMap from "./GoogleMap";
 
@@ -26,11 +26,6 @@ function AdressConverter(props) {
   const handleCity = (e) => {
     setCity(e.target.value);
   };
-
-  useEffect(() => {
-    console.log("dlat:", lat);
-    console.log("dlng:", lng);
-  }, [lat, lng]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,11 +57,9 @@ function AdressConverter(props) {
     }
 
     
-    console.log("object to submit:", requestBody);
-
     axios
       .put(API_URL + `/user/${props.id}`, requestBody)
-      .then((response) => {
+      .then((response) => { return ("ok")
       })
       .catch((err) => {
         console.log("Error:", err);
@@ -78,7 +71,7 @@ function AdressConverter(props) {
   return (
     <div>
       {showForm && (
-        <div clssName="new-location-form">
+        <div className="new-location-form">
           <form className="new-location-form-text" onSubmit={handleSubmit}>
             <label>Street:</label>
             <input
@@ -108,7 +101,7 @@ function AdressConverter(props) {
               value={city}
               onChange={handleCity}
             ></input>
-            <button type="submit" class="location-button">Check Location</button>
+            <button type="submit" className="location-button">Check Location</button>
           </form>
           {showMap && (
             <div className="google-map">

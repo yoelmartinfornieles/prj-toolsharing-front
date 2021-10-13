@@ -1,15 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 
-
 function SearchProduct(props) {
-
 
   const {setProductsBySearch, setThereAreProducts, handleSearch} = props
 
   const [searchLetters, setSearchLetters] = useState("");
-
-  console.log("typeof", typeof handleSearch)
 
   const handleSelect = (e) => {
     
@@ -20,17 +16,13 @@ function SearchProduct(props) {
     e.preventDefault();
     const API_URL = process.env.REACT_APP_API_URL;
     const productToSearch = searchLetters;
-    console.log ("looking for =>", productToSearch)
-    //llamar a la base de datos y recoger todos los objetos
     axios
       .get (API_URL + "/product/search/"+productToSearch)
       .then (response => {
         setProductsBySearch (response.data);
         setThereAreProducts (true);
         handleSearch(searchLetters)
-    
-        console.log("searchletter mierdiii")
-        
+            
       } 
         )
   }                                  

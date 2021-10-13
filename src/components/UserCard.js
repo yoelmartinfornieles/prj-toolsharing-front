@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { Image } from "cloudinary-react";
+
 function OwnerCard(props) {
   const [ownerInfo, setOwnerInfo] = useState({});
   let API_URL = process.env.REACT_APP_API_URL;
@@ -10,7 +12,6 @@ function OwnerCard(props) {
   useEffect(
     () => {
       axios.get(API_URL + "/user/" + owner).then((response) => {
-        console.log("responseOwner: ", response);
         setOwnerInfo(response.data);
       });
     },
@@ -18,17 +19,19 @@ function OwnerCard(props) {
     []
   );
 
-  console.log("this is the owner info:", ownerInfo);
-
   return (
     <div className="owner-card">
-        <div className="picture-owner">
-          <img src={ownerInfo.profileImg} />
-        </div>
-        <div className="text-owner">
+      <div className="picture-owner">
+        <Image
+          className="img-cropper-img"
+          cloudName="toolsharing"
+          publicId={ownerInfo.profileImg}
+        />
+      </div>
+      <div className="text-owner">
         <h3>Meet the owner</h3>
         <h2>{ownerInfo.username}</h2>
-        </div>
+      </div>
     </div>
   );
 }

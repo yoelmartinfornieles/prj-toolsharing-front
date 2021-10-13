@@ -7,7 +7,6 @@ import LoginGoogle from "../googleComponents/LoginGoogle"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-console.log(API_URL)
 function LoginPage(props) {
 
   var {setIsShowLogin, clickToShow} = props

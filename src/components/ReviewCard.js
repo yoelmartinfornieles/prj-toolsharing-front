@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import axios from "axios"
+import { Image } from "cloudinary-react"
 import stars0 from '../images/0-stars.png'
 import stars1 from '../images/1-stars.png'
 import stars2 from '../images/2-stars.png'
@@ -25,7 +26,6 @@ function ReviewCard(props) {
 	[])
 	let rate
 	
-	console.log("review INOFOOOOOOOO:", reviewInfo)
 	switch (reviewInfo.rating){
 		case 0:
 			rate = stars0
@@ -45,24 +45,27 @@ function ReviewCard(props) {
 			case 5:
 			rate = stars5
 			break;
-			default: rate = stars0
+			default:rate = stars0
 	}
 
 
 	if (reviewInfo) {
 
 	return (
-
 		
-
-
 		<div className="review-card">
 		<div className="review-photo">
-		<img src= {reviewInfo.user.profileImg} alt="Review person"></img>
+
+		<Image
+          className="img-cropper-img"
+          cloudName="toolsharing"
+          publicId={reviewInfo.user.profileImg}
+        />
+		
 		</div>
 		<div className="review-text">
 		<div>
-		<img src={rate}/>
+		<img src={rate} alt="rating"/>
 		</div>
 		<h4>{reviewInfo.user.username}:</h4>
 		<p>{review.content}</p>
@@ -72,8 +75,13 @@ function ReviewCard(props) {
 	);
   } else {
 	  return (
-		  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-	  )
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   }
 
 }
