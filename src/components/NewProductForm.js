@@ -19,6 +19,7 @@ function NewProductForm(props) {
 
   const [letters, setLetters] = useState(0)
 
+
   let history = useHistory()
 
   //const[fileInput,setFileInput]= useState("")
