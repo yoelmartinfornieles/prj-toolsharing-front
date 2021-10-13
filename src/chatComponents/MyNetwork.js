@@ -28,6 +28,7 @@ class MyNetwork extends React.Component {
 		.get (API_URL+`/chat/${currentUserId}`)
 		.then((response) => {
 			let transactions = response.data
+
 			let usersInvolved = []
 			for (let i=0; i<transactions.length; i++){
 				if (transactions[i].owner._id === currentUserId){
@@ -54,8 +55,18 @@ class MyNetwork extends React.Component {
 		})
    }
 
-   handleClick(userId) {
+   handleCloseChat(){
+    let element = document.getElementById("chatbox")
+    element.classList.toggle("hide")
+    let elementBtn = document.getElementById("chatbox-btn")
+    elementBtn.classList.toggle("hide")
+  }
 
+   handleClick(userId) {
+	let element = document.getElementById("chatbox")
+    element.classList.toggle("hide")
+    let elementBtn = document.getElementById("chatbox-btn")
+    elementBtn.classList.toggle("hide")
     let TALK_JS_DEV_ID = process.env.REACT_APP_TALK_JS_DEV_ID
 	const { currentUser } = this.state;
 	let user = this.otherUsers.find(user => user._id === userId)
@@ -112,11 +123,13 @@ class MyNetwork extends React.Component {
               </div>
             </div>
           ))}
-          <div className="chatbox-container" ref={(c) => (this.container = c)}>
+          <div className="chatbox-container hide"
+              id = "chatbox" ref={(c) => (this.container = c)}>
             <div id="talkjs-container" style={{ height: "300px" }}>
               <i></i>
             </div>
           </div>
+		  <button id="chatbox-btn" className="close-button hide" onClick={this.handleCloseChat}>Close chat</button>
         </div>
       )}
     </div>

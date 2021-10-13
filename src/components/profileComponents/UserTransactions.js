@@ -23,7 +23,7 @@ const UserTransactions = (props) => {
           <div className="user-trans-card" key={transaction._id}>
             <h2>{transaction.product.name}</h2>
             <p>
-              {transaction.startDate} - {transaction.startDate}
+              {transaction.startDate} - {transaction.endDate}
             </p>
             <p>Owner: {transaction.owner.username}</p>
             <p>Renter: {transaction.renter.username}</p>

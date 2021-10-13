@@ -35,7 +35,7 @@ class Messaging extends Component {
 	render() {
 		return (
 			<Fragment>
-				<div style={{height: '500px'}} className="inbox-container" ref={c => this.container = c}>Loading... messanging</div>
+				<div style={{height: '500px'}} className="chatbox-container" ref={c => this.container = c}>Loading... messaging</div>
 			</Fragment>
 		);
 	}

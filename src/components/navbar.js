@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";                     // <== IMPORT 
-import { AuthContext } from "./../context/auth.context";  // <== IMPORT
+import { AuthContext } from "../context/auth.context";  // <== IMPORT
 import {NEWPRODUCT, PROFILE} from "../utils/paths";
 import home from '../images/home-white.png'
 import plus from '../images/plus-white.png'

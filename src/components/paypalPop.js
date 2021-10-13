@@ -23,7 +23,9 @@ const PaypalPop = (props) =>{
  };
 
  const createTransaction = () => {
-   axios.post(API_URL + "/transaction", ProductDetails).then((response) => {
+   axios.post(API_URL + "/transaction", ProductDetails)
+   .then((response) => {
+     console.log('respuesta:',response)
      history.push("/");
    });
  };

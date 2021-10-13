@@ -984,17 +984,25 @@ top: 0;
   }
 
   .chatbox-container {
-    position: absolute;
-    bottom: 0;
-    height: 400px;
-    right: 5%;
-    width: 300px;
+    position: fixed;
+    height: 500px;
+    top: 100px;
+    left: 0;
+    width: 100vw;
+  }
+
+  .chatbox-container button{
+      bottom: 0px;
+  }
+
+  .hide {
+    display: none;
   }
 
 
 
 
-  /*____________________-------------FROFILE_____________________-----------*/
+  /*____________________-------------PROFILE_____________________-----------*/
 
 
   .profile-container{
