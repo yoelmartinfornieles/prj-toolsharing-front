@@ -6,7 +6,7 @@ import moment from "moment";
 import PaypalPop from "./paypalPop"
 
 function BookForm(props) {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [price, setPrice] = useState(null);
   const [error, setError] = useState(false);

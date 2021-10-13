@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import axios from "axios"
+import { Image } from "cloudinary-react"
 import stars0 from '../images/0-stars.png'
 import stars1 from '../images/1-stars.png'
 import stars2 from '../images/2-stars.png'
@@ -54,7 +55,13 @@ function ReviewCard(props) {
 		
 		<div className="review-card">
 		<div className="review-photo">
-		<img src= {reviewInfo.user.profileImg} alt="Review person"></img>
+
+		<Image
+          className="img-cropper-img"
+          cloudName="toolsharing"
+          publicId={reviewInfo.user.profileImg}
+        />
+		
 		</div>
 		<div className="review-text">
 		<div>

@@ -4,16 +4,21 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
 function NewProductForm(props) {
+  const actualYear = new Date().getFullYear()
   //let history = useHistory()
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [category, setCategory] = useState("assembly");
-  const [adquisitionYear, setAdquisitionYear] = useState(0);
+  const [adquisitionYear, setAdquisitionYear] = useState(actualYear);
   const [imageId, setImageId] = useState("")
 
   const [isCheck, setIsCheck] = useState(false)
   const [isImgErr, setIsImgErr] = useState(false)
+
+
+  const [letters, setLetters] = useState(0)
+
 
   let history = useHistory()
 
@@ -30,7 +35,13 @@ function NewProductForm(props) {
 	let userId = user._id
 
   const handleName = (e) => setName(e.target.value);
-  const handleDescription = (e) => setDescription(e.target.value);
+  const handleDescription = (e) => {
+    setDescription(e.target.value)
+    let text = e.target.value
+    setLetters(text.length)
+
+    
+  };
   const handleAmount = (e) => setAmount(e.target.value);
  
   const handleCategory = (e) => {setCategory(e.target.value)};
@@ -98,6 +109,9 @@ try {
     .catch(error => console.log("error: ", error))
     
   }
+
+  //description word counter
+
   
   return (
 
@@ -105,7 +119,8 @@ try {
       {!isCheck &&
       <div>
           <form className="new-product-form-photo" onSubmit={handleSubmitImage} >
-            <input multiple 
+            <input multiple
+             
               type="file"
               name="image" 
               onChange={handleFileChange} 
@@ -130,16 +145,20 @@ try {
         }
       <form  className="new-product-form-text"onSubmit={handleSubmit}>
         <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName}></input>
+        <input type="text" name="name" required maxLength="25"value={name} onChange={handleName}></input>
         <label>Description:</label>
-        <input
+        <textarea
+          required
+          maxLength="200"
           type="text"
           name="description"
           value={description}
           onChange={handleDescription}
-        ></input>
+        ></textarea>
+        <h3>Letters left: {200-letters}</h3>
         <label>Amount:</label>
         <input
+          required
           type="number"
           name="amount"
           value={amount}
@@ -149,6 +168,7 @@ try {
 
         <label>Category:</label>
         <select
+          required
           name="category"
           id="category"
           value={category}
@@ -169,6 +189,7 @@ try {
         </select>
         <label>Year of acquisition:</label>
         <input
+          required
           type="number"
           name="YearOfAcquisition"
           value={adquisitionYear}
