@@ -10,7 +10,7 @@ import GoogleMap from '../components/GoogleMap'
 
 import OwnerCard from '../components/UserCard'
 import Logo from "../images/tooly-logo.png"
-import ChatComponent from "../chatComponents/ChatComponent"
+import ChatComponent from "../components/chatComponents/ChatComponent"
 
 function ProductDetailsPage(props) {
   const [product, setProduct] = useState(null);

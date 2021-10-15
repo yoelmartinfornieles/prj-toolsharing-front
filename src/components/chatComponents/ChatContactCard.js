@@ -4,11 +4,12 @@ function ChatContactCard(props) {
   let {user} = props
   return (
     <>
+        
+        <div className="user-info-container">
         <picture className="user-picture">
             <Image className="user" cloudName="toolsharing" publicId={user.profileImg} alt={`${user.name}`} />
         </picture>
-        <div className="user-info-container">
-            <div className="user-info">
+            <div className="user-chat-info">
                 <h4>{user.username}</h4>
             </div>
         </div>

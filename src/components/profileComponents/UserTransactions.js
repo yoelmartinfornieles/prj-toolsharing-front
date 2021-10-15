@@ -18,7 +18,7 @@ const UserTransactions = (props) => {
   return (
     <div>
       <h3 className="profile-titles">My Transactions:</h3>
-      <div className="user-product-cards">
+      <div className="user-trans-cards">
         {transactions.map((transaction) => (
           <div className="user-trans-card" key={transaction._id}>
             <h2>{transaction.product.name}</h2>

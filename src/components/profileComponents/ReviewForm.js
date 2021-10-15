@@ -32,7 +32,7 @@ const ReviewForm = (props)=>{
 
     return (
       <form onSubmit={handleSubmit}>
-        <input type="text-area" value={reviewText} onChange={handleText} />
+        <textarea className="user-trans-card-input" type="text-area" value={reviewText} onChange={handleText} />
 
         <input
           type="range"
@@ -53,7 +53,7 @@ const ReviewForm = (props)=>{
           <option value="4">4</option>
           <option value="5">5</option>
         </datalist>
-        <button type="submit"> Review </button>
+        <button className="logout-button" type="submit"> Review </button>
       </form>
     );
 }

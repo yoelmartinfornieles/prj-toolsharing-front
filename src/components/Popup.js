@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Signup from "./signup";
-import Login from "./login";
+import Signup from "./Signup";
+import Login from "./Login";
 
 function Popup(props) {
 

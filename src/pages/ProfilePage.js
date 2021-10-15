@@ -75,11 +75,12 @@ function ProfilePage() {
           <UserTransactions userInfo={userInfo}/>
           </div>
           
-
-          <a className="" href={MYNETWORK}>
-            GO TO MY NETWORK
+            <div className="yoel-div">
+          <a className="yoel-button" href={MYNETWORK}>
+            My network
             <img alt="" />
           </a>
+          </div>
           <div className="logout-container"></div>
           <button className="logout-button" onClick={logOutUser}>Logout</button>
           <GoogleLogout className="logout-button"/>

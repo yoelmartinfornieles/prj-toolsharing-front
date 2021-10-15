@@ -3,7 +3,7 @@ import {useEffect} from 'react'
 import Calendar from "./Calendar.js";
 import moment from "moment";
 
-import PaypalPop from "./paypalPop"
+import PaypalPop from "./PaypalPop"
 
 function BookForm(props) {
   const [startDate, setStartDate] = useState(null);

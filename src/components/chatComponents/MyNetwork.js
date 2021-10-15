@@ -1,6 +1,7 @@
 import React from 'react';
 import Talk from "talkjs";
 import axios from "axios"
+import Logo from "../../images/tooly-logo.png";
 import ChatContactCard from "./ChatContactCard"
 
 class MyNetwork extends React.Component {
@@ -99,24 +100,18 @@ class MyNetwork extends React.Component {
 }
 
    render() {
-	const { currentUser } = this.state;
 	return (
-    <div className="users">
-      <div className="current-user-container">
-        {currentUser && (
-          <div>
-            <div className="current-user-info">
-              <h3>{currentUser.name}</h3>
-            </div>
-          </div>
-        )}
-      </div>
+		
+    <div className="my-network-page">
+	 <nav className="top-navbar">
+          <img src={Logo} alt="Logo" />
+        </nav>
       {this.state.isLoading ? null : (
         <div className="users-container">
           {this.otherUsers.map((user) => (
-            <div key={user._id}>
+            <div key={user._id} className="user-chat-card">
               <ChatContactCard className="user" user={user} />
-              <div className="user-action">
+              <div className="user-chat-button">
                 <button onClick={(userId) => this.handleClick(user._id)}>
                   Message
                 </button>

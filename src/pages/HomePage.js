@@ -1,4 +1,4 @@
-import Carrusel from "../components/carrusel"
+import Carrusel from "../components/Carrusel"
 import HomeCategories from "../components/HomeCategories";
 import ListProducts from "../components/ListProducts"
 import {useState, useEffect} from "react"
