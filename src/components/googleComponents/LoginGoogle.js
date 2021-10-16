@@ -1,10 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { GoogleLogin } from 'react-google-login';
-import { refreshTokenSetup } from '../utils/refreshToken';
+import { refreshTokenSetup } from '../../utils/refreshToken';
 import { useContext } from "react";
 import {useHistory} from "react-router-dom"
-import { AuthContext } from "./../context/auth.context";
+import { AuthContext } from "./../../context/auth.context";
 
 function LoginGoogle(props) {
   const clientId = process.env.REACT_APP_LOGIN_GOOGLE;
