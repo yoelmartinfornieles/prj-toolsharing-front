@@ -60,9 +60,9 @@
 
 > Because an image is worth a thousand words, try the demo here: https://prj-toolsharing-front.herokuapp.com/
 
-> Tooly is a tool sharing plattform.
-> The idea is to rent the tools we got at home creating community, sharing resources, evading the consumism and reutilizing items.
-> We aim for plattform which allows us to do this all.
+> Tooly is a tool sharing platform.
+> The idea is to rent the tools we got at home creating community, sharing resources, evading the consumerism and reutilizing items.
+> We aim for platform which allows us to do this all.
 
 <details>
 <summary>Screenshots</summary>
