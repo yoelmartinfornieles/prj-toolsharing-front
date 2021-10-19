@@ -306,6 +306,10 @@ top: 0;
 
 }
 
+.awssld__timer {
+    height: var(--timer-height) !important;
+}
+
 
 
 .c1 h1{
