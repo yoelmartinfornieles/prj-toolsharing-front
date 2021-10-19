@@ -98,14 +98,14 @@ run npm i.
 
 In case google maps is giving any problems try:
 
-yarn install -g
-yarn add google-map-react
-yarn add google-maps-react
+yarn install -g; 
+yarn add google-map-react; 
+yarn add google-maps-react; 
 
 ## Usage
 
-As this is the client, please run the following command: npm run start
-Don't forget the required .env file
+As this is the client, please run the following command: npm run start. 
+Don't forget the required .env file.
 
 ## Roadmap
 
