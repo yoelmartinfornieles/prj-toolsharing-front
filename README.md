@@ -1,70 +1,161 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back">
+    <img src="docs/images/tooly-logo.png" alt="Logo" width="300" height="100">
+  </a>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  TOOLY
+  <br />
+  <a href="#about"><strong>Explore the screenshots »</strong></a>
+  <br />
+  <br />
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  ·
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+  .
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
+</div>
 
-## Available Scripts
+<div align="center">
+<br />
 
-In the project directory, you can run:
+[![license](https://img.shields.io/github/license/yoelmartinfornieles/prj-toolsharing-back.svg?style=flat-square)](LICENSE)
 
-### `yarn start`
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![code with hearth by Espe Cabrer](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-especabrer-ff1414.svg?style=flat-square)](https://github.com/especabrer)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[![code with hearth by Jordi Davesa](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-jdavesa-ff1414.svg?style=flat-square)](https://github.com/jdavesa)
 
-### `yarn test`
+[![code with hearth by Guille Celma](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-guillecelma-ff1414.svg?style=flat-square)](https://github.com/GuilleCelma)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[![code with hearth by Yoel Martin Fornieles](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-yoelmartinfornieles-ff1414.svg?style=flat-square)](https://github.com/yoelmartinfornieles)
 
-### `yarn build`
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<details open="open">
+<summary>Table of Contents</summary>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [About](#about)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Support](#support)
+- [Project assistance](#project-assistance)
+- [Contributing](#contributing)
+- [Authors & contributors](#authors--contributors)
+- [Security](#security)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</details>
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## About
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Because an image is worth a thousend words, try the demo here: https://prj-toolsharing-front.herokuapp.com/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> Tooly is a tool sharing plattform.
+> The idea is to rent the tools we got at home creating community, sharing resources, evading the consumism and reutilizing items.
+> We aim for plattform which allows us to do this all.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<details>
+<summary>Screenshots</summary>
+<br>
 
-## Learn More
+|                               Home Page                               |                               Login Page                               |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="docs/images/home.png" title="Home Page" width="100%"> | <img src="docs/images/login.png" title="Login Page" width="100%"> |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+|                               Product List                               |                               Product Details                               |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="docs/images/product list.png" title="Product List" width="100%"> | <img src="docs/images/prduct details.png" title="Product Details" width="100%"> |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+|                               Profile Page                               |                               Date selector                                |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="docs/images/profile.png" title="Profile Page" width="100%"> | <img src="docs/images/calendar.png" title="Date selector" width="100%"> |
 
-### Code Splitting
+|                               Payment                              |                               Chat                               |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="docs/images/booking.png" title="Payment" width="100%"> | <img src="docs/images/chat.png" title="Chat" width="100%"> |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+</details>
 
-### Analyzing the Bundle Size
+### Built With
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://firebase.google.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://heroku.com" target="_blank"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/><a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a>
 
-### Making a Progressive Web App
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Installation
 
-### Advanced Configuration
+run npm i.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+In case google maps is giving any problems try:
 
-### Deployment
+yarn install -g
+yarn add google-map-react
+yarn add google-maps-react
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `yarn build` fails to minify
+As this is the client, please run the following command: npm run start
+Don't forget the required .env file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Roadmap
+
+See the [open issues](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues) for a list of proposed features (and known issues).
+
+- [Top Feature Requests](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Top Bugs](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Newest Bugs](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+
+## Support
+
+Reach out to the maintainer at one of the following places:
+
+- [GitHub issues](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
+- The email which is located [in GitHub profile](https://github.com/yoelmartinfornieles)
+
+## Project assistance
+
+If you want to say **thank you** or/and support active development of Tooly:
+
+- Add a [GitHub Star](https://github.com/yoelmartinfornieles/prj-toolsharing-back) to the project.
+- Tweet about the PROJECT_NAME on your Twitter.
+- Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or personal blog.
+
+Together, we can make Tooly **better**!
+
+## Contributing
+
+First off, thanks for taking the time to contribute! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
+
+We have set up a separate document containing our [contribution guidelines](docs/CONTRIBUTING.md).
+
+Thank you for being involved!
+
+## Authors & contributors
+
+The original setup of this repository is by The Tooly team inc.
+
+For a full list of all authors and contributors, check [the contributor's page](https://github.com/yoelmartinfornieles/prj-toolsharing-back/contributors).
+
+## Security
+
+Tooly follows good practices of security, but 100% security can't be granted in software.
+Tooly is provided **"as is"** without any **warranty**. Use at your own risk.
+
+_For more info, please refer to the [security](docs/SECURITY.md)._
+
+## License
+
+This project is licensed under the **MIT license**.
+
+See [LICENSE](LICENSE) for more information.
+

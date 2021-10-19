@@ -90,7 +90,7 @@ class MyNetwork extends React.Component {
       <>
         {this.state.isLoading ? null : (
           <>
-            <div className="user-action">
+            <div className="user-chat-button">
               <button onClick={(userId) => this.handleClick(this.props.owner)}>
                 Message
               </button>
