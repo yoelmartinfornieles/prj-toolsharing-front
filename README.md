@@ -127,7 +127,7 @@ Reach out to the maintainer at one of the following places:
 If you want to say **thank you** or/and support active development of Tooly:
 
 - Add a [GitHub Star](https://github.com/yoelmartinfornieles/prj-toolsharing-front) to the project.
-- Tweet about the PROJECT_NAME on your Twitter.
+- Tweet about the Tooly on your Twitter.
 - Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or personal blog.
 
 Together, we can make Tooly **better**!
