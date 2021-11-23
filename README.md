@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back">
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-front">
     <img src="docs/images/tooly-logo.png" alt="Logo" width="300" height="100">
   </a>
 </h1>
@@ -10,11 +10,11 @@
   <a href="#about"><strong>Explore the screenshots »</strong></a>
   <br />
   <br />
-  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
   ·
-  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
   .
-  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
+  <a href="https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
 </div>
 
 <div align="center">
@@ -22,7 +22,7 @@
 
 [![license](https://img.shields.io/github/license/yoelmartinfornieles/prj-toolsharing-back.svg?style=flat-square)](LICENSE)
 
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
 [![code with hearth by Espe Cabrer](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-especabrer-ff1414.svg?style=flat-square)](https://github.com/especabrer)
 
@@ -96,7 +96,7 @@
 
 run npm i.
 
-In case google maps is giving any problems try:
+In case google maps is giving any problems, try:
 
 yarn install -g; 
 yarn add google-map-react; 
@@ -109,24 +109,24 @@ Don't forget the required .env file.
 
 ## Roadmap
 
-See the [open issues](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues) for a list of proposed features (and known issues).
 
-- [Top Feature Requests](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Top Bugs](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Newest Bugs](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+- [Top Feature Requests](https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Top Bugs](https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Newest Bugs](https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 
 ## Support
 
 Reach out to the maintainer at one of the following places:
 
-- [GitHub issues](https://github.com/yoelmartinfornieles/prj-toolsharing-back/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
+- [GitHub issues](https://github.com/yoelmartinfornieles/prj-toolsharing-front/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
 - The email which is located [in GitHub profile](https://github.com/yoelmartinfornieles)
 
 ## Project assistance
 
 If you want to say **thank you** or/and support active development of Tooly:
 
-- Add a [GitHub Star](https://github.com/yoelmartinfornieles/prj-toolsharing-back) to the project.
+- Add a [GitHub Star](https://github.com/yoelmartinfornieles/prj-toolsharing-front) to the project.
 - Tweet about the PROJECT_NAME on your Twitter.
 - Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or personal blog.
 
@@ -144,7 +144,7 @@ Thank you for being involved!
 
 The original setup of this repository is by The Tooly team inc.
 
-For a full list of all authors and contributors, check [the contributor's page](https://github.com/yoelmartinfornieles/prj-toolsharing-back/contributors).
+For a full list of all authors and contributors, check [the contributor's page](https://github.com/yoelmartinfornieles/prj-toolsharing-front/contributors).
 
 ## Security
 
