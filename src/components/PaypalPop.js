@@ -25,7 +25,6 @@ const PaypalPop = (props) =>{
  const createTransaction = () => {
    axios.post(API_URL + "/transaction", ProductDetails)
    .then((response) => {
-     console.log('respuesta:',response)
      history.push("/");
    });
  };
@@ -40,12 +39,6 @@ const PaypalPop = (props) =>{
        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
        onSuccess={(details, data) => {
          createTransaction();
-
-         // OPTIONAL: Call your server to save the transaction
-         return fetch(API_URL + "/tortuga", {
-           method: "post",
-           body: JSON.stringify({}).then((response) => response),
-         });
        }}
      />
    </div>
